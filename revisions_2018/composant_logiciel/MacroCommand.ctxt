@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=MacroCommand
+comment1.params=commands
+comment1.target=void\ setCommands(Command[])
+comment2.params=t
+comment2.target=void\ execute(java.lang.Object)
+comment3.params=t
+comment3.target=void\ undo(java.lang.Object)
+numComments=4

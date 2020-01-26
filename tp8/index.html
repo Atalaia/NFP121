@@ -1,0 +1,779 @@
+<html>
+<head>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+    <title>NFP121 - TP8</title>
+    <style type="text/css">
+        body {
+            background: #E5DED6;
+            background-color: #fff;
+            color: #333333;
+            font-size: 14px;
+            font-family: Verdana, Arial;
+        }
+
+        table {
+            font-size: 20px;
+            border-color: #808080;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        h2 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        hr {
+            margin: 15px 0 15px 0;
+        }
+		
+		applet {
+			margin: 10px 0px 25px 250px;
+			border-width: 1px;
+			border-style: solid;
+			border-color: #777777;
+		}
+    </style>
+
+</head>
+<body>
+    <h2 style="text-align: center">NFP 121 - TP8</h2>
+    <h2 style="text-align: center">Pattern Décorateur</h2>
+    <br />
+    <hr>
+    <br />
+    <table>
+        <tr>
+            <td>Nom
+            </td>
+            <td>SOAGE CAMPELO
+            </td>
+        </tr>
+        <tr>
+            <td>Prénom
+            </td>
+            <td>MARÍA ESTHER
+            </td>
+        </tr>
+        <tr>
+            <td>Matricule
+            </td>
+            <td>FOD_0G5DRMA39F5
+            </td>
+        </tr>
+    </table>
+		
+	<br />
+    <hr />
+    <h3>Question 1</h3>
+	<br />
+	Cette question n'était pas très compliquée et c'était un bon exemple pour bien comprendre le pattern Décorateur. Un exemple simple, accessible, très illustratif et facile à comprendre. J'ai bien aimé. 
+		<br />
+	<br />
+	Voici l'IHM "PizzaStore" complétée :
+	<br />
+	<br />
+	<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.awt.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;javax.swing.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.awt.event.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.text.DecimalFormat;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;PizzaStore&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;JFrame{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;PizzaStore(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>(<font color='#2a00ff'>"IHMPizza"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(<strong><font color='#7f0055'>new</font></strong>&nbsp;IHMPizza());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pack();show();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;main(String[]&nbsp;args){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;PizzaStore();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;IHMPizza&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;JPanel{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;JLabel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficheur&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JLabel(<font color='#2a00ff'>"&nbsp;please,&nbsp;first&nbsp;choose&nbsp;your&nbsp;pizza,&nbsp;then&nbsp;the&nbsp;constituents&nbsp;but&nbsp;once&nbsp;clams..."</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;JButton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonSolo&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JButton(<font color='#2a00ff'>""</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;JButton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonClassic&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JButton(<font color='#2a00ff'>""</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;JButton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonCrust&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JButton(<font color='#2a00ff'>""</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Checkbox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parmesan&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Checkbox(<font color='#2a00ff'>"parmesan"</font>,&nbsp;<strong><font color='#7f0055'>null</font></strong>,&nbsp;<strong><font color='#7f0055'>true</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Checkbox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mozarella&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Checkbox(<font color='#2a00ff'>"mozarella"</font>,&nbsp;<strong><font color='#7f0055'>null</font></strong>,&nbsp;<strong><font color='#7f0055'>false</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Checkbox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ham&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Checkbox(<font color='#2a00ff'>"ham"</font>,&nbsp;<strong><font color='#7f0055'>null</font></strong>,&nbsp;<strong><font color='#7f0055'>false</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Checkbox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomato&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Checkbox(<font color='#2a00ff'>"tomato"</font>,&nbsp;<strong><font color='#7f0055'>null</font></strong>,&nbsp;<strong><font color='#7f0055'>false</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Checkbox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mushrooms&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Checkbox(<font color='#2a00ff'>"mushrooms"</font>,&nbsp;<strong><font color='#7f0055'>null</font></strong>,&nbsp;<strong><font color='#7f0055'>false</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Checkbox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clams&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Checkbox(<font color='#2a00ff'>"clams"</font>,&nbsp;<strong><font color='#7f0055'>null</font></strong>,&nbsp;<strong><font color='#7f0055'>false</font></strong>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;DecimalFormat&nbsp;&nbsp;df&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;DecimalFormat(<font color='#2a00ff'>"##.##"</font>);&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;JButton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonMake&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JButton(<font color='#2a00ff'>""</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Pizza&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pizza;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;IHMPizza(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JPanel&nbsp;panelGlobal&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JPanel();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JPanel&nbsp;panelBoutons&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JPanel();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JPanel&nbsp;panelDecorations&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JPanel();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JPanel&nbsp;panelMake&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JPanel();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelGlobal.setLayout(<strong><font color='#7f0055'>new</font></strong>&nbsp;GridLayout(3,1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficheur.setEnabled(<strong><font color='#7f0055'>false</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelGlobal.add(afficheur);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelBoutons.setLayout(<strong><font color='#7f0055'>new</font></strong>&nbsp;FlowLayout(FlowLayout.CENTER));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelBoutons.add(boutonSolo);panelBoutons.add(boutonClassic);panelBoutons.add(boutonCrust);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelDecorations.setLayout(<strong><font color='#7f0055'>new</font></strong>&nbsp;GridLayout(1,6));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelDecorations.add(parmesan);panelDecorations.add(mozarella);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelDecorations.add(ham);panelDecorations.add(tomato);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelDecorations.add(mushrooms);panelDecorations.add(clams);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelGlobal.add(panelBoutons);&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelGlobal.add(panelDecorations);&nbsp;&nbsp;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setLayout(<strong><font color='#7f0055'>new</font></strong>&nbsp;BorderLayout());&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(panelGlobal,<font color='#2a00ff'>"North"</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelMake.setLayout(<strong><font color='#7f0055'>new</font></strong>&nbsp;FlowLayout(FlowLayout.CENTER));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panelMake.add(boutonMake);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(panelMake,<font color='#2a00ff'>"Center"</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonSolo.addActionListener(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ActionListener(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;actionPerformed(ActionEvent&nbsp;ae){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pizza&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;PizzaSolo();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validerLesDécorations();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonClassic.addActionListener(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ActionListener(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;actionPerformed(ActionEvent&nbsp;ae){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pizza&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Classic();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validerLesDécorations();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonCrust.addActionListener(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ActionListener(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;actionPerformed(ActionEvent&nbsp;ae){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pizza&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;GenerousCrust();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validerLesDécorations();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parmesan.addItemListener(<strong><font color='#7f0055'>new</font></strong>&nbsp;ItemListener(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;itemStateChanged(ItemEvent&nbsp;ie){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(ie.getStateChange()==ItemEvent.SELECTED){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pizza&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Parmesan(pizza);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficherLaPizzaEtSonCoût();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}});&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mozarella.addItemListener(<strong><font color='#7f0055'>new</font></strong>&nbsp;ItemListener(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;itemStateChanged(ItemEvent&nbsp;ie){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(ie.getStateChange()==ItemEvent.SELECTED){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pizza&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;FreshMozarella(pizza);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficherLaPizzaEtSonCoût();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}});
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ham.addItemListener(<strong><font color='#7f0055'>new</font></strong>&nbsp;ItemListener(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;itemStateChanged(ItemEvent&nbsp;ie){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(ie.getStateChange()==ItemEvent.SELECTED){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pizza&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Ham(pizza);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficherLaPizzaEtSonCoût();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}});&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomato.addItemListener(<strong><font color='#7f0055'>new</font></strong>&nbsp;ItemListener(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;itemStateChanged(ItemEvent&nbsp;ie){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pizza&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Tomato(pizza);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficherLaPizzaEtSonCoût();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}});
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mushrooms.addItemListener(<strong><font color='#7f0055'>new</font></strong>&nbsp;ItemListener(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;itemStateChanged(ItemEvent&nbsp;ie){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(ie.getStateChange()==ItemEvent.SELECTED){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pizza&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Mushrooms(pizza);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficherLaPizzaEtSonCoût();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}});&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clams.addItemListener(<strong><font color='#7f0055'>new</font></strong>&nbsp;ItemListener(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;itemStateChanged(ItemEvent&nbsp;ie){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(ie.getStateChange()==ItemEvent.SELECTED){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pizza&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Clams(pizza);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;clams.setState(<strong><font color='#7f0055'>true</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficherLaPizzaEtSonCoût();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}});
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonMake.addActionListener(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ActionListener(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;actionPerformed(ActionEvent&nbsp;ae){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invaliderLesDécorations();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficheur.setText(<font color='#2a00ff'>"<html><FONT&nbsp;Color=red&nbsp;size=5>MAKING&nbsp;of&nbsp;the&nbsp;"</font>&nbsp;+&nbsp;afficheur.getText()&nbsp;+&nbsp;<font color='#2a00ff'>"</html>"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invaliderLesDécorations();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;afficherLaPizzaEtSonCoût(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficheur.setText(<font color='#2a00ff'>"<html><FONT&nbsp;Color=blue&nbsp;size=4>"</font>+&nbsp;pizza.getDescription()+&nbsp;<font color='#2a00ff'>"</FONT><FONT&nbsp;Color=red&nbsp;size=4>&nbsp;cost:&nbsp;"</font>&nbsp;+&nbsp;df.format(pizza.cost())&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;€</Font></html>"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;invaliderLesDécorations(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonMake.setEnabled(<strong><font color='#7f0055'>false</font></strong>);boutonMake.setText(<font color='#2a00ff'>"<html><font&nbsp;size=3&nbsp;color=green>compose&nbsp;your&nbsp;pizza&nbsp;...</font></html>"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonSolo.setEnabled(<strong><font color='#7f0055'>true</font></strong>);boutonSolo.setText(<font color='#2a00ff'>"<html><font&nbsp;size=3&nbsp;color=red>solo</font></html>"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonClassic.setEnabled(<strong><font color='#7f0055'>true</font></strong>);boutonClassic.setText(<font color='#2a00ff'>"<html><font&nbsp;size=3&nbsp;color=red>classic</font></html>"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonCrust.setEnabled(<strong><font color='#7f0055'>true</font></strong>);boutonCrust.setText(<font color='#2a00ff'>"<html><font&nbsp;size=3&nbsp;color=red>crust</font></html>"</font>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parmesan.setState(<strong><font color='#7f0055'>false</font></strong>);mozarella.setState(<strong><font color='#7f0055'>false</font></strong>);ham.setState(<strong><font color='#7f0055'>false</font></strong>);tomato.setState(<strong><font color='#7f0055'>false</font></strong>);mushrooms.setState(<strong><font color='#7f0055'>false</font></strong>);clams.setState(<strong><font color='#7f0055'>false</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parmesan.setEnabled(<strong><font color='#7f0055'>false</font></strong>);mozarella.setEnabled(<strong><font color='#7f0055'>false</font></strong>);&nbsp;ham.setEnabled(<strong><font color='#7f0055'>false</font></strong>);tomato.setEnabled(<strong><font color='#7f0055'>false</font></strong>);mushrooms.setEnabled(<strong><font color='#7f0055'>false</font></strong>);clams.setEnabled(<strong><font color='#7f0055'>false</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;validerLesDécorations(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonMake.setEnabled(<strong><font color='#7f0055'>true</font></strong>);boutonMake.setText(<font color='#2a00ff'>"<html><font&nbsp;size=3&nbsp;color=red>make&nbsp;the&nbsp;pizza&nbsp;!</font></html>"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonSolo.setEnabled(<strong><font color='#7f0055'>false</font></strong>);boutonSolo.setText(<font color='#2a00ff'>"<html><font&nbsp;size=3&nbsp;color=green>solo</font></html>"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonClassic.setEnabled(<strong><font color='#7f0055'>false</font></strong>);boutonClassic.setText(<font color='#2a00ff'>"<html><font&nbsp;size=3&nbsp;color=green>classic</font></html>"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boutonCrust.setEnabled(<strong><font color='#7f0055'>false</font></strong>);boutonCrust.setText(<font color='#2a00ff'>"<html><font&nbsp;size=3&nbsp;color=green>crust</font></html>"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parmesan.setEnabled(<strong><font color='#7f0055'>true</font></strong>);mozarella.setEnabled(<strong><font color='#7f0055'>true</font></strong>);ham.setEnabled(<strong><font color='#7f0055'>true</font></strong>);tomato.setEnabled(<strong><font color='#7f0055'>true</font></strong>);mushrooms.setEnabled(<strong><font color='#7f0055'>true</font></strong>);clams.setEnabled(<strong><font color='#7f0055'>true</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficherLaPizzaEtSonCoût();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+
+    <br />
+    <hr />
+    <h3>Question 2.1</h3>
+    <br/>
+    Cet exemple était aussi très intéressant et facile à comprendre. J'ai trouvé cette question très bien comme exemple du pattern décorateur.
+
+    Ci-dessous, vous trouverez l'architecture de la question complétée en ajoutant le chocolat (classe Chocolate) :
+    <br/>
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;extrait&nbsp;de&nbsp;http:<font color='#3f7f5f'>//www.oreilly.com/catalog/hfdesignpat/
+</font><br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;Chocolate&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;Beverage&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Chocolate()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description&nbsp;=&nbsp;<font color='#2a00ff'>"Chocolate"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>double</font></strong>&nbsp;cost()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;2.10;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 2.2</h3>
+    <br />
+    J'ai ajouté aussi la classe BeetSugar :
+    <br/>
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;extrait&nbsp;de&nbsp;http:<font color='#3f7f5f'>//www.oreilly.com/catalog/hfdesignpat/
+</font><br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;BeetSugar&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;CondimentDecorator&nbsp;{
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;BeetSugar(Beverage&nbsp;beverage)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>(beverage);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;getDescription(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>super</font></strong>.getDescription()&nbsp;+&nbsp;<font color='#2a00ff'>",&nbsp;Beet&nbsp;Sugar"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>double</font></strong>&nbsp;cost()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;&nbsp;.10&nbsp;+&nbsp;<strong><font color='#7f0055'>super</font></strong>.cost();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <hr />
+    <h3>Question 2.3</h3>
+    <br/>
+    Pour finir, j'ajoute la méthode public String toString() dans la classe Beverage
+    <br/>
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;extrait&nbsp;de&nbsp;http:<font color='#3f7f5f'>//www.oreilly.com/catalog/hfdesignpat/
+</font><br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;Beverage&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;description&nbsp;=&nbsp;<font color='#2a00ff'>"Unknown&nbsp;Beverage"</font>;
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;getDescription()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;description;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>double</font></strong>&nbsp;cost();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;toString(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.getDescription()&nbsp;+<font color='#2a00ff'>"&nbsp;$"</font>+&nbsp;<strong><font color='#7f0055'>this</font></strong>.cost();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br/>
+	Et on ajoute des tests à la classe ChocolateTest :
+	<br/>
+	<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;ChocolateTest&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;junit.framework.TestCase{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;question2.Chocolate&nbsp;choco;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;question2.Decaf&nbsp;decaf;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setUp(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;choco&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;question2.Chocolate();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;decaf&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;question2.Decaf();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testChocolate(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(2.1,&nbsp;choco.cost(),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testChocolateWhip(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.Beverage&nbsp;chocoSimpleWhip&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;question2.Whip(choco);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(2.2,&nbsp;chocoSimpleWhip.cost(),&nbsp;0.01);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testChocolateWhipWhip(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.Beverage&nbsp;chocoDoubleWhip&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;question2.Whip(<strong><font color='#7f0055'>new</font></strong>&nbsp;question2.Whip(choco));
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(2.3,&nbsp;chocoDoubleWhip.cost(),&nbsp;0.01);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testChocolateWhipSoyMocha(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.Beverage&nbsp;chocoWhipSoyMocha&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;question2.Mocha(<strong><font color='#7f0055'>new</font></strong>&nbsp;question2.Soy(<strong><font color='#7f0055'>new</font></strong>&nbsp;question2.Whip(choco)));
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(2.55,&nbsp;chocoWhipSoyMocha.cost(),&nbsp;0.01);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testDecafMilk(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.Beverage&nbsp;decafMilk&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;question2.Milk(decaf);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(1.15,&nbsp;decafMilk.cost(),&nbsp;0.01);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 3</h3>
+    <br/>
+    Cette question je l'ai trouvé particulièrement compliquée par rapport aux question 1 et 2. C'est un exemple un peu abstrait et difficile à comprendre. Je me perd un peu avec le nombre considerable de classes. Les exemples des questions 1 et 2 sont plus simples à comprendre, et donc plus utiles pour moi, pour mieux comprendre le pattern décorateur.
+    <br/>
+    Voici les classes QueueImpl et PriorityQueueImpl ainsi que les décorateurs QueueAf et PriorityQueueAf complétés. Les classes complétées permettent l'exécution sans échec de toutes les méthodes des classes de tests unitaires fournies. 
+    <br/>
+    Classe QueueImpl
+    <br/>
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question3.fifo.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.stream.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;QueueImpl&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;QueueI&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Queue<Integer>&nbsp;innerQueue;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;capacity;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;QueueImpl(<strong><font color='#7f0055'>int</font></strong>&nbsp;capacity){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>(capacity,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;LinkedList<Integer>());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>protected</font></strong>&nbsp;QueueImpl(<strong><font color='#7f0055'>int</font></strong>&nbsp;capacity,&nbsp;Queue<Integer>&nbsp;queueInstance){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(capacity&nbsp;<=&nbsp;0){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RuntimeException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.capacity&nbsp;=&nbsp;capacity;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;innerQueue&nbsp;=&nbsp;queueInstance;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>protected</font></strong>&nbsp;Queue<Integer>&nbsp;getInnerQueue(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;innerQueue;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;add(<strong><font color='#7f0055'>int</font></strong>&nbsp;i){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>((size()&nbsp;+&nbsp;1)&nbsp;>&nbsp;capacity){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RuntimeException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;innerQueue.add(i);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;capacity(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;capacity;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;remove(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(size()&nbsp;==&nbsp;0){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RuntimeException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;innerQueue.remove();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;element(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(size()&nbsp;==&nbsp;0){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RuntimeException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;innerQueue.element();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;clear(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;innerQueue.clear();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;size(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;innerQueue.size();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;contains(<strong><font color='#7f0055'>int</font></strong>&nbsp;i){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;innerQueue.contains(i);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Iterator<Integer>&nbsp;iterator(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;innerQueue.iterator();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;toString(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringBuffer&nbsp;buffer&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;StringBuffer(<font color='#2a00ff'>"["</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator&nbsp;it&nbsp;=&nbsp;<strong><font color='#7f0055'>this</font></strong>.iterator();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>(it.hasNext()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;item&nbsp;=&nbsp;(Integer)it.next();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer.append(item);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(it.hasNext()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer.append(<font color='#2a00ff'>","</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buffer.append(<font color='#2a00ff'>"]"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;buffer.toString();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;equals(Object&nbsp;o){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!(o&nbsp;<strong><font color='#7f0055'>instanceof</font></strong>&nbsp;QueueI))&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QueueImpl&nbsp;q&nbsp;=&nbsp;(QueueImpl)o;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(<strong><font color='#7f0055'>this</font></strong>.capacity()!=q.capacity())<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(<strong><font color='#7f0055'>this</font></strong>.size()!=q.size())<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator<Integer>&nbsp;thisIt&nbsp;=&nbsp;iterator();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator<Integer>&nbsp;targetIt&nbsp;=&nbsp;q.iterator();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>(thisIt.hasNext()&nbsp;&&&nbsp;targetIt.hasNext()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;i1&nbsp;=&nbsp;thisIt.next();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;i2&nbsp;=&nbsp;targetIt.next();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(i1&nbsp;!=&nbsp;i2){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;hashCode(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;toString().hashCode();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;FileI<Integer>&nbsp;af(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileI<Integer>&nbsp;fifo&nbsp;=&nbsp;Fabrique.creerFile(capacity);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Integer&nbsp;item&nbsp;:&nbsp;<strong><font color='#7f0055'>this</font></strong>){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fifo.enfiler(item);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;fifo;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;repOk(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;&nbsp;innerQueue&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;&&&nbsp;capacity()>0&nbsp;&&&nbsp;size()<=capacity();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br/>
+    Classe PriorityQueueImpl
+<br/>
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Comparator;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Iterator;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Collections;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question3.fifo.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;PriorityQueueImpl&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;QueueImpl&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;PriorityQueueImpl(<strong><font color='#7f0055'>int</font></strong>&nbsp;capacity){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>(capacity,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;PriorityQueue<Integer>(capacity,&nbsp;comparator));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;repOk(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;superRepOk&nbsp;=&nbsp;<strong><font color='#7f0055'>super</font></strong>.repOk(),&nbsp;isSorted&nbsp;=&nbsp;isSorted(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;superRepOk&nbsp;&&&nbsp;isSorted;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Comparator<Integer>&nbsp;comparator&nbsp;=&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Comparator<Integer>(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;compare(Integer&nbsp;i1,&nbsp;Integer&nbsp;i2){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;-i1.compareTo(i2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;FileI<Integer>&nbsp;af(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileI<Integer>&nbsp;fifo&nbsp;=&nbsp;Fabrique.creerFileAvecPriorite(capacity(),&nbsp;comparator);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Integer&nbsp;item&nbsp;:&nbsp;<strong><font color='#7f0055'>this</font></strong>){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fifo.enfiler(item);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;fifo;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#646464'>@Override</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;equals(Object&nbsp;o){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>super</font></strong>.equals(o);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;http://stackoverflow.com/questions/3047051/how-to-determine-if-a-list-is-sorted-in-java
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<T&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;Comparable<?&nbsp;<strong><font color='#7f0055'>super</font></strong>&nbsp;T>>&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;isSorted(Iterable<T>&nbsp;iterable)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator<T>&nbsp;iter&nbsp;=&nbsp;iterable.iterator();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(!iter.hasNext())&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;t&nbsp;=&nbsp;iter.next();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>&nbsp;(iter.hasNext())&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;t2&nbsp;=&nbsp;iter.next();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(t.compareTo(t2)&nbsp;<&nbsp;0)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;=&nbsp;t2;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Iterator<Integer>&nbsp;iterator(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Integer>&nbsp;values&nbsp;=&nbsp;Arrays.asList(getInnerQueue().toArray(<strong><font color='#7f0055'>new</font></strong>&nbsp;Integer[getInnerQueue().size()]));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values.sort(comparator);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;values.iterator();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br/>
+    Décorateur QueueAf : garantit pour la classe <b>QueueImpl</b> que la file retournée par la fonction d'abstraction se comporte de la même manière que la classe décorée.
+    <br/>
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question3.fifo.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;QueueAf&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;QueueDecorator{
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;QueueAf(&nbsp;QueueI&nbsp;q){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>(q);
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>
+<br/>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;add(<strong><font color='#7f0055'>int</font></strong>&nbsp;i){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;FileI<Integer>&nbsp;queue&nbsp;=&nbsp;(FileI)<strong><font color='#7f0055'>super</font></strong>.af();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;queue!=<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;pre&nbsp;af&nbsp;add&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>.add(i);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;queue.enfiler(i);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;queue.equals(<strong><font color='#7f0055'>super</font></strong>.af())&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;post&nbsp;af&nbsp;add&nbsp;invalide&nbsp;!"</font>;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;deux&nbsp;listes&nbsp;égales
+</font><br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;remove(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;FileI<Integer>&nbsp;queue&nbsp;=&nbsp;(FileI<Integer>)<strong><font color='#7f0055'>super</font></strong>.af();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;queue&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;pre&nbsp;af&nbsp;remove&nbsp;&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;res&nbsp;=&nbsp;-1,&nbsp;resAf=0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;res&nbsp;=&nbsp;<strong><font color='#7f0055'>super</font></strong>.remove();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;resAf&nbsp;=&nbsp;queue.defiler();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;resAf&nbsp;==&nbsp;res&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;post&nbsp;af&nbsp;remove&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;res;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;clear(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;FileI<Integer>&nbsp;queue&nbsp;=&nbsp;(FileI<Integer>)<strong><font color='#7f0055'>super</font></strong>.af();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;queue&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;pre&nbsp;af&nbsp;clear&nbsp;&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>.clear();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;queue.vider();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;queue.taille()==0&nbsp;&&nbsp;queue.equals(<strong><font color='#7f0055'>super</font></strong>.af())&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;&nbsp;post&nbsp;af&nbsp;clear&nbsp;&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;}&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#646464'>@Override</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;contains(<strong><font color='#7f0055'>int</font></strong>&nbsp;i){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;FileI<Integer>&nbsp;queue&nbsp;=&nbsp;(FileI<Integer>)<strong><font color='#7f0055'>super</font></strong>.af();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;queue&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;pre&nbsp;af&nbsp;contains&nbsp;&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;res&nbsp;=&nbsp;<strong><font color='#7f0055'>false</font></strong>,&nbsp;resAf&nbsp;=&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;res&nbsp;=&nbsp;<strong><font color='#7f0055'>super</font></strong>.contains(i);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;resAf&nbsp;=&nbsp;queue.contient(i);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;resAf&nbsp;==&nbsp;res&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;post&nbsp;af&nbsp;contains&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;res;
+<br/>&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;size(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;FileI<Integer>&nbsp;queue&nbsp;=&nbsp;(FileI<Integer>)<strong><font color='#7f0055'>super</font></strong>.af();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;queue&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;pre&nbsp;af&nbsp;size&nbsp;&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;nombreAf&nbsp;=&nbsp;0,&nbsp;nombre&nbsp;=&nbsp;1;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;nombre&nbsp;=&nbsp;<strong><font color='#7f0055'>super</font></strong>.size();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;nombreAf&nbsp;=&nbsp;queue.taille();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;nombreAf&nbsp;==&nbsp;nombre&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;post&nbsp;af&nbsp;size&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;nombre;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;capacity(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;FileI&nbsp;queue&nbsp;=&nbsp;(FileI)<strong><font color='#7f0055'>super</font></strong>.af();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;queue&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;pre&nbsp;capacity&nbsp;af&nbsp;invalide&nbsp;!"</font>;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;nombreAf&nbsp;=&nbsp;0,&nbsp;nombre&nbsp;=&nbsp;1;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;nombre&nbsp;=&nbsp;<strong><font color='#7f0055'>super</font></strong>.capacity();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;nombreAf&nbsp;=&nbsp;queue.capacite();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;nombre&nbsp;==&nbsp;nombreAf&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;post&nbsp;capacity&nbsp;af&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;nombre;
+<br/>&nbsp;&nbsp;}
+<br/>
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br/>
+    Décorateur PriorityQueueAf : garantit pour la classe <b>PriorityQueueImpl</b> que la file retournée par la fonction d'abstraction se comporte de la même manière que la classe décorée.
+    <br/>
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question3.fifo.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;PriorityQueueAf&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;QueueAf{
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;PriorityQueueAf(&nbsp;QueueI&nbsp;q){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>(q);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>assert</font></strong>&nbsp;q&nbsp;<strong><font color='#7f0055'>instanceof</font></strong>&nbsp;PriorityQueueImpl&nbsp;:&nbsp;<font color='#2a00ff'>"&nbsp;QueueAf&nbsp;invalide&nbsp;!"</font>;
+<br/>&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;assert&nbsp;true&nbsp;:&nbsp;"&nbsp;QueueAf&nbsp;invalide&nbsp;!";
+</font><br/>&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 4.1</h3>
+    La classe UpperCaseInputStream est un des décorateurs possibles de FilterInputStream. Celle-ci transforme en Majuscule tous les caractères du fichier transmis en paramètre en redéfinissant les méthodes read().
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question4;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.InputStream;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.IOException;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.FilterInputStream;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Cette&nbsp;classe&nbsp;"décore"&nbsp;un&nbsp;fichier&nbsp;(InputSream)&nbsp;par&nbsp;la&nbsp;conversion&nbsp;de&nbsp;tous
+<br/>&nbsp;*&nbsp;les&nbsp;caractères&nbsp;Minuscule&nbsp;en&nbsp;Majuscule
+<br/>&nbsp;*&nbsp;<strong>@author</strong>&nbsp;(votre&nbsp;nom)&nbsp;
+<br/>&nbsp;*&nbsp;<strong>@version</strong>&nbsp;(un&nbsp;numéro&nbsp;de&nbsp;version&nbsp;ou&nbsp;une&nbsp;date)
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;UpperCaseInputStream&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;FilterInputStream&nbsp;{&nbsp;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;UpperCaseInputStream(InputStream&nbsp;in){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>(in);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Redefinition&nbsp;de&nbsp;read()&nbsp;methode&nbsp;qui&nbsp;met&nbsp;en&nbsp;majuscule.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;le&nbsp;caractère&nbsp;en&nbsp;majuscule
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;read()&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;IOException{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;c&nbsp;=&nbsp;<strong><font color='#7f0055'>super</font></strong>.read();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(c&nbsp;!=&nbsp;-1){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;Character.toUpperCase((<strong><font color='#7f0055'>char</font></strong>)c);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;c;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Redefinition&nbsp;de&nbsp;read().
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;le&nbsp;caractère&nbsp;en&nbsp;maj&nbsp;avec&nbsp;PushBackInputStream
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;read(<strong><font color='#7f0055'>byte</font></strong>[]&nbsp;b,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;off,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;len)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;IOException{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;c&nbsp;=&nbsp;<strong><font color='#7f0055'>super</font></strong>.read(b,&nbsp;off,&nbsp;len);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(<strong><font color='#7f0055'>int</font></strong>&nbsp;i&nbsp;=&nbsp;off;&nbsp;i&nbsp;<&nbsp;off+c;&nbsp;i++){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b[i]&nbsp;=&nbsp;(<strong><font color='#7f0055'>byte</font></strong>)Character.toUpperCase((<strong><font color='#7f0055'>char</font></strong>)b[i]);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;c;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 4.2</h3>
+     <br />
+    Voici un test supplémentaire de la de test UpperCaseInputStreamTest :
+     <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question4;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.net.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;UpperCaseInputStreamTest&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;junit.framework.TestCase{
+<br/>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testAccès_README_TXT(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InputStream&nbsp;is&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;BufferedInputStream(&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;FileInputStream(<strong><font color='#7f0055'>new</font></strong>&nbsp;File(<font color='#2a00ff'>"README.TXT"</font>)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;c&nbsp;=&nbsp;is.read();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<font color='#2a00ff'>"&nbsp;erreur&nbsp;de&nbsp;lecture&nbsp;???"</font>,&nbsp;c!=&nbsp;-1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is.close();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;e){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"&nbsp;Erreur&nbsp;sur&nbsp;ce&nbsp;fichier&nbsp;:&nbsp;README.TXT&nbsp;???&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testUpperCase_README_TXT()&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;InputStream&nbsp;is&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;BufferedInputStream(&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;FileInputStream(<strong><font color='#7f0055'>new</font></strong>&nbsp;File(<font color='#2a00ff'>"README.TXT"</font>)));&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;déclaration&nbsp;à&nbsp;décorer&nbsp;....
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;c&nbsp;=&nbsp;is.read();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>(&nbsp;c&nbsp;!=&nbsp;-1){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<font color='#2a00ff'>"erreur&nbsp;!,&nbsp;'"</font>&nbsp;+&nbsp;Character.valueOf((<strong><font color='#7f0055'>char</font></strong>)c)&nbsp;+&nbsp;<font color='#2a00ff'>"'&nbsp;ne&nbsp;semble&nbsp;pas&nbsp;être&nbsp;une&nbsp;majuscule&nbsp;..."</font>,&nbsp;Character.isUpperCase((<strong><font color='#7f0055'>char</font></strong>)c)&nbsp;||&nbsp;(<strong><font color='#7f0055'>char</font></strong>)c==<font color='#2a00ff'>'&nbsp;'</font>);&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;is.read();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is.close();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testPushPackUpperCase_README_TXT()&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InputStream&nbsp;is&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;UpperCaseInputStream(<strong><font color='#7f0055'>new</font></strong>&nbsp;FileInputStream(<strong><font color='#7f0055'>new</font></strong>&nbsp;File(<font color='#2a00ff'>"question4/README.TXT"</font>)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;j&nbsp;=&nbsp;(<strong><font color='#7f0055'>int</font></strong>)&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;File(<font color='#2a00ff'>"question4/README.TXT"</font>).length();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>byte</font></strong>[]&nbsp;b&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;<strong><font color='#7f0055'>byte</font></strong>[(<strong><font color='#7f0055'>int</font></strong>)j];
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;off&nbsp;=&nbsp;0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;len&nbsp;=&nbsp;j;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;c&nbsp;=&nbsp;is.read(b,&nbsp;off,&nbsp;len);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(<strong><font color='#7f0055'>int</font></strong>&nbsp;i&nbsp;=&nbsp;off;&nbsp;i<off+c;&nbsp;i++){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b[i]&nbsp;=&nbsp;(<strong><font color='#7f0055'>byte</font></strong>)Character.toUpperCase((<strong><font color='#7f0055'>char</font></strong>)b[i]);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<font color='#2a00ff'>"erreur&nbsp;!,&nbsp;'"</font>&nbsp;+&nbsp;(<strong><font color='#7f0055'>byte</font></strong>)Character.toUpperCase((<strong><font color='#7f0055'>char</font></strong>)b[i])
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+<font color='#2a00ff'>"'&nbsp;ne&nbsp;semble&nbsp;pas&nbsp;être&nbsp;une&nbsp;majuscule&nbsp;..."</font>,Character.isUpperCase((<strong><font color='#7f0055'>char</font></strong>)c)&nbsp;||&nbsp;(<strong><font color='#7f0055'>char</font></strong>)c=='</font>&nbsp;');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;is.read(b,&nbsp;off,&nbsp;len);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is.close();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />    
+        <h3>Conclusion, biliographie et remarques :</h3>
+        <i style="font-size:12px;">TP intéressant qui permet de se familiariser avec le pattern Décorateur. Les questions 1 et 2 ont été faciles et un exemple très bon pour mieux comprendre le pattern Décorateur. La question 3 était assez difficile et il y en avait trop de classes à mon avis. Je me perdais un peu. La question 4 était plus facile aussi. </i>
+</body>
+</html>

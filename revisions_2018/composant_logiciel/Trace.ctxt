@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Trace
+comment1.params=object
+comment1.target=void\ execute(java.lang.Object)
+comment2.params=object
+comment2.target=void\ undo(java.lang.Object)
+numComments=3

@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=PriorityQueueImpl
+comment1.params=capacity
+comment1.target=PriorityQueueImpl(int)
+comment2.params=
+comment2.target=boolean\ repOk()
+comment3.params=i1\ i2
+comment3.target=int\ compare(java.lang.Integer,\ java.lang.Integer)
+comment4.params=
+comment4.target=fifo.FileI\ af()
+comment5.params=o
+comment5.target=boolean\ equals(java.lang.Object)
+comment6.params=iterable
+comment6.target=boolean\ isSorted(java.lang.Iterable)
+comment7.params=
+comment7.target=java.util.Iterator\ iterator()
+numComments=8

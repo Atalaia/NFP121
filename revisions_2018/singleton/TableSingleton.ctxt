@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=TableSingleton
+comment1.params=
+comment1.target=TableSingleton()
+comment2.params=
+comment2.target=TableSingleton\ getInstance()
+comment3.params=contenu
+comment3.target=void\ setContenu(int[])
+comment4.params=
+comment4.target=int[]\ getContenu()
+comment5.params=
+comment5.target=TableSingleton\ getInstanceSafe()
+numComments=6

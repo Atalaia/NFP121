@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=void\ setUp()
+comment1.target=void\ testEnfiler()
+comment2.target=void\ testDefiler()
+comment3.target=void\ testpremier()
+comment4.target=void\ testCapacite()
+comment5.target=void\ testVider()
+numComments=6

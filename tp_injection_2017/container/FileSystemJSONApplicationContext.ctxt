@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=FileSystemJSONApplicationContext
+comment1.params=inputStream
+comment1.target=FileSystemJSONApplicationContext(java.io.InputStream)
+numComments=2

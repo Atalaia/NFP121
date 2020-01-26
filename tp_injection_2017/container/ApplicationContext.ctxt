@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=ApplicationContext
+comment0.text=\r\n\ Un\ conteneur\ de\ beans\ adapt\u00E9\ au\ cours\ NFP121.\r\n\ Injection\ de\ d\u00E9pendances\ par\ mutateur.\r\n\r\n\ @author\ jm\ Douin\r\n\ @version\ 13\ Janvier\ 2017\r\n
+comment1.params=id
+comment1.target=java.lang.Object\ getBean(java.lang.String)
+comment1.text=\ Obtention\ d'une\ instance\ d'un\ bean\ g\u00E9r\u00E9\ par\ le\ conteneur.\r\n\ \ Il\ n'existe\ qu'une\ seule\ instance\ avec\ cet\ id,\ c'est\ un\ singleton.\r\n\ @param\ id\ l'identifiant\ unique\ du\ bean\r\n\ @return\ l'instance\ associ\u00E9e\ ou\ null\ si\ cet\ identifiant\ est\ inconnu\r\n
+comment2.params=id
+comment2.target=java.lang.Class\ getType(java.lang.String)
+comment2.text=\ Obtention\ du\ type\ du\ bean\ \u00E0\ partir\ de\ son\ identifiant.\r\n\ param\ id\ l'identifiant\ unique\ du\ bean\r\n\ @return\ le\ type\ du\ bean\ ou\ null\r\n
+comment3.params=
+comment3.target=java.util.Iterator\ iterator()
+comment3.text=\ Obtention\ d'un\ it\u00E9rateur\ sur\ les\ beans\ d\u00E9j\u00E0\ cr\u00E9\u00E9s.\r\n\ L'op\u00E9ration\ de\ retrait\ \:\ remove,\ est\ sans\ effet.\r\n\ @return\ un\ it\u00E9rateur\ des\ identifiants\ du\ conteneur\r\n
+comment4.params=appContext
+comment4.target=void\ addApplicationContext(ApplicationContext)
+comment4.text=\ Ajout,\ cumul\ d'une\ autre\ instance\ d'ApplicationContext\r\n\ @param\ appContext\ le\ conteneur\ \u00E0\ ajouter\r\n
+numComments=5

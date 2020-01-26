@@ -1,0 +1,918 @@
+<html>
+<head>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+    <title>NFP121 - TP6</title>
+    <style type="text/css">
+        body {
+            background: #E5DED6;
+            background-color: #fff;
+            color: #333333;
+            font-size: 14px;
+            font-family: Verdana, Arial;
+        }
+
+        table {
+            font-size: 20px;
+            border-color: #808080;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        h2 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        hr {
+            margin: 15px 0 15px 0;
+        }
+		
+		applet {
+			margin: 10px 0px 25px 250px;
+			border-width: 1px;
+			border-style: solid;
+			border-color: #777777;
+		}
+    </style>
+
+</head>
+<body>
+    <h2 style="text-align: center">NFP 121 - TP6</h2>
+    <h2 style="text-align: center">WhileL et les Visiteurs</h2>
+    <br />
+    <hr>
+    <br />
+    <table>
+        <tr>
+            <td>Nom
+            </td>
+            <td>SOAGE CAMPELO
+            </td>
+        </tr>
+        <tr>
+            <td>Prénom
+            </td>
+            <td>MARÍA ESTHER
+            </td>
+        </tr>
+        <tr>
+            <td>Matricule
+            </td>
+            <td>FOD_0G5DRMA39F5
+            </td>
+        </tr>
+    </table>
+		
+	<br />
+    <hr />
+    <h3>Question 1</h3>
+    <br />
+    Dans cette question, en m'inspirant de la classe VisiteurInfixe qui est complète, j'ai complété les classes VisiteurEvaluation et VisiteurPostfixe. J'ai également proposé les tests des classes de tests appropriés (cf : classe TestsAFaire) comme demandé dans l'enoncé de la question.
+    <br />
+    <br />
+    Dans ce TP nous utilisons le pattern Visitor. L'intêret de ce pattern est que nous pouvons rajouter autant de visiteurs que nous voulons pour parcourir l'arbre d'expressions et obtenir des objectifs différents, sans avoir forcement besoin de modifier le code dans l'arbre d'expressions. Nous modifions seulement le code dans les différents visiteurs.
+    <br />
+    <br />
+    Dans le cas de cette question, grâce à chacun des 3 visiteurs nous pouvons :
+
+    - Réaliser un parcours infixe et son affichage
+    - Réaliser un parcours postfixe et son affichage
+    - Réaliser une valuation de l'arbre des expressions
+    <br />
+    <hr />
+    VisiteurEvaluation :
+    <br />
+    <hr />
+    <pre style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Cette&nbsp;classe&nbsp;permet&nbsp;de&nbsp;parcourir&nbsp;un&nbsp;arbre&nbsp;d'expressions&nbsp;et&nbsp;
+<br/>&nbsp;*&nbsp;de&nbsp;retourner&nbsp;les&nbsp;valeurs&nbsp;totales&nbsp;de&nbsp;ses&nbsp;expressions.
+<br/>&nbsp;*/</font>
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurEvaluation&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;VisiteurParDefaut<Integer>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Contexte&nbsp;c;&nbsp;<font color='#3f7f5f'>//réprésente&nbsp;la&nbsp;mémoire
+</font><br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;constructeur&nbsp;de&nbsp;VisiteurEvaluation
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurEvaluation(Contexte&nbsp;c)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.c&nbsp;=&nbsp;c;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Méthode&nbsp;de&nbsp;visite&nbsp;d'une&nbsp;constante&nbsp;c
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;une&nbsp;constante&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;valeur&nbsp;de&nbsp;cette&nbsp;Constante
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Integer&nbsp;visite(Constante&nbsp;c)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;c.valeur();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Méthode&nbsp;de&nbsp;visite&nbsp;d'une&nbsp;variable&nbsp;v
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;une&nbsp;variable
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;valeur&nbsp;de&nbsp;cette&nbsp;Variable
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Integer&nbsp;visite(Variable&nbsp;v)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.c.lire(v.nom());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Méthode&nbsp;de&nbsp;visite&nbsp;d'une&nbsp;Addition&nbsp;a
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;une&nbsp;addition
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;valeur&nbsp;de&nbsp;cette&nbsp;Addition
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Integer&nbsp;visite(Addition&nbsp;a)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;a.op1().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;a.op2().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Méthode&nbsp;de&nbsp;visite&nbsp;d'une&nbsp;Soustraction&nbsp;s
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;une&nbsp;soustraction
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;valeur&nbsp;de&nbsp;cette&nbsp;Soustraction
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Integer&nbsp;visite(Soustraction&nbsp;s)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;s.op1().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;-&nbsp;s.op2().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Méthode&nbsp;de&nbsp;visite&nbsp;d'une&nbsp;Multiplication&nbsp;m
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;une&nbsp;multiplication
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;valeur&nbsp;de&nbsp;cette&nbsp;Multiplication
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Integer&nbsp;visite(Multiplication&nbsp;m)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;m.op1().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;*&nbsp;m.op2().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Méthode&nbsp;de&nbsp;visite&nbsp;d'une&nbsp;Division&nbsp;d
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;une&nbsp;division
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;valeur&nbsp;de&nbsp;cette&nbsp;Division
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Integer&nbsp;visite(Division&nbsp;d)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;d.op1().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;/&nbsp;d.op2().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Getter&nbsp;du&nbsp;contexte&nbsp;de&nbsp;ce&nbsp;visiteur
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;Contexte&nbsp;du&nbsp;visiteur
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;contexte()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;c;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><pre style='text-align:right;BORDER-TOP: #ccc 1px dashed'></pre></pre>
+    <br />
+    <hr />
+    VisiteurPostfixe :
+    <br />
+    <hr />
+<pre style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurPostfixe&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;VisiteurParDefaut<String>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Contexte&nbsp;c;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurPostfixe(Contexte&nbsp;c)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.c&nbsp;=&nbsp;c;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Constante&nbsp;c)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;Integer.toString(c.valeur());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Variable&nbsp;v)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;Integer.toString(c.lire(v.nom()));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Division&nbsp;d)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"("</font>&nbsp;+&nbsp;d.op2().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;<font color='#2a00ff'>","</font>&nbsp;+&nbsp;d.op1().accepter(<strong><font color='#7f0055'>this</font></strong>)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;<font color='#2a00ff'>")"</font>&nbsp;+&nbsp;<font color='#2a00ff'>"/"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Addition&nbsp;a)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"("</font>&nbsp;+&nbsp;a.op1().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;<font color='#2a00ff'>","</font>&nbsp;+&nbsp;a.op2().accepter(<strong><font color='#7f0055'>this</font></strong>)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;<font color='#2a00ff'>")"</font>&nbsp;+&nbsp;<font color='#2a00ff'>"+"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Multiplication&nbsp;m)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"("</font>&nbsp;+&nbsp;m.op2().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;<font color='#2a00ff'>","</font>&nbsp;+&nbsp;m.op1().accepter(<strong><font color='#7f0055'>this</font></strong>)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;<font color='#2a00ff'>")"</font>&nbsp;&nbsp;+&nbsp;<font color='#2a00ff'>"*"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Soustraction&nbsp;s)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"("</font>&nbsp;+&nbsp;s.op2().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;<font color='#2a00ff'>","</font>&nbsp;+&nbsp;s.op1().accepter(<strong><font color='#7f0055'>this</font></strong>)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;<font color='#2a00ff'>")"</font>&nbsp;+&nbsp;<font color='#2a00ff'>"-"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;contexte()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;c;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><pre style='text-align:right;BORDER-TOP: #ccc 1px dashed'></pre></pre>
+    <br />
+    <hr />
+    TestsACompleter :
+    <br />
+    <hr />
+    <pre style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;TestsACompleter&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;junit.framework.TestCase{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Memoire&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Variable&nbsp;i,j;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpression<Integer>&nbsp;ve;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpression<String>&nbsp;&nbsp;vp,vi;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setUp(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m&nbsp;&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,<font color='#2a00ff'>"i"</font>,3);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,<font color='#2a00ff'>"j"</font>,5);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(&nbsp;m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(&nbsp;m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vp&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurPostfixe(&nbsp;m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertNotNull(i);assertNotNull(j);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertNotNull(ve);assertNotNull(vp);assertNotNull(vi);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testUneAddition(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(3),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;3+2&nbsp;!=&nbsp;5&nbsp;?,&nbsp;curieux&nbsp;"</font>,5,expr.accepter(ve).intValue());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testMultiplication(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Multiplication(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(3),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;3&nbsp;*&nbsp;2&nbsp;!=&nbsp;6&nbsp;?,&nbsp;curieux&nbsp;"</font>,6,expr.accepter(ve).intValue());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testSoustraction(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Soustraction(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(3),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;3&nbsp;-&nbsp;2&nbsp;!=&nbsp;1&nbsp;?,&nbsp;curieux&nbsp;"</font>,1,expr.accepter(ve).intValue());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testDivision(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Division(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(6),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;6/2&nbsp;!=&nbsp;3&nbsp;?,&nbsp;curieux&nbsp;"</font>,3,expr.accepter(ve).intValue());
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Division(i,<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(0)).accepter(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"division&nbsp;par&nbsp;zéro&nbsp;?&nbsp;possible&nbsp;"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(ArithmeticException&nbsp;ae){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testVisiteurInfixe(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(3),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"(3&nbsp;+&nbsp;2)&nbsp;est&nbsp;attendu&nbsp;"</font>,<font color='#2a00ff'>"(3&nbsp;+&nbsp;2)"</font>,expr.accepter(vi));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(expr,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"((3&nbsp;+&nbsp;2)&nbsp;+&nbsp;2)&nbsp;est&nbsp;attendu&nbsp;"</font>,&nbsp;<font color='#2a00ff'>"((3&nbsp;+&nbsp;2)&nbsp;+&nbsp;2)"</font>,&nbsp;expr.accepter(vi));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"{i=3,&nbsp;j=5}"</font>,m.toString());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Soustraction(expr,&nbsp;expr);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"(((3&nbsp;+&nbsp;2)&nbsp;+&nbsp;2)&nbsp;-&nbsp;((3&nbsp;+&nbsp;2)&nbsp;+&nbsp;2))"</font>,&nbsp;expr.accepter(vi));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Multiplication(expr,&nbsp;expr);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"((((3&nbsp;+&nbsp;2)&nbsp;+&nbsp;2)&nbsp;-&nbsp;((3&nbsp;+&nbsp;2)&nbsp;+&nbsp;2))&nbsp;*&nbsp;(((3&nbsp;+&nbsp;2)&nbsp;+&nbsp;2)&nbsp;-&nbsp;((3&nbsp;+&nbsp;2)&nbsp;+&nbsp;2)))"</font>,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expr.accepter(vi));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;expr2&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Division(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(15),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(5));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"(15&nbsp;/&nbsp;5)&nbsp;est&nbsp;attendu&nbsp;"</font>,<font color='#2a00ff'>"(15&nbsp;/&nbsp;5)"</font>,&nbsp;expr2.accepter(vi));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testVisiteurPostfixe(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(3),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"(3,2)+"</font>,expr.accepter(vp));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(expr,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"((3,2)+,2)+"</font>,expr.accepter(vp));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"{i=3,&nbsp;j=5}"</font>,&nbsp;m.toString());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Soustraction(expr,&nbsp;expr);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"(((3,2)+,2)+,((3,2)+,2)+)-"</font>,&nbsp;expr.accepter(vp));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expr&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Multiplication(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(5),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(3));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"(3,5)*"</font>,&nbsp;expr.accepter(vp));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;expr2&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Division(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(15),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(5));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"(5,15)/"</font>,&nbsp;expr2.accepter(vp));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><pre style='text-align:right;BORDER-TOP: #ccc 1px dashed'></pre></pre>
+    <br />
+    <hr />
+    <h3>Question 2.1</h3>
+    Voici la classe "VisiteurBoolTojava" complétée. Tous les tests de la classe de test unitaires TestsDuVisiteurBoolToJava ont bien fonctionné. Aucune erreur soulevée. 
+    <br />
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.VisiteurExpression;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurBoolToJava&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;VisiteurExpressionBooleenne<String>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpression<String>&nbsp;ve;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurBoolToJava(VisiteurExpression<String>&nbsp;ve)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.ve&nbsp;=&nbsp;ve;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Expression&nbsp;booléenne&nbsp;vrai.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;<strong>@return</strong>&nbsp;un&nbsp;string&nbsp;"true"
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Vrai&nbsp;v)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"true"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;faux.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;un&nbsp;string&nbsp;"false"
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Faux&nbsp;f)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"false"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;Non.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;un&nbsp;string&nbsp;"!(expr)"
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Non&nbsp;n)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"!("</font>&nbsp;+&nbsp;<font color='#2a00ff'>"n.bop().accepter(this)"</font>&nbsp;+&nbsp;<font color='#2a00ff'>")"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;Ou.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;un&nbsp;string&nbsp;"(expr1&nbsp;||&nbsp;expr2)"
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Ou&nbsp;ou)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"("</font>&nbsp;+&nbsp;ou.bop1().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;||&nbsp;"</font>&nbsp;+&nbsp;ou.bop2().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;<font color='#2a00ff'>")"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;Et.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;un&nbsp;string&nbsp;"(&nbsp;expr1&nbsp;&&&nbsp;expr2)"
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Et&nbsp;et)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"("</font>&nbsp;+&nbsp;et.bop1().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;&&&nbsp;"</font>&nbsp;+&nbsp;et.bop2().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;<font color='#2a00ff'>")"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;Supérieur&nbsp;à.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;un&nbsp;string&nbsp;"(&nbsp;expr1&nbsp;>&nbsp;expr2)"
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Sup&nbsp;sup)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"("</font>&nbsp;+&nbsp;sup.op1().accepter(ve)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;>&nbsp;"</font>&nbsp;+&nbsp;sup.op2().accepter(ve)&nbsp;+&nbsp;<font color='#2a00ff'>")"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;Egal&nbsp;à.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;un&nbsp;string&nbsp;"(&nbsp;expr1&nbsp;==&nbsp;expr2)"
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Egal&nbsp;eg)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"("</font>&nbsp;+&nbsp;eg.op1().accepter(ve)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;==&nbsp;"</font>&nbsp;+&nbsp;eg.op2().accepter(ve)&nbsp;+&nbsp;<font color='#2a00ff'>")"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;Inférieur&nbsp;à.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;un&nbsp;string&nbsp;"(&nbsp;expr1&nbsp;<&nbsp;expr2)"
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Inf&nbsp;inf)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"("</font>&nbsp;+&nbsp;inf.op1().accepter(ve)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;<&nbsp;"</font>&nbsp;+&nbsp;inf.op2().accepter(ve)&nbsp;+&nbsp;<font color='#2a00ff'>")"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 2.2</h3>
+    <br />
+    <br />
+    Voici la classe "VisiteurBoolEvaluation" (visiteur d'expression booléenne d'integer) complétée.
+    <br />
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.VisiteurExpression;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurBoolEvaluation&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpression<Integer>&nbsp;ve;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurBoolEvaluation(VisiteurExpression<Integer>&nbsp;ve)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.ve&nbsp;=&nbsp;ve;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;vrai.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;true
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(Vrai&nbsp;v)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;faux.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;false
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(Faux&nbsp;f)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;non.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;!n.bop()
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(Non&nbsp;n)&nbsp;{&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;!n.bop().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;ou.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;ou.bop1()&nbsp;||&nbsp;ou.bop2()
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(Ou&nbsp;ou)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;ou.bop1().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;||&nbsp;ou.bop2().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;et.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;et.bop1()&nbsp;&&&nbsp;et.bop2()
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(Et&nbsp;et)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;et.bop1().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;&&&nbsp;et.bop2().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;Supérieur.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;sup.op1()&nbsp;>&nbsp;sup.op2()
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(Sup&nbsp;sup)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;sup.op1().accepter(ve)&nbsp;>&nbsp;sup.op2().accepter(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;Egal&nbsp;à.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;eg.op1()&nbsp;==&nbsp;eg.op2()
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(Egal&nbsp;eg)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;eg.op1().accepter(ve)&nbsp;==&nbsp;eg.op2().accepter(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**Expression&nbsp;booléenne&nbsp;Inférieur&nbsp;à.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*<strong>@return</strong>&nbsp;inf.op1()&nbsp;<&nbsp;inf.op2()
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(Inf&nbsp;inf)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;inf.op1().accepter(ve)&nbsp;<&nbsp;inf.op2().accepter(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br />
+<br />
+    Et voici la classe de tests unitaires (TestsDuVisiteurBoolEvaluation) de la classe VisiteurBoolEvaluation :
+<br />
+<br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;TestsDuVisiteurBoolEvaluation&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;junit.framework.TestCase&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>protected</font></strong>&nbsp;Contexte&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>protected</font></strong>&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;veb;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setUp()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;veb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testVisiteurBoolEvaluation()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<strong><font color='#7f0055'>new</font></strong>&nbsp;Vrai().accepter(veb));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertFalse(<strong><font color='#7f0055'>new</font></strong>&nbsp;Faux().accepter(veb));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<strong><font color='#7f0055'>new</font></strong>&nbsp;Sup(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(5),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(3)).accepter(veb));
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertFalse(<font color='#2a00ff'>"(5&nbsp;>&nbsp;8)"</font>,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sup(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(5),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(8)).accepter(veb));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<font color='#2a00ff'>"((5&nbsp;+&nbsp;3)&nbsp;==&nbsp;8)"</font>,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Egal(<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(5),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(3)),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(8)).accepter(veb));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<font color='#2a00ff'>"(1&nbsp;<&nbsp;2)"</font>,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Inf(<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(1),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2)).accepter(veb));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 3.1</h3>
+        <br />
+    Ci-dessous vous trouverez les classes visiteurs "VisiteurInstEvaluation" et "VisiteurInstTojava" complétées :
+        <br />
+    <br />
+    Classe VisiteurInstEvaluation :
+    <br />
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question2.*;
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Visisteur&nbsp;d'instruction,&nbsp;chaque&nbsp;classe&nbsp;concrète&nbsp;possède&nbsp;une&nbsp;implémentation&nbsp;de&nbsp;la&nbsp;visite
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurInstEvaluation&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;VisiteurInstruction<Contexte>{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpression<Integer>&nbsp;vi;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;vb;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;Création&nbsp;d'un&nbsp;visiteur&nbsp;d'instructions
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;vi&nbsp;le&nbsp;visiteur&nbsp;d'expressions&nbsp;arithmétiques
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;vb&nbsp;le&nbsp;visiteur&nbsp;d'expression&nbsp;booléennes
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurInstEvaluation(VisiteurExpression<Integer>&nbsp;vi,&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;vb){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi&nbsp;=&nbsp;vi;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.vb&nbsp;=&nbsp;vb;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;obtention&nbsp;du&nbsp;contexte,&nbsp;ici&nbsp;celui&nbsp;du&nbsp;visiteur&nbsp;d'expression&nbsp;arithmétiques&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;le&nbsp;contexte&nbsp;ici&nbsp;de&nbsp;vi(le&nbsp;visiteur&nbsp;d'expression)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;contexte(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;Visite&nbsp;d'une&nbsp;instance&nbsp;de&nbsp;la&nbsp;classe&nbsp;Affectation.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;l'affectation,&nbsp;X&nbsp;=&nbsp;Exp,&nbsp;Exp&nbsp;est&nbsp;une&nbsp;expression&nbsp;arithmétique&nbsp;<br>&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M,Exp&nbsp;-interprete->&nbsp;N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;________________________________<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,&nbsp;X&nbsp;=&nbsp;Exp&nbsp;-interprete->&nbsp;M[X]=N&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;a&nbsp;&nbsp;une&nbsp;affectation
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;mémoire&nbsp;résultante&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;visite(Affectation&nbsp;a){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte().ecrire(a.v().nom(),&nbsp;a.exp().accepter(<strong><font color='#7f0055'>this</font></strong>.vi));
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;Visite&nbsp;d'une&nbsp;séquence&nbsp;seq(I1,I2)&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;M,I1&nbsp;-interprete->&nbsp;M1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;M1,I2&nbsp;-interprete->&nbsp;M2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;________________________________<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;M,seq(I,I2)-interprete->&nbsp;M2&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;seq&nbsp;&nbsp;une&nbsp;séquence
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;mémoire&nbsp;résultante&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;visite(Sequence&nbsp;seq){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seq.i1().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seq.i2().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;Visiste&nbsp;d'une&nbsp;sélection&nbsp;si&nbsp;(Bexp)&nbsp;alors&nbsp;I1&nbsp;sinon&nbsp;I2&nbsp;fsi&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;ou&nbsp;si&nbsp;(Bexp)&nbsp;alors&nbsp;I1&nbsp;fsi&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M,Bexp-interprete->&nbsp;vrai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M,I1&nbsp;-interprete->&nbsp;M1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;_________________________________________&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,si(Bexp)alorsI1&nbsp;sinon&nbsp;I2-interprete->&nbsp;M1<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M,Bexp&nbsp;-interprete->&nbsp;faux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M,I2&nbsp;-interprete->&nbsp;M2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;__________________________________________<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,si(Bexp)alorsI1&nbsp;sinon&nbsp;I2-interprete->M2&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;sel&nbsp;&nbsp;une&nbsp;sélection
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;mémoire&nbsp;résultante&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;visite(Selection&nbsp;sel){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(sel.cond().accepter(<strong><font color='#7f0055'>this</font></strong>.vb)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sel.i1().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>else</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(sel.i2()&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sel.i2().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;La&nbsp;boucle&nbsp;tantque(Bexp,I1)<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M,Bexp&nbsp;-interprete->faux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;_________________________________________&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,tantque(Bexp)&nbsp;faire&nbsp;I1-interprete->&nbsp;M&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,Bexp&nbsp;-interprete->&nbsp;vrai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,seq(I1,tantque(Bexp)faire&nbsp;I1)-interprete->&nbsp;M1&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;___________________________________________________<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,tantque(Bexp)faire&nbsp;I1-interprete->&nbsp;M1
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;tq&nbsp;&nbsp;une&nbsp;itération&nbsp;de&nbsp;la&nbsp;classe&nbsp;tantque
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;mémoire&nbsp;résultante&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;visite(TantQue&nbsp;tq){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Selection(tq.cond(),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tq.i1(),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TantQue(&nbsp;tq.cond(),&nbsp;tq.i1()&nbsp;)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;La&nbsp;boucle&nbsp;pour(init,Bexp,inc)I1<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,seq(init,tantque(Bexp)seq(I1,inc))-visite->faux&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;_____________________________________________________&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,pour(init,Bexp,inc)&nbsp;faire&nbsp;I1-visite->&nbsp;M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;pour&nbsp;&nbsp;une&nbsp;itération&nbsp;de&nbsp;la&nbsp;classe&nbsp;Pour
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;mémoire&nbsp;résultante&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;visite(Pour&nbsp;pour){
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pour.init().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TantQue(pour.cond(),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(pour.i1(),&nbsp;pour.inc())&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;L'affichage<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;M,Exp-visite->&nbsp;n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;________________________________System.out.print(n)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,afficher(Exp)-visite->&nbsp;M
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;a&nbsp;&nbsp;une&nbsp;instruction&nbsp;d'affichage&nbsp;d'une&nbsp;expression&nbsp;arithmétique
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;mémoire&nbsp;intacte&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;visite(Afficher&nbsp;a){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(a.exp().accepter(<strong><font color='#7f0055'>this</font></strong>.vi));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;Une&nbsp;assertion,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;si&nbsp;celle-ci&nbsp;échoue&nbsp;une&nbsp;exception&nbsp;est&nbsp;levée,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;emploi&nbsp;de&nbsp;la&nbsp;clause&nbsp;<a&nbsp;href=http:<font color='#3f7f5f'>//java.sun.com/j2se/1.5.0/docs/guide/language/assert.html>&nbsp;assert</a>&nbsp;Expr&nbsp;:&nbsp;"un&nbsp;Message";
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;a&nbsp;&nbsp;une&nbsp;assertion
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;mémoire&nbsp;intacte&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@throws</strong>&nbsp;une&nbsp;exception&nbsp;AssertionError
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;visite(Assertion&nbsp;a)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!a.cond().accepter(<strong><font color='#7f0055'>this</font></strong>.vb)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;AssertionError();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <br />
+Classe VisiteurInstToJava :
+    <br />
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.*;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question2.*;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurInstToJava&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;VisiteurInstruction<String>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;TAB&nbsp;=&nbsp;2;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;String&nbsp;lineSeparator&nbsp;=&nbsp;System.getProperties().getProperty(<font color='#2a00ff'>"line.separator"</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpression<String>&nbsp;vi;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpressionBooleenne<String>&nbsp;vb;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;tabulations;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Création&nbsp;d'un&nbsp;visiteur&nbsp;d'instructions
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;vi
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;le&nbsp;visiteur&nbsp;d'expressions&nbsp;arithmétiques
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;vb
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;le&nbsp;visiteur&nbsp;d'expression&nbsp;booléennes
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;tabulations
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tabulations&nbsp;initiales
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurInstToJava(VisiteurExpression<String>&nbsp;vi,&nbsp;VisiteurExpressionBooleenne<String>&nbsp;vb,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;tabulations)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi&nbsp;=&nbsp;vi;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.vb&nbsp;=&nbsp;vb;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.tabulations&nbsp;=&nbsp;tabulations;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Création&nbsp;d'un&nbsp;visiteur&nbsp;d'instructions
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;vi
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;le&nbsp;visiteur&nbsp;d'expressions&nbsp;arithmétiques
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;vb
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;le&nbsp;visiteur&nbsp;d'expression&nbsp;booléennes
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurInstToJava(VisiteurExpression<String>&nbsp;vi,&nbsp;VisiteurExpressionBooleenne<String>&nbsp;vb)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>(vi,&nbsp;vb,&nbsp;0);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;obtention&nbsp;du&nbsp;contexte,&nbsp;ici&nbsp;celui&nbsp;du&nbsp;visiteur&nbsp;d'expression&nbsp;arithmétiques
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;le&nbsp;contexte&nbsp;ici&nbsp;de&nbsp;vi(le&nbsp;visiteur&nbsp;d'expression)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;contexte()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Visite&nbsp;d'une&nbsp;instance&nbsp;de&nbsp;la&nbsp;classe&nbsp;Affectation.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;a
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;une&nbsp;affectation
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;a&nbsp;:=&nbsp;exp
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Affectation&nbsp;a)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;a.v().accepter(<strong><font color='#7f0055'>this</font></strong>.vi)&nbsp;+&nbsp;<font color='#2a00ff'>"="</font>&nbsp;+&nbsp;a.exp().accepter(<strong><font color='#7f0055'>this</font></strong>.vi);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Visiste&nbsp;d'une&nbsp;séquence&nbsp;seq(I1,I2)&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;seq
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;une&nbsp;séquence
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;i1;i2
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Sequence&nbsp;seq)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;str&nbsp;=&nbsp;tab(0)+seq.i1().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(seq.i1()&nbsp;<strong><font color='#7f0055'>instanceof</font></strong>&nbsp;Affectation){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str+=<font color='#2a00ff'>";"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;+=&nbsp;tab(0)+seq.i2().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;str;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Selection&nbsp;sel)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;str&nbsp;=&nbsp;<font color='#2a00ff'>"if"</font>&nbsp;+&nbsp;sel.cond().accepter(<strong><font color='#7f0055'>this</font></strong>.vb)+<font color='#2a00ff'>"{"</font>+tab(1)+&nbsp;sel.i1().accepter(<strong><font color='#7f0055'>this</font></strong>)+<font color='#2a00ff'>";"</font>+tab(-1)+<font color='#2a00ff'>"}"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(sel.i2()&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;str&nbsp;=&nbsp;str&nbsp;+tab(0)+<font color='#2a00ff'>"else&nbsp;{"</font>&nbsp;+&nbsp;tab(1)+sel.i2().accepter(<strong><font color='#7f0055'>this</font></strong>)+<font color='#2a00ff'>";"</font>+tab(-1)+<font color='#2a00ff'>"}"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;str;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(TantQue&nbsp;tq)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;tab(0)+<font color='#2a00ff'>"while"</font>+&nbsp;tq.cond().accepter(<strong><font color='#7f0055'>this</font></strong>.vb)&nbsp;+<font color='#2a00ff'>"{"</font>+&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tab(1)+tq.i1().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;&nbsp;+<font color='#2a00ff'>";"</font>+tab(-1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+<font color='#2a00ff'>"}"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Pour&nbsp;pour)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;str&nbsp;=&nbsp;tab(0)+<font color='#2a00ff'>"for("</font>&nbsp;+&nbsp;pour.init().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;<font color='#2a00ff'>";"</font>&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;pour.cond().accepter(<strong><font color='#7f0055'>this</font></strong>.vb)&nbsp;+&nbsp;<font color='#2a00ff'>";"</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;pour.inc().accepter(<strong><font color='#7f0055'>this</font></strong>)&nbsp;+&nbsp;<font color='#2a00ff'>")&nbsp;{"</font>&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;tab(1)&nbsp;+&nbsp;pour.i1().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(pour.i1()&nbsp;<strong><font color='#7f0055'>instanceof</font></strong>&nbsp;Affectation){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str+=<font color='#2a00ff'>";"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str&nbsp;+tab(-1)+<font color='#2a00ff'>"}"</font>;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;str;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Afficher&nbsp;a)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"System.out.println("</font>&nbsp;+&nbsp;a.exp().accepter(<strong><font color='#7f0055'>this</font></strong>.vi)&nbsp;+&nbsp;<font color='#2a00ff'>");"</font>;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;visite(Assertion&nbsp;a)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"assert("</font>&nbsp;+&nbsp;a.cond().accepter(<strong><font color='#7f0055'>this</font></strong>.vb)&nbsp;+&nbsp;<font color='#2a00ff'>");"</font>;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;String&nbsp;tab(<strong><font color='#7f0055'>int</font></strong>&nbsp;n)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;str&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;String();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str&nbsp;+&nbsp;lineSeparator;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>&nbsp;(<strong><font color='#7f0055'>int</font></strong>&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;<strong><font color='#7f0055'>this</font></strong>.tabulations&nbsp;+&nbsp;n;&nbsp;i++)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;=&nbsp;str&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.tabulations&nbsp;+=&nbsp;n;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;str;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 3.2</h3>
+        <br />
+    Ajout de la classe Pour :
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question2.ExpressionBooleenne;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;Pour&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;Iteration&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Instruction&nbsp;init,&nbsp;inc;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Pour(Instruction&nbsp;init,&nbsp;ExpressionBooleenne&nbsp;cond,&nbsp;Instruction&nbsp;i1,
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;inc)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>(cond,&nbsp;i1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.init&nbsp;=&nbsp;init;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.inc&nbsp;=&nbsp;inc;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<T>&nbsp;T&nbsp;accepter(VisiteurInstruction<T>&nbsp;vi)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;vi.visite(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Instruction&nbsp;init()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;init;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Instruction&nbsp;inc()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;inc;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <br />
+    La méthode Pour qui a été ajouté au visiteur VisiteurInstEvaluation :
+    <br />
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><font color='#2040a0'>/**&nbsp;La&nbsp;boucle&nbsp;pour(init,Bexp,inc)I1<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,seq(init,tantque(Bexp)seq(I1,inc))-visite->faux&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;_____________________________________________________&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;M,pour(init,Bexp,inc)&nbsp;faire&nbsp;I1-visite->&nbsp;M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</code>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;pour&nbsp;&nbsp;une&nbsp;itération&nbsp;de&nbsp;la&nbsp;classe&nbsp;Pour
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;mémoire&nbsp;résultante&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;visite(Pour&nbsp;pour){
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pour.init().accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TantQue(pour.cond(),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(pour.i1(),&nbsp;pour.inc())&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;).accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+  <br />
+<br />
+Modification de la classe abstract VisiteurInstruction avec l'ajoute de la méthode Pour :
+  <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.Contexte;
+<br/>
+<br/><font color='#3f7f5f'>/*&nbsp;Classe&nbsp;abstraite&nbsp;des&nbsp;Visiteurs,
+<br/>&nbsp;*&nbsp;Une&nbsp;méthode&nbsp;par&nbsp;noeud&nbsp;concret&nbsp;du&nbsp;composite
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurInstruction<T>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;T&nbsp;visite(Affectation&nbsp;aff);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;T&nbsp;visite(Sequence&nbsp;seq);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;T&nbsp;visite(Selection&nbsp;sel);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;T&nbsp;visite(TantQue&nbsp;tq);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;ajouter&nbsp;la&nbsp;visite&nbsp;de&nbsp;l'instruction&nbsp;Pour
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;T&nbsp;visite(Pour&nbsp;pour);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;T&nbsp;visite(Afficher&nbsp;a);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;T&nbsp;visite(Assertion&nbsp;a);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;Contexte&nbsp;contexte();
+<br/>
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 3.3</h3>
+    Toutes les classes de Tests fonctionnent correctement.
+    <br />
+    <hr />    
+        <h3>Conclusion, biliographie et remarques :</h3>
+        <i style="font-size:12px;">Le TP a été un peu dur et long à faire. Les exemples sont un peu abstraits et il y a un nombre considérable de classes qui difficultent la compréhension du pattron visiteur. Je me suis un peu perdue parmi toutes les classes, mais à la fin j'ai compris l'intêret du pattern visiteur. Pour mieux assimiler les concepts, je chercherai des exemples un peu plus petits et faciles à comprendre.</i>
+</body>
+</html>

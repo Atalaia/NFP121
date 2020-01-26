@@ -1,0 +1,230 @@
+<html>
+<head>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+    <title>NFP121 - TP1</title>
+    <style type="text/css">
+        body {
+            background: #E5DED6;
+            background-color: #fff;
+            color: #333333;
+            font-size: 14px;
+            font-family: Verdana, Arial;
+        }
+
+        table {
+            font-size: 20px;
+            border-color: #808080;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        h2 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        hr {
+            margin: 15px 0 15px 0;
+        }
+    </style>
+
+</head>
+<body>
+    <h2 style="text-align: center">NFP 121 - TP1</h2>
+    <h2 style="text-align: center">L'environnement de programmation BlueJ</h2>
+    <br />
+    <hr>
+    <br />
+    <table>
+        <tr>
+            <td>Nom
+            </td>
+            <td>SOAGE CAMPELO
+            </td>
+        </tr>
+        <tr>
+            <td>Prénom
+            </td>
+            <td>MARIA
+            </td>
+        </tr>
+        <tr>
+            <td>Matricule
+            </td>
+            <td>0G5DRMA39F5
+            </td>
+        </tr>
+    </table>
+    <br />
+    <hr />
+    <h3>Question 1 :</h3>
+    Dans la question 1, on peut créer des objets différents appartenant aux 3 classes proposées (Circle, Triangle et Square). Dans chaque objet, on peut appliquer les différentes méthodes présentes dans sa classe. Par exemple, pour que l'objet s'affiche dans le canvas on appelle la méthode makeVisible(). 
+
+    On peut aussi changer la taille du Circle (pareil pour le Triangle et le Square) à l'aide de la méthode int changeSize(newDiameter). Les différentes méthodes de la classe nous permettent de changer la couleur, la position dans le canvas, de faire bouger l'objet dans le canvas de façon horizontal ou vertical, ainsi que rendre l'objet invisible dans le canvas.
+
+    On peut constate aussi qu'en appliquant les différentes méthodes, l'état de l'objet change. Par exemple, si on applique à Square la méthode void changeColor("blue"), le carré sera bleu et plus rouge "red", comme il était définit dans les paramètres du constructeur de la classe. 
+    <hr />
+    <h3>Question 2 :</h3>
+    > 2.1
+    Pour obtenir un soleil bleu, dans la méthode draw(), on modifie la couleur dans sun.changeColor("yellow") par "blue".
+    <br />
+    <br />
+        
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'>sun&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Circle();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sun.changeColor(<font color='#2a00ff'>"blue"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sun.moveHorizontal(180);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sun.moveVertical(-10);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sun.changeSize(60);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sun.makeVisible();<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br />
+<br />
+    > 2.2
+    Pour ajouter un nouveau soleil jaune, il faut compléter la classe Picture avec une nouvelle donnée d'instance :
+
+    private Circle sun2;
+
+    Puis modifier la méthode draw() de façon à ce qu'elle crée aussi l'objet sun2, dont les paramètres de position sont légèrement différents du soleil bleu pour les distinguer :
+    <br />
+    <br />
+        <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'>sun2&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Circle();
+<br/>sun2.changeColor(<font color='#2a00ff'>"yellow"</font>);
+<br/>sun2.moveHorizontal(200);
+<br/>sun2.moveVertical(30);
+<br/>sun2.changeSize(60);
+<br/>sun2.makeVisible();<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+
+    > 2.3
+
+    Pour provoquer l'effet d'un coucher de soleil dans le canvas, on crée la méthode coucherDeSoleil() qui utilise la méthode slowMoveVertical pour faire bouger l'objet sun et qu'il disparaisse du canvas.
+    <br />
+    <br />
+
+       <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'>&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;coucherDeSoleil(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sun.slowMoveVertical(300);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+
+    <br />
+    <hr />
+    <h3>Question 3 :</h3>
+    > 3.3 Complétez la classe AuditeurCNAM
+
+    En premier, on complète les 3 getters de la classe AuditeurCNAM :
+    <br />
+    <br />
+
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'>&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Lecture&nbsp;du&nbsp;nom&nbsp;de&nbsp;l'auditeur.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;son&nbsp;nom
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;nom()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.nom;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Lecture&nbsp;du&nbsp;prénom&nbsp;de&nbsp;l'auditeur.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;son&nbsp;prénom
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;prenom()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.prenom;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Lecture&nbsp;du&nbsp;matricule&nbsp;de&nbsp;l'auditeur.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;son&nbsp;matricule
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;matricule()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.matricule;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+
+    Les méthodes nom(), prenom() et matricule() quand ils s'ont appelés retournent l'information de l'instance correspondant de l'objet qui les appel. Dans le cas de nom(), par exemple, quand elle est appelé retourne l'information du nom contenu dans la variable d'instance nom de l'objet qui l'appelle. C'est un getter classique.
+
+    Ensuite, on rajoute la méthode sansAccents(String s) qui prend en paramètre une chaîne accentuée initiale et retourne une chaîne en remplaçant les caractères accentués par les caractères non-accentués correspondants. Cette méthode sera appelée dans la méthode login().
+    <br />
+    <br />
+
+        <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;sansAccents(String&nbsp;s)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;sAccents&nbsp;=&nbsp;<font color='#2a00ff'>"äâàáåãéèëêòóôõöøìíîïùúûüýñçÿÄÂÀÁÅÃÉÈËÊÒÓÔÕÖØÌÍÎÏÙÚÛÜÝÑÇÝ"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;sSansAccents&nbsp;=<font color='#2a00ff'>"aaaaaaeeeeooooooiiiiuuuuyncyaaaaaaeeeeooooooiiiiuuuuyncy"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;longueur&nbsp;=&nbsp;sAccents.length();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>&nbsp;(<strong><font color='#7f0055'>int</font></strong>&nbsp;i=0;i<longueur;i++)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s&nbsp;=&nbsp;s.replace(sAccents.charAt(i),sSansAccents.charAt(i));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;s;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;Finalement,&nbsp;on&nbsp;complète&nbsp;la&nbsp;méthode&nbsp;login()&nbsp;:
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;login(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;nomL;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;prenomL;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nomL=<strong><font color='#7f0055'>this</font></strong>.nom();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nomL=nomL.replaceAll(<font color='#2a00ff'>"[0-9]"</font>,<font color='#2a00ff'>""</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nomL=sansAccents(nomL).toLowerCase().substring(0,&nbsp;Math.min(nomL.length(),6)).replaceAll(<font color='#2a00ff'>"[^a-z]"</font>,<font color='#2a00ff'>"_"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prenomL=<strong><font color='#7f0055'>this</font></strong>.prenom();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prenomL=prenomL.replaceAll(<font color='#2a00ff'>"[0-9]"</font>,<font color='#2a00ff'>""</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prenomL=sansAccents(prenomL).toLowerCase().substring(0,1).replaceAll(<font color='#2a00ff'>"[^a-z]"</font>,<font color='#2a00ff'>"_"</font>);&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;nomL+<font color='#2a00ff'>"_"</font>+prenomL;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+        
+    On crée les variables String nomL et prenomL auxquelle on affecte les valeurs du nom et du prenom contenus dans les variables d'instance de l'objet. Puis, on remplace les chiffres du nom si jamais il y en a. On appelle la méthode sansAccents en passant nomL en paramètre, on appelle toLowerCase() pour mettre tout en miniscule et finalement on appelle Math.min car on va couper avec la méthode substring le nom entre 0 et le minimum entre la longueur du nom et 6. On remplace aussi les espaces, trait d'union ou caractères spéciaux sont aussi remplacés par "_". On finit la méthode en faiçant pareil pour la variable prenomL. Et on retourne les deux variables nomL et prenomL separées par un "_".
+
+    >3.5 et 6
+
+    Nous allons ajouter les tests suivants :
+    <br />
+    <br />
+
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><font color='#2040a0'>/**&nbsp;Teste&nbsp;si&nbsp;la&nbsp;première&nbsp;lettre&nbsp;d'un&nbsp;prénom,&nbsp;qui&nbsp;est&nbsp;accentuée,&nbsp;devient&nbsp;non&nbsp;accentuée.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_prenom_avec_accent(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question3.AuditeurCNAM&nbsp;auditeur1&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;question3.AuditeurCNAM(<font color='#2a00ff'>"Dupont"</font>,<font color='#2a00ff'>"Élodie"</font>,<font color='#2a00ff'>"12345"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals&nbsp;(<font color='#2a00ff'>"Mme&nbsp;Dupont&nbsp;Élodie"</font>,&nbsp;<font color='#2a00ff'>"Dupont"</font>,&nbsp;auditeur1.nom());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals&nbsp;(<font color='#2a00ff'>"Mme&nbsp;Dupont&nbsp;Élodie"</font>,&nbsp;<font color='#2a00ff'>"Élodie"</font>,&nbsp;auditeur1.prenom());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals&nbsp;(<font color='#2a00ff'>"prénom&nbsp;avec&nbsp;accent&nbsp;sur&nbsp;la&nbsp;première&nbsp;lettre&nbsp;?&nbsp;"</font>,&nbsp;<font color='#2a00ff'>"dupont_e"</font>,&nbsp;auditeur1.login());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;Teste&nbsp;si&nbsp;des&nbsp;chiffres&nbsp;insérés&nbsp;dans&nbsp;le&nbsp;nom&nbsp;ou&nbsp;le&nbsp;prénom&nbsp;sont&nbsp;bien&nbsp;supprimés
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;lors&nbsp;de&nbsp;la&nbsp;fabrication&nbsp;du&nbsp;login.&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_nom_prenom_avec_chiffres&nbsp;()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question3.AuditeurCNAM&nbsp;auditeur1&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;question3.AuditeurCNAM(<font color='#2a00ff'>"54Du79pont"</font>,<font color='#2a00ff'>"29Sa487bine"</font>,<font color='#2a00ff'>"12345"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals&nbsp;(<font color='#2a00ff'>"login&nbsp;avec&nbsp;des&nbsp;chiffres&nbsp;dans&nbsp;le&nbsp;nom/prénom&nbsp;?&nbsp;"</font>,&nbsp;<font color='#2a00ff'>"dupont_s"</font>,&nbsp;auditeur1.login());&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+
+    Le premier test teste que les accents sont bien substitués par la lettre correspondante sans accent dans le cas du prénom.
+
+    Le deuxième test teste que si le nom ou le prenom ont des chiffres, ceux-ci sont bien enlevés du login. Il y a seulement les lettres qui comptent.
+
+
+    <br />
+    <hr />
+    Difficultés : J'ai rencontré des difficultés pour créer des instances de la classe AuditeurCNAM. Quand je vais créer un novel objet j'ai un erreur "Error : cannot find symbol - variable XXXXXX". 
+
+    J'ai des difficultés pour faire le rapport sur un document html. J'utilise Sublime Text et je n'arrive pas à joindre des captures d'écran.
+
+    Parfois ça a été compliqué de comprendre le résultat attendu dans chaque question. Plus de détails dans les enoncés pourraíent clarifier les doutes.
+
+        <h3>Conclusion, biliographie et remarques : C'est un TP d'initiation à BlueJ. L'outil est intéressant et il me paraît très bien car ça nous permet de voir plus facilement la structure des classes de notre code et les différentes méthodes qui contient chaque classe. De ce point de vue, BlueJ me semble plus intéressant qu'Eclipse.
+
+        La question 3 du TP a été un peu plus compliqué car la méthode login n'était pas évident et j'ai eu du mal à comprendre le résultat attendu.
+
+        </h3>
+        <i style="font-size:12px;">... Une seule page html, limitez le nombre de clics, (plus de 200 rapports à corriger chaque semaine)</i>
+    
+</body>
+</html>

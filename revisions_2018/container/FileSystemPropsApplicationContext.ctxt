@@ -1,0 +1,33 @@
+#BlueJ class context
+comment0.target=FileSystemPropsApplicationContext
+comment0.text=\n\ <b>femtoContainer</b>Un\ conteneur\ de\ beans\ adapt\uFFFD\ au\ cours\ NFP121,\ http\://jfod.cnam.fr/NFP121/.\n\ Injection\ de\ d\uFFFDpendances\ par\ mutateur.<br>\n\ Le\ fichier\ de\ configuration\ est\ de\ type\ "Properties".<br>\n\ Les\ beans\ de\ ce\ conteneur\ respectent\ les\ conventions\ d'\uFFFDcriture\ habituelles\ des\ beans<br>\n\ Les\ propri\uFFFDt\uFFFDs\ de\ chaque\ bean\ sont\ \:<br>\n\ <pre>\n\ bean.id.<i>N</i>\=<i><b>nom</b>,\ l'identifiant\ unique\ du\ bean</i>\n\ <i><b>nom</b></i>.class\=<i>le\ nom\ de\ la\ classe</i>\n\ <i><b>nom</b></i>.property.1\=<i>le\ nom\ de\ l'attribut</i>\n\ <i><b>nom</b></i>.property.1.param.1\=<i>une\ constante,\ ou\ l'identifiant\ d'un\ bean</i>\n\ <i><b>nom</b></i>.property.2\=<i>le\ nom\ de\ l'attribut</i>\n\ <i><b>nom</b></i>.property.2.param.1\=<i>une\ constante,\ ou\ l'identifiant\ d'un\ bean</i>\ \n\ Les\ constantes\ sont\ issues\ des\ 8\ types\ primitifs.<br>\n\ Une\ table\ de\ constantes\ ou\ de\ beans\ comme\ param\uFFFDtre\ est\ permis.<br>\n\ \n\ </pre>\n\ Avec\ N[1..K],\ N\ \uFFFDtant\ un\ nombre\ entier<br>\n\ Ces\ nombres\ forment\ une\ suite\ croissante\ avec\ un\ incr\uFFFDment\ de\ 1<br>\n\ Exemple\ \:\ une\ table<br>\n\ <pre>\n\ bean.id.1\=table\n\ table.class\=question1.Table\n\ table.property.1\=liste\n\ table.property.1.param.1\=listeArray\n\ table.property.2\=capacite\n\ table.property.2.param.1\=4\n\ table.property.3\=init\n\ \#\ ici\ une\ table\ d'entiers\n\ table.property.3.param.1\=2\ 55\ 6\ 1\n\ \#\ \n\ bean.id.2\=listeArray\n\ listeArray.class\=java.util.ArrayList\n\ \n\ Utilisation\ en\ java\ depuis\ l'applicatif\n\ ApplicationContext\ ctx\ \=\ Factory.createApplicationContext("./exemples/README.TXT");\n\ Table\ t\ \=\ ctx.getBean("table");\n\n\ \#\ le\ conteneur\ effectue\ ces\ instructions\ en\ interne\n\ List\ listeArray\ \=\ new\ java.util.ArrayList();\n\ question1.Table\ t\ \=\ new\ question1.Table();\n\ t.setListe(listeArray);\n\ t.setCapacite(4);\n\ t.setInit(new\ int[]{2,55,6,1});\n\ \n\ assert\ t\ \=\=\ ctxt.getBean("table");\n\ </pre>\n\ \n\ @author\ jm\ Douin\n\ @version\ 14\ janvier\ 2018\n\ @see\ java.util.Properties,\ container.Factory,\ container.AbstractApplicationContext\n
+comment1.params=
+comment1.target=FileSystemPropsApplicationContext()
+comment10.params=cl\ str
+comment10.target=java.lang.Object\ parseArray(java.lang.Class,\ java.lang.String)
+comment11.params=str
+comment11.target=char\ parseChar(java.lang.String)
+comment12.params=str
+comment12.target=java.lang.String\ parseString(java.lang.String)
+comment13.params=str
+comment13.target=java.lang.Object\ parseObject(java.lang.String)
+comment2.params=fileName
+comment2.target=void\ setFileName(java.lang.String)
+comment3.params=inputStream
+comment3.target=FileSystemPropsApplicationContext(java.io.InputStream)
+comment4.params=inputStream
+comment4.target=void\ initialize(java.io.InputStream)
+comment5.params=
+comment5.target=void\ verifyProperties()
+comment5.text=\ Quelques\ v\uFFFDrifications\ du\ fichier\ de\ properties,\ \n\ loin\ d'\uFFFDtre\ exaustives...\n
+comment6.params=
+comment6.target=void\ analyzeProperties()
+comment7.params=id
+comment7.target=void\ initializePropertiesBean(java.lang.String)
+comment7.text=\ Initialisation\ des\ attributs\ num\uFFFDrot\uFFFDs\ de\ 1\ \uFFFD\ N.\n\ Les\ mutateurs\ sont\ ex\uFFFDcut\uFFFDs.\n
+comment8.params=id\ methodName\ propertyName
+comment8.target=java.lang.reflect.Method\ findMethod(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment9.params=cl\ str
+comment9.target=java.lang.Object\ newInstance(java.lang.Class,\ java.lang.String)
+comment9.text=\ Obtention\ d'une\ nouvelle\ instance\ \uFFFD\ injecter.\n\ @param\ cl\ la\ classe\ de\ l'attribut\n\ @param\ str\ la\ valeur\ extraite\ du\ fichier\ de\ configuration\n
+numComments=14

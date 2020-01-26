@@ -1,0 +1,2658 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 10 (filtered)">
+<title>NSY102 : Conception de logiciels Intranet : Patrons et Canevas, examen
+Juin 2007-06-07</title>
+
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:normal;
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+h1
+	{margin-top:0cm;
+	margin-right:-41.4pt;
+	margin-bottom:0cm;
+	margin-left:-27.0pt;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h2
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h3
+	{margin-top:0cm;
+	margin-right:-41.4pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h4
+	{margin-top:0cm;
+	margin-right:-41.4pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h5
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	page-break-after:avoid;
+	text-autospace:none;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:normal;}
+h6
+	{margin-top:0cm;
+	margin-right:-41.4pt;
+	margin-bottom:0cm;
+	margin-left:-27.0pt;
+	margin-bottom:.0001pt;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	page-break-after:avoid;
+	font-size:20.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:0cm;
+	margin-right:-41.4pt;
+	margin-bottom:0cm;
+	margin-left:-27.0pt;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:20.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0cm;
+	margin-right:-41.4pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0cm;
+	margin-right:-41.4pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:8.4pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoBodyTextIndent2, li.MsoBodyTextIndent2, div.MsoBodyTextIndent2
+	{margin-top:0cm;
+	margin-right:-41.4pt;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-indent:35.4pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoBlockText, li.MsoBlockText, div.MsoBlockText
+	{margin-top:0cm;
+	margin-right:-41.4pt;
+	margin-bottom:0cm;
+	margin-left:35.4pt;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+code
+	{font-family:"Courier New";}
+pre
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+tt
+	{font-family:"Courier New";}
+p.tableheadingcolor, li.tableheadingcolor, div.tableheadingcolor
+	{margin-right:0cm;
+	margin-left:0cm;
+	background:#CCCCFF;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.tablesubheadingcolor, li.tablesubheadingcolor, div.tablesubheadingcolor
+	{margin-right:0cm;
+	margin-left:0cm;
+	background:#EEEEFF;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.tablerowcolor, li.tablerowcolor, div.tablerowcolor
+	{margin-right:0cm;
+	margin-left:0cm;
+	background:white;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.frametitlefont, li.frametitlefont, div.frametitlefont
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:normal;}
+p.frameheadingfont, li.frameheadingfont, div.frameheadingfont
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:normal;}
+p.frameitemfont, li.frameitemfont, div.frameitemfont
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:normal;}
+p.navbarcell1, li.navbarcell1, div.navbarcell1
+	{margin-right:0cm;
+	margin-left:0cm;
+	background:#EEEEFF;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.navbarcell1rev, li.navbarcell1rev, div.navbarcell1rev
+	{margin-right:0cm;
+	margin-left:0cm;
+	background:darkblue;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.navbarfont1, li.navbarfont1, div.navbarfont1
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:Arial;
+	color:black;}
+p.navbarfont1rev, li.navbarfont1rev, div.navbarfont1rev
+	{margin-right:0cm;
+	margin-left:0cm;
+	font-size:12.0pt;
+	font-family:Arial;
+	color:white;}
+p.navbarcell2, li.navbarcell2, div.navbarcell2
+	{margin-right:0cm;
+	margin-left:0cm;
+	background:white;
+	font-size:12.0pt;
+	font-family:Arial;}
+p.navbarcell3, li.navbarcell3, div.navbarcell3
+	{margin-right:0cm;
+	margin-left:0cm;
+	background:white;
+	font-size:12.0pt;
+	font-family:Arial;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 64.3pt 70.85pt 45.0pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=FR link=blue vlink=purple>
+
+<div class=Section1>
+
+<p class=MsoTitle style='margin-left:0cm'>NFP121</p>
+
+<p class=MsoNormal align=center style='margin-right:-41.4pt;text-align:center'><b><span
+style='font-size:16.0pt'>Programmation avancée</span></b></p>
+
+<p class=MsoNormal align=center style='margin-right:-41.4pt;text-align:center'><span
+style='font-size:14.0pt'>Session de Février 2013-durée&nbsp;: 2 heures</span></p>
+
+<h6 style='margin-left:0cm'>Tous documents papiers autorisés</h6>
+
+<p class=MsoNormal align=center style='margin-right:-27.0pt;text-align:center'><b><span
+style='font-size:16.0pt'>     CEP-HTO/FOD Nationale</span></b></p>
+
+<h1 style='margin-left:35.4pt;text-indent:35.4pt'>Sommaire&nbsp;: </h1>
+
+<h1 style='margin-left:70.8pt'><span style='font-size:12.0pt;font-weight:normal'> 
+          Question 1&nbsp;(6 points) : un cours, des inscrits</span></h1>
+
+<h1 style='margin-left:35.4pt;text-indent:35.4pt'><span style='font-size:12.0pt;
+font-weight:normal'>            Question 2&nbsp;(10 points) : une interface
+graphique</span></h1>
+
+<h1 style='margin-left:70.8pt;text-indent:35.4pt'><span style='font-size:12.0pt;
+font-weight:normal'>Question 3&nbsp;(4 points) : un bouchon pour les tests </span></h1>
+
+<h1 style='margin-left:0cm;text-indent:35.4pt'>          </h1>
+
+<h1 style='margin-left:0cm'><span style='font-size:16.0pt'>Question1 : Un cours
+et ses inscrits</span></h1>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyTextIndent style='text-align:justify'>Une institution de
+formation, tout au long de la vie, propose des unités d'enseignements. Chaque
+unité contient la liste de ses auditeurs et le lieu d'enseignement. Une modification
+du lieu (un changement de salle), engendre une notification aux auditeurs
+inscrits. Cette notification est effectuée par texto ou par courriel selon le
+mode sélectionné. La notification contient un message destiné aux auditeurs
+inscrits. D'autres notifications peuvent être effectuées par l'administration
+de cette institution comme la convocation à un examen écrit.</p>
+
+<p class=MsoBodyTextIndent style='text-align:justify;text-indent:0cm'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt;text-indent:8.4pt'>L’architecture
+retenue des classes pour cette question est la suivante&nbsp;(en&nbsp;notation
+BlueJ/UML) :</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:35.4pt;margin-bottom:.0001pt;text-indent:8.4pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:35.4pt;margin-bottom:.0001pt;text-indent:8.4pt'><img width=634
+height=148 src="ExamenFevrier2013_fichiers/image001.jpg"></p>
+
+<h1 style='margin-left:70.8pt'>&nbsp;</h1>
+
+<p class=MsoNormal align=center style='margin-right:-41.4pt;text-align:center'><img
+width=334 height=172 src="ExamenFevrier2013_fichiers/image002.jpg"></p>
+
+<p class=MsoNormal style='margin-right:-41.4pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:35.4pt;margin-bottom:.0001pt'>Soit, maintenant la description des
+interfaces&nbsp;:</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:71.4pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir=LTR><b><i>UnitéEnseignementI</i></b>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:71.4pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir=LTR><b><i>AuditeurI</i></b></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:71.4pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir=LTR><b><i>NotificationI</i></b></span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:71.4pt;margin-bottom:.0001pt;text-indent:-18.0pt'><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span dir=LTR><b><i>MessageI</i></b></span></p>
+
+<p class=MsoNormal style='margin-right:-41.4pt'>&nbsp;</p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='margin-right:-41.4pt'>L’interface <b><i>UnitéEnseignementI</i></b>&nbsp;
+     contient les définitions des méthodes suivantes&nbsp;:</li>
+</ul>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>public interface <b>UnitéEnseignementI</b> extends
+Iterable&lt;AuditeurI&gt;{</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>  // opérations d'inscription des auditeurs</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  boolean inscrire(AuditeurI auditeur);</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  boolean inscrire(Set&lt;AuditeurI&gt; liste);</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><b><i><span style='font-size:
+9.0pt;font-family:"Courier New"'>  </span></i></b><i><span style='font-size:
+9.0pt;font-family:"Courier New"'>/** Après l'appel de cette méthode, </span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>   * aucune inscription ne sera possible.*/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  void figerLesInscrits();</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>  /** Envoi d'un message aux auditeurs inscrits. </span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>   *  @return l'ensemble des auditeurs notifiés</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>   */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  Set&lt;AuditeurI&gt; notifier(MessageI message);</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>  /** appel de cette méthode engendre cet appel</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>   *    notifier(new SalleDeCoursMessage(salle));</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>   */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  void setSalleDeCours(String salle);</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>  /** Sélection du mode d’envoi. */</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  void setNotification(NotificationI notification);</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>  // interrogations, accesseurs</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><i><span style='font-size:9.0pt;
+font-family:"Courier New"'>  /** Retourne un ensemble immutable et trié des
+auditeurs inscrits*/</span></i></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  Set&lt;AuditeurI&gt; getAuditeurs();</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  String getSalleDeCours();</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}</span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='margin-right:-41.4pt'>L’interface <b><i>AuditeurI </i></b><i>&nbsp;</i>
+     contient les accesseurs aux informations d'un auditeur&nbsp;:</li>
+</ul>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>public interface <b>AuditeurI</b> extends
+Comparable&lt;AuditeurI&gt;{</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'> </span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  public String </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>getNom();</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>  public String
+getAdresseCourriel(); </span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>  </span><span
+style='font-size:9.0pt;font-family:"Courier New"'>public String
+getNuméroMobile();</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal>L’interface <b><i>NotificationI </i></b><i>&nbsp;</i>
+     contient l'opération d'envoi d'un message, une exception est levée si
+     l'envoi d'un message selon la stratégie choisie par texto ou par courriel se
+     solde par un échec.</li>
+</ul>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>public interface <b>NotificationI</b>{</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  void envoyer(AuditeurI auditeur, MessageI msg)
+throws NotificationException;</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}</span></p>
+
+<p class=MsoNormal style='margin-left:70.8pt'>&nbsp;</p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal>L’interface <b><i>MessageI </i></b><i>&nbsp;</i> contient
+     l'accesseur au contenu d'un message.</li>
+</ul>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>public interface <b>MessageI</b>{</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'> </span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  String getContenu();</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:35.4pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-27.0pt'>Ci-dessous l’exécution de la méthode
+main, reflète un scénario possible: une unité d'enseignement, deux inscrits,
+trois changements de salle consécutifs. </p>
+
+<p class=MsoNormal style='margin-right:-27.0pt'>&nbsp;</p>
+
+<p class=MsoNormal><b><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>public
+class </span></b><b><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>Main</span></b><b><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>{</span></b></p>
+
+<p class=MsoNormal><b><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'> </span></b></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'> 
+public static void main(String[] args){</span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>    UnitéEnseignementI
+nfp131 = new UnitéEnseignement(&quot;NFP131&quot;);</span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>    </span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>   
+nfp131.inscrire(new Auditeur(&quot;Bob&quot;,&quot;bob@auditeur.cnam.fr&quot;,&quot;0687654321&quot;));</span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>   
+nfp131.inscrire(new Auditeur(&quot;Bill&quot;,&quot;bill@auditeur.cnam.fr&quot;,&quot;0612345678&quot;));</span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>    </span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>   
+nfp131.setNotification( new NotificationParTexto());</span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>    <i>//
+attribution initiale de l'amphi Bézier</i></span></p>
+
+<p class=MsoNormal><i><span style='font-size:9.0pt;font-family:"Courier New"'>   
+// tous les auditeurs sont ici prévenus par Texto</span></i></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>   
+nfp131.setSalleDeCours(&quot;lieu: amphi Bézier&quot;);</span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>    <i>//
+modification : amphi Fournel</i></span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>   
+nfp131.setSalleDeCours(&quot;lieu: amphi Fournel&quot;);</span></p>
+
+<p class=MsoNormal><i><span style='font-size:9.0pt;font-family:"Courier New"'>   
+// modification : amphi Bézier</span></i></p>
+
+<p class=MsoNormal><i><span style='font-size:9.0pt;font-family:"Courier New"'>   
+</span></i><i><span style='font-size:8.0pt;font-family:"Courier New"'>// Toute
+ressemblance avec des faits réels ne serait que pure et fortuite coïncidence</span></i></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>   
+nfp131.setSalleDeCours(&quot;lieu: amphi Bézier&quot;);</span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'>  </span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>}</span></p>
+
+<p class=MsoNormal><b><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>}</span></b></p>
+
+<p class=MsoNormal><b><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></b></p>
+
+<h3 style='text-indent:9.0pt'>Question1-1) </h3>
+
+<p class=MsoBlockText style='text-indent:-26.4pt'>Ecrire une implémentation<b>
+complète </b>de la <b>classe <i>UnitéEnseignement</i></b>. Vous pouvez détacher
+la dernière page de cet énoncé, la joindre à votre copie en n'oubliant pas de
+reporter le numéro de celle-ci.</p>
+
+<p class=MsoBlockText style='margin-left:0cm;text-indent:9.0pt'>&nbsp;</p>
+
+<h3 style='text-indent:9.0pt'>Question1-2) </h3>
+
+<p class=MsoBlockText style='margin-left:0cm;text-indent:9.0pt'><b>Deux  patrons</b>
+de conception (au moins) sont utilisés pour cette question, <b>quels sont-ils ?</b></p>
+
+<p class=MsoBlockText style='margin-left:0cm;text-indent:9.0pt'><b><span
+style='font-size:16.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoBlockText style='margin-left:0cm;text-indent:9.0pt'><b><span
+style='font-size:16.0pt'>Question2: Une interface graphique</span></b></p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoBodyTextIndent style='text-align:justify'>Une interface graphique
+en Swing permet d'envoyer une notification aux auditeurs inscrits à une unité.
+L'utilisateur entre le nom de l'unité, la nouvelle salle de cours, sélectionne
+le mode de notification (sms/texto ou courriel) et au clic sur le bouton
+&quot;Notifier aux auditeurs&quot;, les notifications sont envoyées. Au clic, la
+liste des auditeurs inscrits est affichée et un astérisque (&quot;*&quot;) est
+présent si la notification pour cet auditeur a échoué. </p>
+
+<p class=MsoBodyTextIndent style='text-align:justify'>&nbsp;</p>
+
+<p class=MsoBodyTextIndent style='text-align:justify'>Ci-dessous un exemple d'affichage,
+en mode texto, après avoir notifié aux auditeurs de l'unité NFP121.</p>
+
+<p class=MsoBodyTextIndent style='text-align:justify'>&nbsp;</p>
+
+<p class=MsoBodyTextIndent style='margin-left:70.8pt;text-align:justify'><img
+width=376 height=373 src="ExamenFevrier2013_fichiers/image003.jpg"></p>
+
+<p class=MsoBodyTextIndent style='text-align:justify'>&nbsp;</p>
+
+<p class=MsoBodyTextIndent style='text-align:justify'>&nbsp;</p>
+
+<p class=MsoBodyTextIndent style='text-align:justify'> La classe java, dont le
+nom est l'intitulé de l'unité, est générée automatiquement par un outil
+développé par le service de la scolarité. Chaque classe produite est une
+instance du patron Singleton, les auditeurs inscrits sont issus des fichiers de
+l'administration. La classe obtenue possède toutes les propriétés d'une unité
+d'enseignement en héritant de celle-ci.</p>
+
+<p class=MsoBodyTextIndent style='text-align:justify'>&nbsp;</p>
+
+<p class=MsoBodyTextIndent style='margin-left:35.4pt;text-align:justify;
+text-indent:0cm'><img width=383 height=98
+src="ExamenFevrier2013_fichiers/image004.jpg"><span lang=EN-GB
+style='font-size:26.0pt'>... </span><span lang=EN-GB style='font-size:14.0pt'>+
+1500 autres unités</span><span lang=EN-GB style='font-size:16.0pt'> </span><span
+lang=EN-GB style='font-size:26.0pt'>...</span></p>
+
+<p class=MsoBodyTextIndent style='margin-left:35.4pt;text-align:justify;
+text-indent:0cm'><span lang=EN-GB>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB>Un exemple de
+classe générée automatiquement:</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>     </span></p>
+
+<p class=MsoNormal style='text-autospace:none'><i><span lang=EN-GB
+style='font-size:8.0pt;font-family:"Courier New"'>/* AUTO-GENERATED FILE.  DO
+NOT MODIFY.</span></i></p>
+
+<p class=MsoNormal style='text-autospace:none'><i><span lang=EN-GB
+style='font-size:8.0pt;font-family:"Courier New"'> * This class was
+automatically generated by an</span></i></p>
+
+<p class=MsoNormal style='text-autospace:none'><i><span lang=EN-GB
+style='font-size:8.0pt;font-family:"Courier New"'> * incredible tool from the
+resource data it found.  It</span></i></p>
+
+<p class=MsoNormal style='text-autospace:none'><i><span lang=EN-GB
+style='font-size:8.0pt;font-family:"Courier New"'> * should not be modified by
+hand.</span></i></p>
+
+<p class=MsoNormal style='text-autospace:none'><i><span lang=EN-GB
+style='font-size:8.0pt;font-family:"Courier New"'> */</span></i></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>public final class NFP121 extends
+UnitéEnseignement{</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>  private static NFP121 instance = null;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>  public static NFP121 getInstance(){</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>    return instance;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>  }</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>  private NFP121(){</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>    super(&quot;NFP121&quot;);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>  }</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>  static {</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>    Set&lt;AuditeurI&gt; liste = new
+HashSet&lt;AuditeurI&gt;();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>   // liste.add(.... pour chaque inscrit</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>   // liste.add(...  (147 en 2012-2013)</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>   //  ... </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    instance = new NFP121();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    instance.inscrire(liste);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    instance.figerLesInscrits();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  }</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>Maintenant, ci-dessous, un extrait
+de la classe de tests unitaires</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>  public class NFP121Test extends
+junit.framework.TestCase{</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>       public void testSingleton(){</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>            assertNotNull(NFP121.getInstance());</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>            NFP121 nfp121a = NFP121.getInstance();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>            NFP121 nfp121b =
+NFP121.getInstance();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>            assertEquals(nfp121a, nfp121b);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>       }</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>       public void
+testLaListeDesInscritsEstTriée(){</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>            NFP121 nfp121 =
+NFP121.getInstance();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>            assertTrue(isSorted(nfp121.getAuditeurs()));</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>       }</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>       </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>       public void
+testLaListeDesInscritsEstImmutable(){</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>            </span><span style='font-size:
+9.0pt;font-family:"Courier New"'>NFP121 nfp121 = NFP121.getInstance();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>            assertEquals(147,nfp121.getAuditeurs().size());</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>            AuditeurI a = new
+Auditeur(&quot;trautar&quot;,&quot;trautar@cnam.fr&quot;,&quot;06xxxxxx&quot;);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>            try{</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>              nfp121.inscrire(a);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>              fail(&quot;la liste du singleton
+NFP121, doit être immutable&quot;);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>            </span><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>}catch(Exception e){</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>              assertTrue(e instanceof
+UnsupportedOperationException);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>            </span><span style='font-size:
+9.0pt;font-family:"Courier New"'>}</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>     </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>       }</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>       public void
+testNotificationParCourriel(){</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>            </span><span style='font-size:
+9.0pt;font-family:"Courier New"'>NFP121 nfp121 = NFP121.getInstance();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>            int nombreInscrits = nfp121.getAuditeurs().size();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>            nfp121.setNotification(new
+NotificationParCourriel());</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>            MessageI msg = new
+SalleDeCoursMessage(&quot;Amphi Fournel&quot;);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>            int nombreNotifiés =
+nfp121.notifier(msg).size();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>            assertTrue(nombreNotifiés &lt;=
+nombreInscrits);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>      </span><span lang=EN-GB style='font-size:9.0pt;
+font-family:"Courier New"'>}</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>L'interface graphique, les
+déclarations des composants graphiques, sont ci-dessous</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>public class IHMNotification
+{</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:9.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'> private final
+JFrame     fenêtre;</span></p>
+
+<p class=MsoNormal style='margin-right:-41.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:10.0pt;font-family:"Courier New"'>  private final
+JTextField <b>unité</b> = new JTextField(8);</span></p>
+
+<p class=MsoNormal style='margin-right:-41.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:10.0pt;font-family:"Courier New"'>  private final
+JTextField <b>salle</b> = new JTextField(16);</span></p>
+
+<p class=MsoNormal style='margin-right:-41.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:10.0pt;font-family:"Courier New"'>  private final
+JTextArea  <b>contenu</b> = new JTextArea(16,8);</span></p>
+
+<p class=MsoNormal style='margin-right:-41.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:10.0pt;font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-right:-41.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:10.0pt;font-family:"Courier New"'>  private final
+JRadioButton boutonTexto = new JRadioButton(&quot;sms://&quot;);</span></p>
+
+<p class=MsoNormal style='margin-right:-41.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:10.0pt;font-family:"Courier New"'>  private final
+JRadioButton boutonCourriel = new JRadioButton(&quot;mailto://&quot;);</span></p>
+
+<p class=MsoNormal style='margin-right:-41.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:10.0pt;font-family:"Courier New"'>  private final
+JButton      boutonNotifier = new JButton(&quot;Notifier aux auditeurs&quot;);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>  public
+IHMNotification() {</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>    fenêtre = new
+JFrame(&quot;interface de notification&quot;);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>    Container c =
+fenêtre.getContentPane();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>    JScrollPane
+scroller = new JScrollPane(contenu);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>   
+scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>   
+c.add(scroller, BorderLayout.NORTH);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>   
+//c.setLayout(new BorderLayout());</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>    JPanel
+informations = new JPanel(new GridLayout(2,2));</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>   
+informations.add(new JLabel(&quot;Unité : &quot;, SwingConstants.RIGHT));</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:8.0pt;font-family:"Courier New"'>    informations.add(unité);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:8.0pt;font-family:"Courier New"'>    </span><span lang=EN-GB
+style='font-size:8.0pt;font-family:"Courier New"'>informations.add(new
+JLabel(&quot;Message : &quot;, SwingConstants.RIGHT));</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>    </span><span
+style='font-size:8.0pt;font-family:"Courier New"'>informations.add(salle);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:8.0pt;font-family:"Courier New"'>    </span><span lang=EN-GB
+style='font-size:8.0pt;font-family:"Courier New"'>c.add(informations,
+BorderLayout.CENTER);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'> </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>    JPanel boutons
+= new JPanel(new FlowLayout());</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>    ButtonGroup
+groupe = new ButtonGroup();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>   
+groupe.add(boutonTexto);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>    </span><span
+style='font-size:8.0pt;font-family:"Courier New"'>groupe.add(boutonCourriel);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:8.0pt;font-family:"Courier New"'>   
+boutonTexto.setSelected(true);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:8.0pt;font-family:"Courier New"'>    boutons.add(boutonTexto);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:8.0pt;font-family:"Courier New"'>   
+boutons.add(boutonCourriel);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:8.0pt;font-family:"Courier New"'>   
+boutons.add(boutonNotifier);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:8.0pt;font-family:"Courier New"'>    c.add(boutons,
+BorderLayout.SOUTH);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>    </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><b><span
+style='font-family:"Courier New"'>    boutonNotifier.addActionListener(  / * à
+compléter en q2-1 */ );</span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><b><span
+style='font-family:"Courier New"'>&nbsp;</span></b></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:8.0pt;font-family:"Courier New"'>    fenêtre.pack();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:8.0pt;font-family:"Courier New"'>    fenêtre.setVisible(true);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>  }</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'> </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:18.0pt;margin-bottom:.0001pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'> Note:
+boutonTexto.isSelected() retourne true, si le bouton radio &quot;sms&quot; est
+sélectionné.</span></p>
+
+<p class=MsoNormal style='margin-right:-41.4pt'>&nbsp;</p>
+
+<h3 style='text-indent:9.0pt'>Question2-1) </h3>
+
+<p class=MsoBlockText style='margin-left:0cm;text-indent:9.0pt'>         Proposer
+le comportement de cette interface au clic sur le bouton &quot;Notifier aux
+auditeurs&quot;</p>
+
+<p class=MsoBlockText style='margin-left:0cm;text-indent:9.0pt'> </p>
+
+<h3 style='text-indent:9.0pt'>Question2-2) </h3>
+
+<p class=MsoBlockText style='margin-left:0cm;text-indent:9.0pt'>         A
+chaque clic, un journal au format XML, des notifications effectuées, est
+enrichi, ce journal est persistant et respecte la DTD ci-dessous,  (fichier
+notifications.dtd) :</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    </span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>&lt;?xml
+version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ELEMENT notifications
+(notification)*&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ELEMENT notification
+(mode,unite,salle,echec*)&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ATTLIST
+notification date CDATA #REQUIRED&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ATTLIST
+notification exception CDATA #IMPLIED&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ELEMENT mode 
+(#PCDATA)&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ELEMENT unite
+(#PCDATA)&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ELEMENT salle
+(#PCDATA)&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ELEMENT echec
+(#PCDATA)&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ATTLIST echec
+nom CDATA #REQUIRED&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ATTLIST echec mobile
+CDATA #IMPLIED&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>&lt;!ATTLIST echec courriel
+CDATA #IMPLIED&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'>&nbsp;</p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'>Chaque
+notification en XML indique le mode, l'unité, la salle, la date de cette notification
+et éventuellement l'exception produite ainsi que la liste des échecs rencontrés,
+i.e. la liste des auditeurs n'ayant pu être notifiés.</p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'>&nbsp;</p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'>Ci-dessous le
+journal contenant deux notifications, la dernière notification est associée au
+scénario présenté au début de cette question&nbsp;: </p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'>&nbsp;</p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&lt;?xml
+version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&lt;!DOCTYPE notifications
+SYSTEM &quot;notifications.dtd&quot;&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>&lt;notifications&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>  &lt;notification
+date=&quot;1357563883031&quot; exception=&quot;ClassNotFoundException NFP131&quot;&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>    &lt;mode&gt;texto&lt;/mode&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>    &lt;unite&gt;NFP131&lt;/unite&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>    &lt;salle&gt;Amphi
+Fournel&lt;/salle&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>    &lt;echecs /&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>  &lt;/notification&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>  &lt;notification
+date=&quot;1357042800915&quot;&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>   
+&lt;mode&gt;texto&lt;/mode&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>   
+&lt;unite&gt;NFP121&lt;/unite&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>    &lt;salle&gt;Amphi
+Fournel&lt;/salle&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>    &lt;echecs&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>      &lt;echec
+nom=&quot;Dominique&quot; mobile=&quot;&quot;
+courriel=&quot;dominique@auditeur.cnam.fr&quot; /&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>      &lt;echec
+nom=&quot;Mohand&quot; mobile=&quot;&quot;
+courriel=&quot;mohand@auditeur.cnam.fr&quot; /&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>    &lt;/echecs&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>  &lt;/notification&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>&lt;/notifications&gt;</span></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'></p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'><span
+style='font-size:9.0pt;font-family:"Courier New"'>Note: la valeur de l’attribut
+date est le résultat de l’appel de System.currentTimeMillis()</span>.</p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'>&nbsp;</p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'>Compléter la
+classe interne et statique <span style='font-size:10.0pt;font-family:"Courier New"'>JournalEnXML,</span> 
+définie au sein de la classe IHMNotification.  L'entête de la méthode <i>ajouter</i>
+est fourni à titre indicatif, des extraits de la librairie JDOM sont en annexe.</p>
+
+<p class=MsoBlockText style='margin-left:8.4pt;text-indent:9.0pt'>&nbsp;</p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'> </span><span lang=EN-GB style='font-size:9.0pt;
+font-family:"Courier New"'>private static class JournalEnXML{</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    private String nom;</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    </span><span
+style='font-size:9.0pt;font-family:"Courier New"'>private Element racine;</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    private Document documentXML;</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  </span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    </span><span lang=EN-GB style='font-size:9.0pt;
+font-family:"Courier New"'>public JournalEnXML(String nom){</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>      DocType docType = new
+DocType(&quot;notifications&quot;,&quot;notifications.dtd&quot;);</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>      this.nom = nom;</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>      this.racine = new
+Element(&quot;notifications&quot;);</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>      </span><span
+style='font-size:9.0pt;font-family:"Courier New"'>this.documentXML = new
+Document(racine, docType);</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    }</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    // par convention :</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    //   params[0]/mode, params[1]/unite, param[2]/salle,
+params[3]/exception</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    public void ajouter(Set&lt;AuditeurI&gt;
+notificationsEnEchecs, String... params){</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><b><span style='font-family:
+"Courier New"'>// à compléter</span></b></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>      sauvegarder(this.nom);</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    }</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    </span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    private void
+sauvegarder(String nom){</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>      XMLOutputter out = new
+XMLOutputter(Format.getPrettyFormat());</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>      </span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>      try{</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>       
+out.output(documentXML,new FileOutputStream(nom));</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>      }catch(Exception e){ e.printStackTrace();}</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span lang=EN-GB
+style='font-size:9.0pt;font-family:"Courier New"'>    </span><span
+style='font-size:9.0pt;font-family:"Courier New"'>}</span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  </span></p>
+
+<p class=MsoBlockText style='text-indent:9.0pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  }</span></p>
+
+<p class=MsoBlockText style='margin-left:0cm;text-indent:9.0pt'><b><span
+style='font-size:16.0pt'>&nbsp;</span></b></p>
+
+<p class=MsoBlockText style='margin-left:0cm;text-indent:9.0pt'><b><span
+style='font-size:16.0pt'>Question3: Une &quot;classe bouchon&quot; pour les
+tests</span></b></p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>         Nous souhaitons mettre en
+oeuvre une classe permettant d'inhiber les envois effectifs de textos, et autorisant
+certaines vérifications, interrogations comme:</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>         Les auditeurs ayant été
+notifiés ont-ils &quot;bien reçu&quot; le message envoyé ?</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>         Le nombre d'auditeurs
+notifiés est-il cohérent avec le nombre d'auditeurs inscrits ?</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>         etc...</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>         La classe demandée permet
+également, de manière aléatoire, de simuler plusieurs envois en échec à chaque
+notification, ces échecs peuvent représenter jusqu'à 10% des envois. Un extrait
+de la classe Random est en annexe. Cette classe implémente l’interface
+NotificationI.</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>Attention aucune modification des
+classes existantes, classes issues de la question 1, n'est possible.</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>&nbsp;</p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>Ci-dessous, un extrait de la
+classe de tests unitaires </p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>public class TestsUnitaires extends
+junit.framework.TestCase{</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  public void testNotificationParTexto(){</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    NFP121 nfp121 = NFP121.getInstance();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    int nombreInscrits =
+nfp121.getAuditeurs().size();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span lang=EN-GB style='font-size:
+9.0pt;font-family:"Courier New"'>    MessageI msg = new ExamenMessage(&quot;</span><span lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>05/02/2013</span><span
+lang=EN-GB style='font-size:9.0pt;font-family:"Courier New"'>, 19h 21h&quot;);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    int nombreNotifiés = nfp121.notifier(msg).size();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    assertTrue(nombreNotifiés &lt;= nombreInscrits);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>   </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>// à vérifier :</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>// Tous les auditeurs notifiés ont-ils
+&quot;bien&quot; reçu ce message ?</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>      </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    msg = new ExamenMessage(&quot;Bonne réussite
+!&quot;);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    nombreNotifiés = nfp121.notifier(msg).size();</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>    assertTrue(nombreNotifiés &lt;= nombreInscrits);</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>// à vérifier :</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>// Tous les auditeurs notifiés ont-ils
+&quot;bien&quot; reçu ce message ?</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>  }</span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>     </span></p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'><span style='font-size:9.0pt;
+font-family:"Courier New"'>&nbsp;</span></p>
+
+<h3 style='text-indent:9.0pt'>Question3) </h3>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:-41.4pt;margin-bottom:
+0cm;margin-left:8.4pt;margin-bottom:.0001pt'>         Proposez cette classe, à
+quel patron pourriez-vous associer ce développement.</p>
+
+<p class=MsoHeading7><span style='font-size:14.0pt'>-------- fin ---------</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoHeading7 align=left style='text-align:left'><span style='font-size:
+10.0pt;font-weight:normal'>Nota bene : Une idée de la solution sera en ligne à
+cette URL&nbsp;: http://jfod.cnam.fr/NFP121/annales/2013_fevrier/</span></p>
+
+<h2><span lang=EN-GB style='font-size:10.0pt'>java.util <br>
+Interface Set&lt;E&gt;</span></h2>
+
+<p class=MsoNormal><b><span lang=EN-GB style='font-size:10.0pt'>Type
+Parameters:</span></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><code><span lang=EN-GB
+style='font-size:10.0pt'>E</span></code><span lang=EN-GB style='font-size:10.0pt'>
+- the type of elements maintained by this set</span></p>
+
+<p class=MsoNormal><b><span lang=EN-GB style='font-size:10.0pt'>All
+Superinterfaces:</span></b><span lang=EN-GB style='font-size:10.0pt'> </span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span style='font-size:10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/Collection.html"
+title="interface in java.util"><span lang=EN-GB>Collection</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>&lt;E&gt;, </span><span style='font-size:
+10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/lang/Iterable.html"
+title="interface in java.lang"><span lang=EN-GB>Iterable</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>&lt;E&gt;</span></p>
+
+<p class=MsoNormal><b><span lang=EN-GB style='font-size:10.0pt'>All Known
+Subinterfaces:</span></b><span lang=EN-GB style='font-size:10.0pt'> </span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span style='font-size:10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/NavigableSet.html"
+title="interface in java.util"><span lang=EN-GB>NavigableSet</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>&lt;E&gt;, </span><span style='font-size:
+10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/SortedSet.html"
+title="interface in java.util"><span lang=EN-GB>SortedSet</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>&lt;E&gt;</span></p>
+
+<p class=MsoNormal><b><span lang=EN-GB style='font-size:10.0pt'>All Known
+Implementing Classes:</span></b><span lang=EN-GB style='font-size:10.0pt'> </span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span style='font-size:10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/AbstractSet.html"
+title="class in java.util"><span lang=EN-GB>AbstractSet</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>, </span><span style='font-size:10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/ConcurrentSkipListSet.html"
+title="class in java.util.concurrent"><span lang=EN-GB>ConcurrentSkipListSet</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>, </span><span style='font-size:10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/CopyOnWriteArraySet.html"
+title="class in java.util.concurrent"><span lang=EN-GB>CopyOnWriteArraySet</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>, </span><span style='font-size:10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/EnumSet.html"
+title="class in java.util"><span lang=EN-GB>EnumSet</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>, </span><span style='font-size:10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/HashSet.html"
+title="class in java.util"><span lang=EN-GB>HashSet</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>, </span><span style='font-size:10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/javax/print/attribute/standard/JobStateReasons.html"
+title="class in javax.print.attribute.standard"><span lang=EN-GB>JobStateReasons</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>, </span><span style='font-size:10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/LinkedHashSet.html"
+title="class in java.util"><span lang=EN-GB>LinkedHashSet</span></a></span><span
+lang=EN-GB style='font-size:10.0pt'>, </span><span style='font-size:10.0pt'><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/TreeSet.html"
+title="class in java.util"><span lang=EN-GB>TreeSet</span></a></span></p>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt'>
+
+<hr size=2 width="100%" align=center>
+
+</span></div>
+
+<pre><span lang=EN-GB>public interface <b>Set&lt;E&gt;</b></span></pre><pre><span
+lang=EN-GB>extends </span><a
+href="http://docs.oracle.com/javase/6/docs/api/java/util/Collection.html"
+title="interface in java.util"><span lang=EN-GB>Collection</span></a><span
+lang=EN-GB>&lt;E&gt;</span></pre>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt'>
+
+<hr size=2 width="100%" align=center>
+
+</span></div>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%'>
+ <tr>
+  <td colspan=2 style='background:#CCCCFF;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt'>Method Summary</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  style='font-size:10.0pt'>&nbsp;boolean</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#add%28E%29"><span
+  lang=EN-GB>add</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>(</span></code><code><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html"
+  title="type parameter in Set"><span lang=EN-GB>E</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;e)</span></code><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds the
+  specified element to this set if it is not already present (optional
+  operation).</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>boolean</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#addAll%28java.util.Collection%29"><span
+  lang=EN-GB>addAll</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>(</span></code><code><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Collection.html"
+  title="interface in java.util"><span lang=EN-GB>Collection</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&lt;? extends </span></code><code><span
+  style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html"
+  title="type parameter in Set"><span lang=EN-GB>E</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&gt;&nbsp;c)</span></code><span
+  lang=EN-GB style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds all of the
+  elements in the specified collection to this set if they're not already
+  present (optional operation).</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>void</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#clear%28%29"><span
+  lang=EN-GB>clear</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>()</span></code><span lang=EN-GB style='font-size:
+  10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Removes all of
+  the elements from this set (optional operation).</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>boolean</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#contains%28java.lang.Object%29"><span
+  lang=EN-GB>contains</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>(</span></code><code><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html"
+  title="class in java.lang"><span lang=EN-GB>Object</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;o)</span></code><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns </span><tt><span
+  lang=EN-GB style='font-size:10.0pt'>true</span></tt><span lang=EN-GB
+  style='font-size:10.0pt'> if this set contains the specified element.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>boolean</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#containsAll%28java.util.Collection%29"><span
+  lang=EN-GB>containsAll</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>(</span></code><code><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Collection.html"
+  title="interface in java.util"><span lang=EN-GB>Collection</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&lt;?&gt;&nbsp;c)</span></code><span
+  lang=EN-GB style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns </span><tt><span
+  lang=EN-GB style='font-size:10.0pt'>true</span></tt><span lang=EN-GB
+  style='font-size:10.0pt'> if this set contains all of the elements of the
+  specified collection.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>boolean</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#equals%28java.lang.Object%29"><span
+  lang=EN-GB>equals</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>(</span></code><code><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html"
+  title="class in java.lang"><span lang=EN-GB>Object</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;o)</span></code><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compares the
+  specified object with this set for equality.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>int</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#hashCode%28%29"><span
+  lang=EN-GB>hashCode</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>()</span></code><span lang=EN-GB style='font-size:
+  10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the hash
+  code value for this set.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>boolean</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#isEmpty%28%29"><span
+  lang=EN-GB>isEmpty</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>()</span></code><span lang=EN-GB style='font-size:
+  10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns </span><tt><span
+  lang=EN-GB style='font-size:10.0pt'>true</span></tt><span lang=EN-GB
+  style='font-size:10.0pt'> if this set contains no elements.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Iterator.html"
+  title="interface in java.util">Iterator</a>&lt;<a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html"
+  title="type parameter in Set">E</a>&gt;</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#iterator%28%29"><span
+  lang=EN-GB>iterator</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>()</span></code><span lang=EN-GB style='font-size:
+  10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an
+  iterator over the elements in this set.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>boolean</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#remove%28java.lang.Object%29"><span
+  lang=EN-GB>remove</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>(</span></code><code><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html"
+  title="class in java.lang"><span lang=EN-GB>Object</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;o)</span></code><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Removes the
+  specified element from this set if it is present (optional operation).</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>boolean</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#removeAll%28java.util.Collection%29"><span
+  lang=EN-GB>removeAll</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>(</span></code><code><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Collection.html"
+  title="interface in java.util"><span lang=EN-GB>Collection</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&lt;?&gt;&nbsp;c)</span></code><span
+  lang=EN-GB style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Removes from this
+  set all of its elements that are contained in the specified collection
+  (optional operation).</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>boolean</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#retainAll%28java.util.Collection%29"><span
+  lang=EN-GB>retainAll</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>(</span></code><code><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Collection.html"
+  title="interface in java.util"><span lang=EN-GB>Collection</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&lt;?&gt;&nbsp;c)</span></code><span
+  lang=EN-GB style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retains only the
+  elements in this set that are contained in the specified collection (optional
+  operation).</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>int</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#size%28%29"><span
+  lang=EN-GB>size</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>()</span></code><span lang=EN-GB style='font-size:
+  10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the
+  number of elements in this set (its cardinality).</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html"
+  title="class in java.lang">Object</a>[]</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#toArray%28%29"><span
+  lang=EN-GB>toArray</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>()</span></code><span lang=EN-GB style='font-size:
+  10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array
+  containing all of the elements in this set.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <div align=right>
+  <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0>
+   <tr>
+    <td nowrap style='padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal align=right style='text-align:right'><code><span
+    style='font-size:10.0pt'>&lt;T&gt; T[]</span></code></p>
+    </td>
+   </tr>
+  </table>
+  </div>
+  <p class=MsoNormal align=right style='text-align:right'></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Set.html#toArray%28T[]%29"><span
+  lang=EN-GB>toArray</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>(T[]&nbsp;a)</span></code><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an array
+  containing all of the elements in this set; the runtime type of the returned
+  array is that of the specified array.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h2><span style='font-size:10.0pt'>&nbsp;java.lang <br>
+Interface Iterable&lt;T&gt;</span></h2>
+
+<p><span lang=EN-GB style='font-size:10.0pt'>Implementing this interface allows
+an object to be the target of the &quot;foreach&quot; statement. </span></p>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt'>
+
+<hr size=2 width="100%" align=center>
+
+</span></div>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%'>
+ <tr>
+  <td colspan=2 style='background:#CCCCFF;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><b><span lang=EN-GB style='font-size:10.0pt'>Method
+  Summary</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Iterator.html"
+  title="interface in java.util"><span lang=EN-GB style='font-family:"Times New Roman"'>Iterator</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&lt;</span></code><code><span
+  style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Iterable.html"
+  title="type parameter in Iterable"><span lang=EN-GB style='font-family:"Times New Roman"'>T</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&gt;</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Iterable.html#iterator%28%29"><span
+  lang=EN-GB style='font-family:"Times New Roman"'>iterator</span></a></span></b></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>()</span></code><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an
+  iterator over a set of elements of type T.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h2><span lang=EN-GB style='font-size:10.0pt'>&nbsp;java.util <br>
+Interface Iterator&lt;E&gt;</span></h2>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt'>
+
+<hr size=2 width="100%" align=center>
+
+</span></div>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%'>
+ <tr>
+  <td colspan=2 style='background:#CCCCFF;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt'>Method Summary</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  style='font-size:10.0pt'>&nbsp;boolean</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Iterator.html#hasNext%28%29"><span
+  lang=EN-GB style='font-family:"Times New Roman"'>hasNext</span></a></span></b></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>()</span></code><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns </span><tt><span
+  lang=EN-GB style='font-size:10.0pt'>true</span></tt><span lang=EN-GB
+  style='font-size:10.0pt'> if the iteration has more elements.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Iterator.html"
+  title="type parameter in Iterator"><span style='font-family:"Times New Roman"'>E</span></a></span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Iterator.html#next%28%29"><span
+  lang=EN-GB style='font-family:"Times New Roman"'>next</span></a></span></b></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>()</span></code><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the next
+  element in the iteration.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>void</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Iterator.html#remove%28%29"><span
+  lang=EN-GB style='font-family:"Times New Roman"'>remove</span></a></span></b></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>()</span></code><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Removes from the
+  underlying collection the last element returned by the iterator (optional
+  operation).</span></p>
+  </td>
+ </tr>
+</table>
+
+<h2><span lang=EN-GB style='font-size:10.0pt'>&nbsp;</span><span
+style='font-size:10.0pt'>java.util <br>
+Class Collections</span></h2>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt'>
+
+<hr size=2 width="100%" align=center>
+
+</span></div>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:10.0pt'>&nbsp; <a
+name="method_summary"></a></span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%'>
+ <tr>
+  <td colspan=2 style='background:#CCCCFF;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt'>Method Summary</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='width:25.62%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  style='font-size:10.0pt'>static </span></code></p>
+  <div align=right>
+  <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0>
+   <tr>
+    <td nowrap style='padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal align=right style='text-align:right'><code><span
+    style='font-size:10.0pt'>&lt;T&gt; <a
+    href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Set.html"
+    title="interface in java.util">Set</a>&lt;T&gt;</span></code></p>
+    </td>
+   </tr>
+  </table>
+  </div>
+  <p class=MsoNormal align=right style='text-align:right'></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Collections.html#unmodifiableSet%28java.util.Set%29"><span
+  lang=EN-GB>unmodifiableSet</span></a></span></b></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>(</span></code><code><span
+  style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Set.html"
+  title="interface in java.util"><span lang=EN-GB>Set</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&lt;? extends T&gt;&nbsp;s)</span></code><span
+  lang=EN-GB style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an
+  unmodifiable view of the specified set.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='width:25.62%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  style='font-size:10.0pt'>static </span></code></p>
+  <div align=right>
+  <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0>
+   <tr>
+    <td nowrap style='padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal align=right style='text-align:right'><code><span
+    lang=EN-GB style='font-size:10.0pt'>&lt;K,V&gt; </span></code><code><span
+    style='font-size:10.0pt'><a
+    href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/SortedMap.html"
+    title="interface in java.util"><span lang=EN-GB>SortedMap</span></a></span></code><code><span
+    lang=EN-GB style='font-size:10.0pt'>&lt;K,V&gt;</span></code></p>
+    </td>
+   </tr>
+  </table>
+  </div>
+  <p class=MsoNormal align=right style='text-align:right'></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Collections.html#unmodifiableSortedMap%28java.util.SortedMap%29"><span
+  lang=EN-GB>unmodifiableSortedMap</span></a></span></b></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>(</span></code><code><span
+  style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/SortedMap.html"
+  title="interface in java.util"><span lang=EN-GB>SortedMap</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&lt;K,? extends V&gt;&nbsp;m)</span></code><span
+  lang=EN-GB style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an
+  unmodifiable view of the specified sorted map.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="25%" valign=top style='width:25.62%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  style='font-size:10.0pt'>static </span></code></p>
+  <div align=right>
+  <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0>
+   <tr>
+    <td nowrap style='padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal align=right style='text-align:right'><code><span
+    style='font-size:10.0pt'>&lt;T&gt; <a
+    href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/SortedSet.html"
+    title="interface in java.util">SortedSet</a>&lt;T&gt;</span></code></p>
+    </td>
+   </tr>
+  </table>
+  </div>
+  <p class=MsoNormal align=right style='text-align:right'></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/Collections.html#unmodifiableSortedSet%28java.util.SortedSet%29"><span
+  lang=EN-GB>unmodifiableSortedSet</span></a></span></b></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>(</span></code><code><span
+  style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/1.5.0/docs/api/java/util/SortedSet.html"
+  title="interface in java.util"><span lang=EN-GB>SortedSet</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>&lt;T&gt;&nbsp;s)</span></code><span
+  lang=EN-GB style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns an
+  unmodifiable view of the specified sorted set.</span></p>
+  </td>
+ </tr>
+</table>
+
+<h2><span lang=EN-GB style='font-size:10.0pt;color:black'>java.awt.event<span
+class=apple-converted-space>&nbsp;</span><br>
+Interface ActionListener</span></h2>
+
+<pre><span lang=EN-GB style='color:black'>public interface <b>ActionListener</b></span></pre><pre><span
+lang=EN-GB style='color:black'>extends </span><span style='color:black'><a
+href="../../../../../jdk1.6/jdk-6u21-docs/docs/api/java/util/EventListener.html"
+title="interface in java.util"><span lang=EN-GB>EventListener</span></a></span></pre>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+class=apple-style-span><span style='font-size:10.0pt;color:black'>
+
+<hr size=2 width="100%" align=center>
+
+</span></span></div>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%'>
+ <tr>
+  <td colspan=2 style='background:#CCCCFF;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt;color:black'>Method
+  Summary</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="1%" valign=top style='width:1.0%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  style='font-size:10.0pt;color:black'>&nbsp;void</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt;color:black'><a
+  href="../../../../../jdk1.6/jdk-6u21-docs/docs/api/java/awt/event/ActionListener.html#actionPerformed(java.awt.event.ActionEvent)"><span
+  lang=EN-GB>actionPerformed</span></a></span></b></code><code><span
+  lang=EN-GB style='font-size:10.0pt;color:black'>(</span></code><code><span
+  style='font-size:10.0pt;color:black'><a
+  href="../../../../../jdk1.6/jdk-6u21-docs/docs/api/java/awt/event/ActionEvent.html"
+  title="class in java.awt.event"><span lang=EN-GB>ActionEvent</span></a></span></code><code><span
+  lang=EN-GB style='font-size:10.0pt;color:black'>&nbsp;e)</span></code><span
+  class=apple-converted-space><span lang=EN-GB style='font-size:10.0pt;
+  color:black'>&nbsp;</span></span><span lang=EN-GB style='font-size:10.0pt;
+  color:black'><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Invoked when an
+  action occurs.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:10.0pt;color:black'>&nbsp;</span></p>
+
+<h2><span lang=EN-GB style='font-size:10.0pt'>org.jdom <br>
+Class Element <i>partielle</i> </span></h2>
+
+<pre><span lang=EN-GB style='font-family:"Times New Roman"'>java.lang.Object</span></pre><pre><span
+style='font-family:"Times New Roman"'>  <img border=0 width=15 height=14
+src="ExamenFevrier2013_fichiers/image005.gif" alt="extended by "><a
+href="http://www.jdom.org/docs/apidocs/org/jdom/Content.html"
+title="class in org.jdom">org.jdom.Content</a></span></pre><pre><span
+style='font-family:"Times New Roman"'>      <img border=0 width=15 height=14
+src="ExamenFevrier2013_fichiers/image005.gif" alt="extended by "><b>org.jdom.Element</b></span></pre>
+
+<p class=MsoNormal><b><span lang=EN-GB style='font-size:10.0pt'>All Implemented
+Interfaces:</span></b><span lang=EN-GB style='font-size:10.0pt'> </span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-GB
+style='font-size:10.0pt'>java.io.Serializable, java.lang.Cloneable, </span><span
+style='font-size:10.0pt'><a
+href="http://www.jdom.org/docs/apidocs/org/jdom/Parent.html"
+title="interface in org.jdom"><span lang=EN-GB>Parent</span></a></span></p>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt'>
+
+<hr size=2 width="100%" align=center>
+
+</span></div>
+
+<pre><span lang=EN-GB style='font-family:"Times New Roman"'>public class <b>Element</b></span></pre>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:10.0pt'>extends </span><span
+style='font-size:10.0pt'><a
+href="http://www.jdom.org/docs/apidocs/org/jdom/Content.html"
+title="class in org.jdom"><span lang=EN-GB>Content</span></a></span></p>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:10.0pt'>implements </span><span
+style='font-size:10.0pt'><a
+href="http://www.jdom.org/docs/apidocs/org/jdom/Parent.html"
+title="interface in org.jdom"><span lang=EN-GB>Parent</span></a></span></p>
+
+<p><span lang=EN-GB style='font-size:10.0pt'>An XML element. Methods allow the
+user to get and manipulate its child elements and content, directly access the
+element's textual content, manipulate its attributes, and manage namespaces. </span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%'>
+ <tr style='height:19.5pt'>
+  <td colspan=2 style='background:#CCCCFF;padding:2.25pt 2.25pt 2.25pt 2.25pt;
+  height:19.5pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt'>Constructor Summary</span></b></p>
+  </td>
+ </tr>
+ <tr style='height:28.5pt'>
+  <td width="2%" valign=top style='width:2.48%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt;
+  height:28.5pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  style='font-size:10.0pt'>&nbsp;</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt;height:28.5pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://www.jdom.org/docs/apidocs/org/jdom/Element.html#Element%28java.lang.String%29"><span
+  lang=EN-GB style='font-family:"Times New Roman"'>Element</span></a></span></b></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>(java.lang.String&nbsp;name)</span></code><span
+  lang=EN-GB style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a new
+  element with the supplied (local) name and no namespace.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p><span lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%'>
+ <tr>
+  <td colspan=2 style='background:#CCCCFF;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt'>Method Summary</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="11%" valign=top style='width:11.14%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  style='font-size:10.0pt'>&nbsp;<a
+  href="http://www.jdom.org/docs/apidocs/org/jdom/Element.html"
+  title="class in org.jdom"><span style='font-family:"Times New Roman"'>Element</span></a></span></code></p>
+  </td>
+  <td style='border:none;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://www.jdom.org/docs/apidocs/org/jdom/Element.html#addContent%28java.lang.String%29"><span
+  lang=EN-GB style='font-family:"Times New Roman"'>addContent</span></a></span></b></code><code><span
+  lang=EN-GB style='font-size:10.0pt'>(java.lang.String&nbsp;str)</span></code><span
+  lang=EN-GB style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This adds text
+  content to this element.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="11%" valign=top style='width:11.14%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'><a
+  href="http://www.jdom.org/docs/apidocs/org/jdom/Element.html"
+  title="class in org.jdom"><span style='font-family:"Times New Roman"'>Element</span></a></span></code></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:inset 1.0pt;
+  border-right:inset 1.0pt;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://www.jdom.org/docs/apidocs/org/jdom/Element.html#setAttribute%28java.lang.String,%20java.lang.String%29"><span
+  lang=EN-GB style='font-family:"Times New Roman"'>setAttribute</span></a></span></b></code><code><b><span
+  lang=EN-GB style='font-size:10.0pt'>(java.lang.String&nbsp;name,
+  java.lang.String&nbsp;value)</span></b></code><b><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This sets an
+  attribute value for this element.</span></b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></p>
+
+<h2><span lang=EN-GB style='font-size:10.0pt'>java.util <br>
+Class Random</span></h2>
+
+<pre><a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Object.html"
+title="class in java.lang"><span lang=EN-GB>java.lang.Object</span></a></pre><pre><span
+lang=EN-GB>  </span><img border=0 width=15 height=14
+src="ExamenFevrier2013_fichiers/image006.gif" alt="extended by "><b><span
+lang=EN-GB>java.util.Random</span></b></pre>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt'>
+
+<hr size=2 width="100%" align=center>
+
+</span></div>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%'>
+ <tr>
+  <td colspan=2 style='background:#CCCCFF;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><a name="constructor_summary"></a><b><span
+  style='font-size:10.0pt'>Constructor Summary</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Random.html#Random%28%29"><span
+  lang=EN-GB>Random</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>()</span></code><span lang=EN-GB style='font-size:
+  10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates a new
+  random number generator.</span></p>
+  </td>
+  <td style='border:none;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-GB style='font-size:10.0pt'>&nbsp; </span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%'>
+ <tr>
+  <td colspan=2 style='background:#CCCCFF;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><b><span style='font-size:10.0pt'>Method Summary</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="12%" valign=top style='width:12.2%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>int</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Random.html#nextInt%28%29"><span
+  lang=EN-GB>nextInt</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>()</span></code><span lang=EN-GB style='font-size:
+  10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the next
+  pseudorandom, uniformly distributed </span><code><span lang=EN-GB
+  style='font-size:10.0pt'>int</span></code><span lang=EN-GB style='font-size:
+  10.0pt'> value from this random number generator's sequence.</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="12%" valign=top style='width:12.2%;background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal align=right style='text-align:right'><code><span
+  lang=EN-GB style='font-size:10.0pt'>&nbsp;</span></code><code><span
+  style='font-size:10.0pt'>int</span></code></p>
+  </td>
+  <td style='background:white;padding:2.25pt 2.25pt 2.25pt 2.25pt'>
+  <p class=MsoNormal><code><b><span style='font-size:10.0pt'><a
+  href="http://docs.oracle.com/javase/6/docs/api/java/util/Random.html#nextInt%28int%29"><span
+  lang=EN-GB>nextInt</span></a></span></b></code><code><span lang=EN-GB
+  style='font-size:10.0pt'>(int&nbsp;n)</span></code><span lang=EN-GB
+  style='font-size:10.0pt'> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a
+  pseudorandom, uniformly distributed </span><code><span lang=EN-GB
+  style='font-size:10.0pt'>int</span></code><span lang=EN-GB style='font-size:
+  10.0pt'> value between 0 (inclusive) and the specified value (exclusive),
+  drawn from this random number generator's sequence.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt'>&nbsp;</span><span
+style='font-size:9.0pt;color:black'><br clear=all style='page-break-before:
+always'>
+</span><span style='font-size:10.0pt;font-family:"Courier New";color:black'>import
+java.util.*;                                  </span><b><span style='font-size:
+14.0pt;font-family:"Courier New";color:black'>Numéro de copie:</span></b></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public class UnitéEnseignement 
+implements UnitéEnseignementI{</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>  </span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>  </span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public UnitéEnseignement(String
+intitulé){</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public boolean inscrire(AuditeurI
+auditeur){</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public boolean
+inscrire(Set&lt;AuditeurI&gt; liste){</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>  </span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public void figerLesInscrits(){</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public void setSalleDeCours(String
+salleDeCours){</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>  </span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public Set&lt;AuditeurI&gt;
+notifier(MessageI message){</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public void setNotification(NotificationI
+notification){</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public String getSalleDeCours(){</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public Set&lt;AuditeurI&gt;
+getAuditeurs(){</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-right:-54.0pt'><span style='font-size:10.0pt;
+font-family:"Courier New";color:black'>public Iterator&lt;AuditeurI&gt;
+iterator(){</span></p>
+
+</div>
+
+</body>
+
+</html>

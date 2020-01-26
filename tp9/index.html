@@ -1,0 +1,1472 @@
+<html>
+<head>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+    <title>NFP121 - TP9</title>
+    <style type="text/css">
+        body {
+            background: #E5DED6;
+            background-color: #fff;
+            color: #333333;
+            font-size: 14px;
+            font-family: Verdana, Arial;
+        }
+
+        table {
+            font-size: 20px;
+            border-color: #808080;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        h2 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        hr {
+            margin: 15px 0 15px 0;
+        }
+		
+		applet {
+			margin: 10px 0px 25px 250px;
+			border-width: 1px;
+			border-style: solid;
+			border-color: #777777;
+		}
+    </style>
+
+</head>
+<body>
+    <h2 style="text-align: center">NFP 121 - TP9</h2>
+    <h2 style="text-align: center">XML</h2>
+    <br />
+    <hr>
+    <br />
+    <table>
+        <tr>
+            <td>Nom
+            </td>
+            <td>SOAGE CAMPELO
+            </td>
+        </tr>
+        <tr>
+            <td>Prénom
+            </td>
+            <td>MARÍA ESTHER
+            </td>
+        </tr>
+        <tr>
+            <td>Matricule
+            </td>
+            <td>FOD_0G5DRMA39F5
+            </td>
+        </tr>
+    </table>
+		
+	<br />
+    <hr />
+    <h3>Question 1.1</h3>
+    <br />
+    Dans cette question nous devons compléter les classes AST des programmes du langage WhileL du TP6. Les classes à compléter sont les suivantes : AST_Fact, AST_Mult1, AST_Mult2, AST_SOM_F et AST_SOM_W. 
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question3.*;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Décrivez&nbsp;votre&nbsp;classe&nbsp;AST_Fact&nbsp;ici.
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;<strong>@author</strong>&nbsp;(votre&nbsp;nom)
+<br/>&nbsp;*&nbsp;<strong>@version</strong>&nbsp;(un&nbsp;numéro&nbsp;de&nbsp;version&nbsp;ou&nbsp;une&nbsp;date)
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;AST_Fact&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;AST_Progr&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;java.io.Serializable&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;construire&nbsp;l'AST&nbsp;du&nbsp;programme&nbsp;"WhileL&nbsp;style"&nbsp;est&nbsp;à&nbsp;construire&nbsp;ci&nbsp;dessous
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;xxx:=n&nbsp;;&nbsp;fact&nbsp;:=&nbsp;1&nbsp;;&nbsp;while&nbsp;(~(xxx=0)&nbsp;)&nbsp;do&nbsp;fact&nbsp;:=&nbsp;fact&nbsp;*&nbsp;xxx&nbsp;;&nbsp;xxx:=
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;xxx-1;&nbsp;ftp;&nbsp;afficher(fact);&nbsp;remarque&nbsp;:&nbsp;on&nbsp;calcule&nbsp;ici&nbsp;fact(n)&nbsp;i.e.&nbsp;n&nbsp;est
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;une&nbsp;donnée&nbsp;fournie&nbsp;au&nbsp;moment&nbsp;de&nbsp;l'exécution,&nbsp;d'où&nbsp;le&nbsp;constructeur&nbsp;suivant
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;xxx&nbsp;:=&nbsp;n;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;fact&nbsp;:=&nbsp;1;&nbsp;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;while&nbsp;(~(xxx=0))&nbsp;do&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;fact&nbsp;:=&nbsp;fact&nbsp;*&nbsp;xxx&nbsp;;&nbsp;xxx&nbsp;:=&nbsp;xxx&nbsp;-&nbsp;1;&nbsp;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;ftp;
+</font><br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Contexte&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Instruction&nbsp;ast;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;AST_Fact(<strong><font color='#7f0055'>int</font></strong>&nbsp;n1)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;n&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"n"</font>,&nbsp;n1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;fact&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"fact"</font>,&nbsp;0);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(fact,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(1)),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TantQue(<strong><font color='#7f0055'>new</font></strong>&nbsp;Non(<strong><font color='#7f0055'>new</font></strong>&nbsp;Egal(n,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(0))),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(fact,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Multiplication(fact,&nbsp;n)),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(n,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Soustraction(n,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(1))))),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Afficher(fact)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;getMem()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Instruction&nbsp;getAST()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;ast;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+	<br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question3.*;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Décrivez&nbsp;votre&nbsp;classe&nbsp;AST_Mult1&nbsp;ici.
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;<strong>@author</strong>&nbsp;(votre&nbsp;nom)
+<br/>&nbsp;*&nbsp;<strong>@version</strong>&nbsp;(un&nbsp;numéro&nbsp;de&nbsp;version&nbsp;ou&nbsp;une&nbsp;date)
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;AST_Mult1&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;AST_Progr&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;java.io.Serializable&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;modèle&nbsp;"java&nbsp;Style"&nbsp;dont&nbsp;l'AST&nbsp;"WhileL&nbsp;style"&nbsp;est&nbsp;à&nbsp;construire&nbsp;ci&nbsp;dessous
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;a&nbsp;=&nbsp;n1&nbsp;;&nbsp;b&nbsp;=&nbsp;n2&nbsp;;&nbsp;produit&nbsp;=&nbsp;0&nbsp;;&nbsp;while&nbsp;(b&nbsp;>&nbsp;0)&nbsp;{&nbsp;produit&nbsp;=&nbsp;produit&nbsp;+&nbsp;a&nbsp;;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;b=b-1;&nbsp;}&nbsp;afficher(produit);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;produit&nbsp;=&nbsp;0;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;while&nbsp;(b&nbsp;>&nbsp;0)&nbsp;do&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;produit&nbsp;:=&nbsp;produit&nbsp;+&nbsp;a;&nbsp;b&nbsp;:=&nbsp;b&nbsp;-&nbsp;1;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;fpt;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Contexte&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Instruction&nbsp;ast;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;AST_Mult1(<strong><font color='#7f0055'>int</font></strong>&nbsp;n1,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;n2)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;a&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"a"</font>,&nbsp;n1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;b&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"b"</font>,&nbsp;n2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;produit&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"produit"</font>,&nbsp;0);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TantQue(<strong><font color='#7f0055'>new</font></strong>&nbsp;Sup(b,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(0)),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(produit,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(produit,&nbsp;a)),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(b,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Soustraction(b,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(1))))),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Afficher(produit));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;getMem()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Instruction&nbsp;getAST()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;ast;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question3.*;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Décrivez&nbsp;votre&nbsp;classe&nbsp;AST_Mult2&nbsp;ici.
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;<strong>@author</strong>&nbsp;(votre&nbsp;nom)
+<br/>&nbsp;*&nbsp;<strong>@version</strong>&nbsp;(un&nbsp;numéro&nbsp;de&nbsp;version&nbsp;ou&nbsp;une&nbsp;date)
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;AST_Mult2&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;AST_Progr&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;java.io.Serializable&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;a&nbsp;:=&nbsp;7&nbsp;;&nbsp;b&nbsp;:=&nbsp;85&nbsp;;&nbsp;produit&nbsp;:=&nbsp;0&nbsp;;&nbsp;m1:=a&nbsp;;&nbsp;m2:=b;&nbsp;while&nbsp;(m2&nbsp;>&nbsp;0)&nbsp;do&nbsp;if
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;(m2/2*2)=m2&nbsp;then&nbsp;m1:=&nbsp;m1*2&nbsp;;&nbsp;m2&nbsp;:=&nbsp;m2/2;end&nbsp;produit&nbsp;:=&nbsp;produit&nbsp;+&nbsp;m1&nbsp;;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;m2:=m2-1;&nbsp;end&nbsp;afficher(produit);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;produit&nbsp;:=&nbsp;0;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;while&nbsp;(m2&nbsp;>&nbsp;0)&nbsp;do&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;if&nbsp;(m2&nbsp;/&nbsp;2&nbsp;*&nbsp;2)&nbsp;=&nbsp;m2&nbsp;then&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;m1&nbsp;:=&nbsp;m1&nbsp;*&nbsp;2;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;m2&nbsp;:=&nbsp;m2&nbsp;/&nbsp;2;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;fi;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;produit&nbsp;&nbsp;:=&nbsp;produit&nbsp;&nbsp;+&nbsp;m1&nbsp;;&nbsp;m2&nbsp;:=&nbsp;m2&nbsp;-&nbsp;1;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;ftp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Contexte&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;AST_Mult2(<strong><font color='#7f0055'>int</font></strong>&nbsp;n1,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;n2)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;a&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"a"</font>,&nbsp;n1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;b&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"b"</font>,&nbsp;n2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;produit&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"produit"</font>,&nbsp;0);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;m1&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"m1"</font>,&nbsp;0);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;m2&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"m2"</font>,&nbsp;0);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(m1,&nbsp;a),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(m2,&nbsp;b)),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TantQue(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sup(m2,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(0)),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Selection(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Egal(<strong><font color='#7f0055'>new</font></strong>&nbsp;Multiplication(<strong><font color='#7f0055'>new</font></strong>&nbsp;Division(m2,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2)),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2)),&nbsp;m2),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(m1,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Multiplication(m1,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2))),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(m2,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Division(m2,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(2))))),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(produit,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(produit,&nbsp;m1)),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(m2,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Soustraction(m2,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(1)))))),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Afficher(produit)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;getMem()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Instruction&nbsp;getAST()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;ast;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question3.*;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Décrivez&nbsp;votre&nbsp;classe&nbsp;AST_SOM_W&nbsp;ici.
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;<strong>@author</strong>&nbsp;(votre&nbsp;nom)
+<br/>&nbsp;*&nbsp;<strong>@version</strong>&nbsp;(un&nbsp;numéro&nbsp;de&nbsp;version&nbsp;ou&nbsp;une&nbsp;date)
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;AST_SOM_W&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;AST_Progr&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;java.io.Serializable&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;modèle&nbsp;"java&nbsp;Style"&nbsp;dont&nbsp;l'AST&nbsp;"WhileL&nbsp;style"&nbsp;est&nbsp;à&nbsp;construire&nbsp;ci&nbsp;dessous
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;n=100;&nbsp;som&nbsp;=&nbsp;0&nbsp;;&nbsp;while&nbsp;(n>&nbsp;0)&nbsp;{&nbsp;som&nbsp;=&nbsp;som+n&nbsp;;&nbsp;n&nbsp;=&nbsp;n&nbsp;-&nbsp;1&nbsp;;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;afficher(som);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;som&nbsp;:=&nbsp;0;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;while&nbsp;(n&nbsp;>&nbsp;0)&nbsp;do&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;som&nbsp;:=&nbsp;som&nbsp;+&nbsp;n;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;n&nbsp;:=&nbsp;n&nbsp;-&nbsp;1;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;end
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Contexte&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;AST_SOM_W(<strong><font color='#7f0055'>int</font></strong>&nbsp;n1)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;n&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"n"</font>,&nbsp;n1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;som&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"som"</font>,&nbsp;0);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TantQue(<strong><font color='#7f0055'>new</font></strong>&nbsp;Sup(n,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(0)),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(som,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(som,&nbsp;n)),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(n,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Soustraction(n,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(1))))),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Afficher(som));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;getMem()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Instruction&nbsp;getAST()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;ast;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question3.*;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Décrivez&nbsp;votre&nbsp;classe&nbsp;AST_SOM_F&nbsp;ici.
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;<strong>@author</strong>&nbsp;(votre&nbsp;nom)
+<br/>&nbsp;*&nbsp;<strong>@version</strong>&nbsp;(un&nbsp;numéro&nbsp;de&nbsp;version&nbsp;ou&nbsp;une&nbsp;date)
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;AST_SOM_F&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;AST_Progr&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;java.io.Serializable&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;n=100;&nbsp;som&nbsp;=&nbsp;0&nbsp;;&nbsp;for(i=0&nbsp;;&nbsp;i<n&nbsp;;&nbsp;i++){&nbsp;(n>&nbsp;0)&nbsp;{&nbsp;som&nbsp;:=&nbsp;som+i&nbsp;;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;afficher(som);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;som&nbsp;:=&nbsp;0;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;for&nbsp;(i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;n;&nbsp;i++)&nbsp;{&nbsp;(n>&nbsp;0)&nbsp;{&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;som&nbsp;:=&nbsp;som&nbsp;+&nbsp;i;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;}
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Contexte&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;AST_SOM_F(<strong><font color='#7f0055'>int</font></strong>&nbsp;n1)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;n&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"n"</font>,&nbsp;n1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;som&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"som"</font>,&nbsp;0);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;i&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(m,&nbsp;<font color='#2a00ff'>"i"</font>,&nbsp;0);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Pour(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(i,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(0)),&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Inf(i,&nbsp;n),&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Selection(<strong><font color='#7f0055'>new</font></strong>&nbsp;Sup(n,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(0)),&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(som,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(som,&nbsp;i))),&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(i,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(i,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(1)))),
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Afficher(som));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;getMem()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;m;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Instruction&nbsp;getAST()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;ast;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <hr />
+    <h3>Question 1.2</h3>
+    Dans cette question nous devons écrire de tests pour les classes AST écrites dans la question précédente. Les tests ont été ajoutés dans la classe TestFactoriel qui apparaît ci-dessous.	
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question3.*;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;TestFactoriel&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;junit.framework.TestCase&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;fact(<strong><font color='#7f0055'>int</font></strong>&nbsp;n)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(n&nbsp;==&nbsp;0)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;1;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>else</font></strong>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;n&nbsp;*&nbsp;fact(n&nbsp;-&nbsp;1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testFactoriel()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AST_Fact&nbsp;p&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_Fact(10);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;p.getMem();&nbsp;<font color='#3f7f5f'>//&nbsp;récupération&nbsp;du&nbsp;contexte
+</font><br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<Integer>&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<Contexte>&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<String>&nbsp;ves&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<String>&nbsp;vbs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolToString(ves);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<String>&nbsp;vs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstToString(ves,&nbsp;vbs);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;p.getAST();&nbsp;<font color='#3f7f5f'>//&nbsp;récupération&nbsp;de&nbsp;l'AST
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);&nbsp;<font color='#3f7f5f'>//&nbsp;évaluation&nbsp;proprement&nbsp;dite&nbsp;de&nbsp;l'AST
+</font><br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue((String)&nbsp;ast.accepter(vs)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;ne&nbsp;donne&nbsp;pas&nbsp;le&nbsp;résultat&nbsp;attendu&nbsp;..."</font>,&nbsp;&nbsp;&nbsp;&nbsp;m.lire(<font color='#2a00ff'>"fact"</font>)&nbsp;==&nbsp;fact(10));
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;!!!&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_Mult1()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AST_Mult1&nbsp;p&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_Mult1(10,&nbsp;50);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;p.getMem();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ves&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vbs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolToString(ves);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstToString(ves,&nbsp;vbs);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;p.getAST();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue((String)&nbsp;ast.accepter(vs)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;ne&nbsp;donne&nbsp;pas&nbsp;le&nbsp;rÃ©sultat&nbsp;attendu&nbsp;..."</font>,&nbsp;m.lire(<font color='#2a00ff'>"produit"</font>)&nbsp;==&nbsp;500);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;!!!&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_Mult2()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AST_Mult2&nbsp;p&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_Mult2(7,&nbsp;85);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;p.getMem();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ves&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vbs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolToString(ves);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstToString(ves,&nbsp;vbs);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;p.getAST();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue((String)&nbsp;ast.accepter(vs)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;ne&nbsp;donne&nbsp;pas&nbsp;le&nbsp;rÃ©sultat&nbsp;attendu&nbsp;..."</font>,&nbsp;m.lire(<font color='#2a00ff'>"produit"</font>)&nbsp;==&nbsp;595);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;!!!&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_SOM_F()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AST_SOM_F&nbsp;p&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_SOM_F(100);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;p.getMem();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ves&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vbs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolToString(ves);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstToString(ves,&nbsp;vbs);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;p.getAST();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue((String)&nbsp;ast.accepter(vs)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;ne&nbsp;donne&nbsp;pas&nbsp;le&nbsp;rÃ©sultat&nbsp;attendu&nbsp;..."</font>,&nbsp;m.lire(<font color='#2a00ff'>"som"</font>)&nbsp;==&nbsp;4950);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;!!!&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_SOM_W()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AST_SOM_W&nbsp;p&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_SOM_W(100);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;p.getMem();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ves&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vbs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolToString(ves);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstToString(ves,&nbsp;vbs);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;p.getAST();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue((String)&nbsp;ast.accepter(vs)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;ne&nbsp;donne&nbsp;pas&nbsp;le&nbsp;rÃ©sultat&nbsp;attendu&nbsp;..."</font>,&nbsp;m.lire(<font color='#2a00ff'>"som"</font>)&nbsp;==&nbsp;5050);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;!!!&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+	<br />
+    <hr />
+    <h3>Question 1.3</h3>
+    Dans cette question nous devons construire la Classe "boite à outils" JAVASerialiseDeserialise. La sérialisation des AST utilise des ObjectOutputStream et ObjectInputStream pour sauvegarder les AST dans des fichiers.	
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/>
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.*;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Décrivez&nbsp;votre&nbsp;classe&nbsp;JAVASerialiseDeserialise&nbsp;ici.
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;<strong>@author</strong>&nbsp;(votre&nbsp;nom)&nbsp;
+<br/>&nbsp;*&nbsp;<strong>@version</strong>&nbsp;(un&nbsp;numéro&nbsp;de&nbsp;version&nbsp;ou&nbsp;une&nbsp;date)
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;JAVASerialiseDeserialise&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;serialjava(IProgr&nbsp;p,&nbsp;String&nbsp;nomDuFichier){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ObjectOutputStream&nbsp;os&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ObjectOutputStream(<strong><font color='#7f0055'>new</font></strong>&nbsp;FileOutputStream(nomDuFichier));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os.writeObject(p);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os.close();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;ex)&nbsp;{&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;IProgr&nbsp;deserialjava(String&nbsp;nomDuFichier){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ObjectInputStream&nbsp;is&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ObjectInputStream(<strong><font color='#7f0055'>new</font></strong>&nbsp;FileInputStream(nomDuFichier));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;(IProgr)is.readObject();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;ex)&nbsp;{&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+	<br />
+    <hr />
+    <h3>Question 1.4</h3>
+    Dans cette question, nous devons vérifier par une classe de Test (Junit/BlueJ) que les évaluations de (Q1.2) et de nouvelles évaluations après sérialisation et désérialisation donnent des résultats identiques. Nous allons donc tester le bon fonctionnement des AST après sérialisation/désérialisation.
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question3.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;TestDesSer&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;junit.framework.TestCase&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testSimple()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question1.JAVASerialiseDeserialise.serialjava(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_Aff(),&nbsp;<font color='#2a00ff'>"test.ser"</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question1.AST_Aff&nbsp;p&nbsp;=&nbsp;(question1.AST_Aff)&nbsp;question1.JAVASerialiseDeserialise.deserialjava(<font color='#2a00ff'>"test.ser"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertNotNull(p);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<Integer>&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<Contexte>&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;p.getAST();&nbsp;<font color='#3f7f5f'>//&nbsp;récupération&nbsp;de&nbsp;l'AST
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);&nbsp;<font color='#3f7f5f'>//&nbsp;évaluation&nbsp;proprement&nbsp;dite&nbsp;de&nbsp;l'AST
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<font color='#2a00ff'>"&nbsp;ce&nbsp;n'est&nbsp;pas&nbsp;le&nbsp;résultat&nbsp;attendu&nbsp;..."</font>,&nbsp;m.lire(<font color='#2a00ff'>"y"</font>)&nbsp;==&nbsp;12);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;fact(<strong><font color='#7f0055'>int</font></strong>&nbsp;n)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(n&nbsp;==&nbsp;0)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;1;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>else</font></strong>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;n&nbsp;*&nbsp;fact(n&nbsp;-&nbsp;1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_Fact()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JAVASerialiseDeserialise.serialjava(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_Fact(10),&nbsp;<font color='#2a00ff'>"test.ser"</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AST_Fact&nbsp;fact&nbsp;=&nbsp;(AST_Fact)JAVASerialiseDeserialise.deserialjava(<font color='#2a00ff'>"test.ser"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertNotNull(fact);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;fact.getMem();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;fact.getAST();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals((<strong><font color='#7f0055'>int</font></strong>)m.lire(<font color='#2a00ff'>"fact"</font>),&nbsp;fact(10));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_Mult1()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JAVASerialiseDeserialise.serialjava(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_Mult1(10,&nbsp;50),&nbsp;<font color='#2a00ff'>"test.ser"</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AST_Mult1&nbsp;mult&nbsp;=&nbsp;(AST_Mult1)JAVASerialiseDeserialise.deserialjava(<font color='#2a00ff'>"test.ser"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertNotNull(mult);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;mult.getMem();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;mult.getAST();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals((<strong><font color='#7f0055'>int</font></strong>)m.lire(<font color='#2a00ff'>"produit"</font>),&nbsp;500);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_Mult2()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JAVASerialiseDeserialise.serialjava(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_Mult2(7,&nbsp;85),&nbsp;<font color='#2a00ff'>"test.ser"</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AST_Mult2&nbsp;mult&nbsp;=&nbsp;(AST_Mult2)JAVASerialiseDeserialise.deserialjava(<font color='#2a00ff'>"test.ser"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertNotNull(mult);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;mult.getMem();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;mult.getAST();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals((<strong><font color='#7f0055'>int</font></strong>)m.lire(<font color='#2a00ff'>"produit"</font>),&nbsp;595);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_SOM_F()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JAVASerialiseDeserialise.serialjava(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_SOM_F(100),&nbsp;<font color='#2a00ff'>"test.ser"</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AST_SOM_F&nbsp;som&nbsp;=&nbsp;(AST_SOM_F)JAVASerialiseDeserialise.deserialjava(<font color='#2a00ff'>"test.ser"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertNotNull(som);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;som.getMem();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;som.getAST();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals((<strong><font color='#7f0055'>int</font></strong>)m.lire(<font color='#2a00ff'>"som"</font>),&nbsp;4950);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_SOM_W()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JAVASerialiseDeserialise.serialjava(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_SOM_W(100),&nbsp;<font color='#2a00ff'>"test.ser"</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AST_SOM_W&nbsp;som&nbsp;=&nbsp;(AST_SOM_W)JAVASerialiseDeserialise.deserialjava(<font color='#2a00ff'>"test.ser"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertNotNull(som);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;som.getMem();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;ast&nbsp;=&nbsp;som.getAST();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ast.accepter(vi);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals((<strong><font color='#7f0055'>int</font></strong>)m.lire(<font color='#2a00ff'>"som"</font>),&nbsp;5050);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 2.1</h3>
+    Dans cette questions, nous devons ajouter les visiteurs JDOM pour 'Expression' , 'ExpressionBooléenne' et 'Instruction' permettant de générer le code XML pour les AST de programmes WhileL. Les classes complétées sont : VisiteurJDOM, VisiteurBoolJDOM et VisiteurInstJDOM. 
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;tp6.question1;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.*;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.Element;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurJDOM&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;VisiteurParDefaut<Element>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Contexte&nbsp;c;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurJDOM(Contexte&nbsp;c)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.c&nbsp;=&nbsp;c;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;contexte()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;c;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Constante&nbsp;c){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Constante"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setText(String.valueOf(c.valeur()));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Variable&nbsp;v){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Variable"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setText(v.nom());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Division&nbsp;d)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Division"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(d.op1().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(d.op2().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Addition&nbsp;a){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Addition"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(a.op1().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(a.op2().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Multiplication&nbsp;m)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Multiplication"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(m.op1().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(m.op2().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Soustraction&nbsp;s)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Soustraction"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(s.op1().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(s.op2().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;tp6.question2;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.Element;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.VisiteurExpression;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurBoolJDOM&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;VisiteurExpressionBooleenne<Element>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpression<Element>&nbsp;ve;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurBoolJDOM(VisiteurExpression<Element>&nbsp;ve)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.ve&nbsp;=&nbsp;ve;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Vrai&nbsp;v){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Vrai"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Faux&nbsp;f){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Faux"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Non&nbsp;n){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Non"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(n.bop().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Ou&nbsp;ou){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Ou"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(ou.bop1().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(ou.bop2().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Et&nbsp;et)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Et"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(et.bop1().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(et.bop2().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Sup&nbsp;sup)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Sup"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(sup.op1().accepter(ve));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(sup.op2().accepter(ve));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Egal&nbsp;eg)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Egal"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(eg.op1().accepter(ve));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(eg.op2().accepter(ve));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Inf&nbsp;inf)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Inf"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(inf.op1().accepter(ve));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(inf.op2().accepter(ve));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;tp6.question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.Element;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.Contexte;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.VisiteurExpression;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.VisiteurExpressionBooleenne;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.*;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Visiteur&nbsp;d'instruction,&nbsp;chaque&nbsp;classe&nbsp;concrète&nbsp;possède&nbsp;une&nbsp;implémentation&nbsp;de
+<br/>&nbsp;*&nbsp;la&nbsp;visite
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurInstJDOM&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;VisiteurInstruction<Element>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpression<Element>&nbsp;vi;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;VisiteurExpressionBooleenne<Element>&nbsp;vb;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Création&nbsp;d'un&nbsp;visiteur&nbsp;d'instructions
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;vi
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;le&nbsp;visiteur&nbsp;d'expressions&nbsp;arithmétiques
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;vb
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;le&nbsp;visiteur&nbsp;d'expression&nbsp;booléennes
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurInstJDOM(VisiteurExpression<Element>&nbsp;vi,
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<Element>&nbsp;vb)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi&nbsp;=&nbsp;vi;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.vb&nbsp;=&nbsp;vb;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;obtention&nbsp;du&nbsp;contexte,
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;le&nbsp;contexte&nbsp;ici&nbsp;de&nbsp;vi(le&nbsp;visiteur&nbsp;d'expression)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contexte&nbsp;contexte()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.vi.contexte();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Affectation&nbsp;a)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Affectation"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(a.v().accepter(vi));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(a.exp().accepter(vi));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Sequence&nbsp;seq)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Sequence"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(seq.i1().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(seq.i2().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Selection&nbsp;sel)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Selection"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(sel.cond().accepter(vb));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(sel.i1().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(sel.i2()&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(sel.i2().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(TantQue&nbsp;tq)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"TantQue"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(tq.cond().accepter(vb));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(tq.i1().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Pour&nbsp;pour)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Pour"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;content&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(pour.init().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(pour.cond().accepter(vb));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(pour.i1().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.add(pour.inc().accepter(<strong><font color='#7f0055'>this</font></strong>));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(content);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Afficher&nbsp;a)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Afficher"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(a.exp().accepter(vi));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Element&nbsp;visite(Assertion&nbsp;a)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"Assertion"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(a.cond().accepter(vb));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 2.2</h3>
+    Dans cette question, nous devons implémenter la classe SerialiseDeserialiseAST_XML qui permet de sérialiser et désérialiser des AST dans un fichier en XML. 
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.IProgr;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question3.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.output.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.input.*;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Décrivez&nbsp;votre&nbsp;classe&nbsp;SerialiseDeserialiseAST_XML&nbsp;ici.
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;<strong>@author</strong>&nbsp;(votre&nbsp;nom)
+<br/>&nbsp;*&nbsp;<strong>@version</strong>&nbsp;(un&nbsp;numéro&nbsp;de&nbsp;version&nbsp;ou&nbsp;une&nbsp;date)
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;SerialiseDeserialiseAST_XML&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;serialAst2xml(IProgr&nbsp;p,&nbsp;String&nbsp;nomDuFichier)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;ctx&nbsp;=&nbsp;p.getMem();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<Element>&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurJDOM(ctx);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<Element>&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolJDOM(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<Element>&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstJDOM(ve,&nbsp;vb);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;e&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Element(<font color='#2a00ff'>"programme"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.setContent(p.getAST().accepter(vi));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Document&nbsp;doc&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Document(e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XMLOutputter&nbsp;sortie&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;XMLOutputter(Format.getPrettyFormat());
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sortie.output(doc,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;FileOutputStream(nomDuFichier));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;ex)&nbsp;{&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Element&nbsp;deserialXml(String&nbsp;nomDuFichier)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SAXBuilder&nbsp;builder&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;SAXBuilder();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Document&nbsp;doc&nbsp;=&nbsp;builder.build(nomDuFichier);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;doc.getRootElement();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;ex)&nbsp;{&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 2.3</h3>
+    Dans cette question, nous devons implémenter la classe XML2AST qui permet de reconstruire une AST à  partir d'un élément XML.
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question3.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.stream.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.*;
+<br/>
+<br/><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;Décrivez&nbsp;votre&nbsp;classe&nbsp;XML2AST&nbsp;ici.
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;<strong>@author</strong>&nbsp;(votre&nbsp;nom)
+<br/>&nbsp;*&nbsp;<strong>@version</strong>&nbsp;(un&nbsp;numéro&nbsp;de&nbsp;version&nbsp;ou&nbsp;une&nbsp;date)
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;XML2AST&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Instruction&nbsp;xmlInst2ast(Contexte&nbsp;m,&nbsp;Element&nbsp;element)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(element.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseInstruction(m,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;List<Element>&nbsp;getChildren(List<Content>&nbsp;content)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;content.stream().filter(e&nbsp;->&nbsp;e&nbsp;<strong><font color='#7f0055'>instanceof</font></strong>&nbsp;Element).map(e&nbsp;->&nbsp;(Element)e).collect(Collectors.toList());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Expression&nbsp;parseExpression(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>switch</font></strong>&nbsp;(e.getName())&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Constante"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseConstante(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Variable"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseVariable(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Addition"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseAddition(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Soustraction"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseSoustraction(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Division"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseDivision(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Multiplication"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseMultiplication(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>default</font></strong>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Constante&nbsp;parseConstante(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Constante(Integer.parseInt(e.getText()));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Variable&nbsp;parseVariable(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Variable(ctx,&nbsp;e.getText());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Addition&nbsp;parseAddition(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp1&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp2&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Addition(exp1,&nbsp;exp2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Soustraction&nbsp;parseSoustraction(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp1&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp2&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Soustraction(exp1,&nbsp;exp2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Division&nbsp;parseDivision(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp1&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp2&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Division(exp1,&nbsp;exp2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Multiplication&nbsp;parseMultiplication(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp1&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp2&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Multiplication(exp1,&nbsp;exp2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;ExpressionBooleenne&nbsp;parseExpressionBooleene(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>switch</font></strong>&nbsp;(e.getName())&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Vrai"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseVrai(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Faux"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseFaux(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Non"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseNon(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Ou"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseOu(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Et"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseEt(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Inf"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseInf(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Egal"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseEgal(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Sup"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseSup(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>default</font></strong>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Vrai&nbsp;parseVrai(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Vrai();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Faux&nbsp;parseFaux(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Faux();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Non&nbsp;parseNon(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpressionBooleenne&nbsp;exp&nbsp;=&nbsp;parseExpressionBooleene(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Non(exp);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Ou&nbsp;parseOu(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpressionBooleenne&nbsp;exp1&nbsp;=&nbsp;parseExpressionBooleene(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpressionBooleenne&nbsp;exp2&nbsp;=&nbsp;parseExpressionBooleene(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Ou(exp1,&nbsp;exp2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Et&nbsp;parseEt(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpressionBooleenne&nbsp;exp1&nbsp;=&nbsp;parseExpressionBooleene(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpressionBooleenne&nbsp;exp2&nbsp;=&nbsp;parseExpressionBooleene(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Et(exp1,&nbsp;exp2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Inf&nbsp;parseInf(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp1&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp2&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Inf(exp1,&nbsp;exp2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Egal&nbsp;parseEgal(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp1&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp2&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Egal(exp1,&nbsp;exp2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Sup&nbsp;parseSup(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp1&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp2&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sup(exp1,&nbsp;exp2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Instruction&nbsp;parseInstruction(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>switch</font></strong>&nbsp;(e.getName())&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Affectation"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseAffectation(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Sequence"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseSequence(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Selection"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseSelection(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"TantQue"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseTantQue(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Pour"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parsePour(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Afficher"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseAfficher(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>case</font></strong>&nbsp;<font color='#2a00ff'>"Assertion"</font>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;parseAssertion(ctx,&nbsp;e);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>default</font></strong>:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Affectation&nbsp;parseAffectation(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Variable&nbsp;v&nbsp;=&nbsp;parseVariable(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Affectation(v,&nbsp;exp);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Sequence&nbsp;parseSequence(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;i1&nbsp;=&nbsp;parseInstruction(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;i2&nbsp;=&nbsp;parseInstruction(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Sequence(i1,&nbsp;i2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Selection&nbsp;parseSelection(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpressionBooleenne&nbsp;cond&nbsp;=&nbsp;parseExpressionBooleene(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;i1&nbsp;=&nbsp;parseInstruction(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(children.size()&nbsp;==&nbsp;3)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Selection(cond,&nbsp;i1,&nbsp;parseInstruction(ctx,&nbsp;children.get(2)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Selection(cond,&nbsp;i1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;TantQue&nbsp;parseTantQue(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpressionBooleenne&nbsp;cond&nbsp;=&nbsp;parseExpressionBooleene(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;i&nbsp;=&nbsp;parseInstruction(ctx,&nbsp;children.get(1));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TantQue(cond,&nbsp;i);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Pour&nbsp;parsePour(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;init&nbsp;=&nbsp;parseInstruction(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpressionBooleenne&nbsp;cond&nbsp;=&nbsp;parseExpressionBooleene(ctx,&nbsp;children.get(1));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;i&nbsp;=&nbsp;parseInstruction(ctx,&nbsp;children.get(2));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;inc&nbsp;=&nbsp;parseInstruction(ctx,&nbsp;children.get(3));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Pour(init,&nbsp;cond,&nbsp;i,&nbsp;inc);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Afficher&nbsp;parseAfficher(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Expression&nbsp;exp&nbsp;=&nbsp;parseExpression(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Afficher(exp);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Assertion&nbsp;parseAssertion(Contexte&nbsp;ctx,&nbsp;Element&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Element>&nbsp;children&nbsp;=&nbsp;getChildren(e.getContent());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExpressionBooleenne&nbsp;exp&nbsp;=&nbsp;parseExpressionBooleene(ctx,&nbsp;children.get(0));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Assertion(exp);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 2.4</h3>
+    Dans cette question, nous devons implémenter des tests pour garantir le bon fonctionnement des AST après sérialisation / désérialisation en XML. Pour cela, j'ai ajouté des tests supplémentaires similaires à ceux de la quesiton 1.4 dans la classe TestXML2AST.
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;tp6.question3.*;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.output.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.input.*;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;TestXML2AST&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;junit.framework.TestCase&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;String&nbsp;nomDuFichier;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>protected</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setUp()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nomDuFichier&nbsp;=&nbsp;<font color='#2a00ff'>"test_tp9q2_XML2AST.xml"</font>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>protected</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;tearDown()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{<strong><font color='#7f0055'>new</font></strong>&nbsp;File(nomDuFichier).delete();}<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;e){}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_Fact()&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SerialiseDeserialiseAST_XML.serialAst2xml(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_Fact(10),&nbsp;&nbsp;&nbsp;&nbsp;nomDuFichier);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;astXML&nbsp;=&nbsp;SerialiseDeserialiseAST_XML.deserialXml(nomDuFichier);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;inst&nbsp;=&nbsp;XML2AST.xmlInst2ast(m,&nbsp;astXML);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.ecrire(<font color='#2a00ff'>"n"</font>,&nbsp;5);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<Integer>&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<Contexte>&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<String>&nbsp;ves&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<String>&nbsp;vbs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolToString(ves);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<String>&nbsp;vs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstToString(ves,&nbsp;vbs);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst.accepter(vi);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(m&nbsp;+&nbsp;inst.accepter(vs)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;ne&nbsp;donne&nbsp;pas&nbsp;le&nbsp;résultat&nbsp;attendu&nbsp;..."</font>,&nbsp;&nbsp;&nbsp;&nbsp;m.lire(<font color='#2a00ff'>"fact"</font>)&nbsp;==&nbsp;fact(5));
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;!!!&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;fact(<strong><font color='#7f0055'>int</font></strong>&nbsp;n)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(n&nbsp;==&nbsp;0)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;1;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>else</font></strong>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;n&nbsp;*&nbsp;fact(n&nbsp;-&nbsp;1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_Mult1()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SerialiseDeserialiseAST_XML.serialAst2xml(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_Mult1(10,&nbsp;50),&nbsp;nomDuFichier);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;astXML&nbsp;=&nbsp;SerialiseDeserialiseAST_XML.deserialXml(nomDuFichier);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;inst&nbsp;=&nbsp;XML2AST.xmlInst2ast(m,&nbsp;astXML);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.ecrire(<font color='#2a00ff'>"a"</font>,&nbsp;10);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.ecrire(<font color='#2a00ff'>"b"</font>,&nbsp;50);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<Integer>&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<Contexte>&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<String>&nbsp;ves&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<String>&nbsp;vbs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolToString(ves);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<String>&nbsp;vs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstToString(ves,&nbsp;vbs);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst.accepter(vi);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(m&nbsp;+&nbsp;inst.accepter(vs)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;ne&nbsp;donne&nbsp;pas&nbsp;le&nbsp;résultat&nbsp;attendu&nbsp;..."</font>,&nbsp;&nbsp;&nbsp;&nbsp;m.lire(<font color='#2a00ff'>"produit"</font>)&nbsp;==&nbsp;500);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;!!!&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_Mult2()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SerialiseDeserialiseAST_XML.serialAst2xml(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_Mult2(7,&nbsp;85),&nbsp;nomDuFichier);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;astXML&nbsp;=&nbsp;SerialiseDeserialiseAST_XML.deserialXml(nomDuFichier);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;inst&nbsp;=&nbsp;XML2AST.xmlInst2ast(m,&nbsp;astXML);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.ecrire(<font color='#2a00ff'>"a"</font>,&nbsp;7);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.ecrire(<font color='#2a00ff'>"b"</font>,&nbsp;85);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<Integer>&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<Contexte>&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<String>&nbsp;ves&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<String>&nbsp;vbs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolToString(ves);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<String>&nbsp;vs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstToString(ves,&nbsp;vbs);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst.accepter(vi);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(m&nbsp;+&nbsp;inst.accepter(vs)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;ne&nbsp;donne&nbsp;pas&nbsp;le&nbsp;résultat&nbsp;attendu&nbsp;..."</font>,&nbsp;&nbsp;&nbsp;&nbsp;m.lire(<font color='#2a00ff'>"produit"</font>)&nbsp;==&nbsp;595);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;!!!&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_SOM_F()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SerialiseDeserialiseAST_XML.serialAst2xml(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_SOM_F(100),&nbsp;nomDuFichier);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;astXML&nbsp;=&nbsp;SerialiseDeserialiseAST_XML.deserialXml(nomDuFichier);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;inst&nbsp;=&nbsp;XML2AST.xmlInst2ast(m,&nbsp;astXML);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.ecrire(<font color='#2a00ff'>"n"</font>,&nbsp;100);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<Integer>&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<Contexte>&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<String>&nbsp;ves&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<String>&nbsp;vbs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolToString(ves);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<String>&nbsp;vs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstToString(ves,&nbsp;vbs);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst.accepter(vi);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(m&nbsp;+&nbsp;inst.accepter(vs)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;ne&nbsp;donne&nbsp;pas&nbsp;le&nbsp;résultat&nbsp;attendu&nbsp;..."</font>,&nbsp;&nbsp;&nbsp;&nbsp;m.lire(<font color='#2a00ff'>"som"</font>)&nbsp;==&nbsp;4950);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;!!!&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_AST_SOM_W()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SerialiseDeserialiseAST_XML.serialAst2xml(<strong><font color='#7f0055'>new</font></strong>&nbsp;AST_SOM_W(100),&nbsp;nomDuFichier);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Element&nbsp;astXML&nbsp;=&nbsp;SerialiseDeserialiseAST_XML.deserialXml(nomDuFichier);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contexte&nbsp;m&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Memoire();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Instruction&nbsp;inst&nbsp;=&nbsp;XML2AST.xmlInst2ast(m,&nbsp;astXML);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.ecrire(<font color='#2a00ff'>"n"</font>,&nbsp;100);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<Integer>&nbsp;ve&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurEvaluation(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<Boolean>&nbsp;vb&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolEvaluation(ve);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<Contexte>&nbsp;vi&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstEvaluation(ve,&nbsp;vb);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpression<String>&nbsp;ves&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInfixe(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurExpressionBooleenne<String>&nbsp;vbs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurBoolToString(ves);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VisiteurInstruction<String>&nbsp;vs&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurInstToString(ves,&nbsp;vbs);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inst.accepter(vi);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(m&nbsp;+&nbsp;inst.accepter(vs)&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;ne&nbsp;donne&nbsp;pas&nbsp;le&nbsp;résultat&nbsp;attendu&nbsp;..."</font>,&nbsp;&nbsp;&nbsp;&nbsp;m.lire(<font color='#2a00ff'>"som"</font>)&nbsp;==&nbsp;5050);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail(<font color='#2a00ff'>"exception&nbsp;inattendue&nbsp;!!!&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;e.getMessage());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />    
+    <h3>Question 3</h3>
+    Dans cette question, nous devons implémenter le patron DAO sur la classe FileAuditeurDAO. Les Auditeurs doivent persister en CSV. Nous devons donc compléter la classe FileAuditeurDAO et notamment les méthodes : create, retrieve, findAll, update et delete.
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.stream.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.nio.file.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;FileAuditeurDAO&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;DAO<Auditeur,&nbsp;Integer>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;String&nbsp;fileName;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;FileAuditeurDAO(<strong><font color='#7f0055'>final</font></strong>&nbsp;String&nbsp;path,&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;String&nbsp;fileName)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File&nbsp;dir&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;File(path);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(!dir.exists()){&nbsp;<font color='#3f7f5f'>//&nbsp;si&nbsp;le&nbsp;répertoire&nbsp;n'existe&nbsp;pas&nbsp;(1&nbsp;seul&nbsp;niveau)
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir.mkdir();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.fileName&nbsp;=&nbsp;path+fileName;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File&nbsp;f&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;File(<strong><font color='#7f0055'>this</font></strong>.fileName);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!(f.isFile())){&nbsp;<font color='#3f7f5f'>//&nbsp;si&nbsp;le&nbsp;fichier&nbsp;n'existe&nbsp;pas
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.createNewFile();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;FileAuditeurDAO(<strong><font color='#7f0055'>final</font></strong>&nbsp;String&nbsp;fileName)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>(<font color='#2a00ff'>"."</font>+File.separator,&nbsp;fileName);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;create(Auditeur&nbsp;a)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Auditeur>&nbsp;auditeurs&nbsp;=&nbsp;findAll();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OptionalInt&nbsp;id&nbsp;=&nbsp;auditeurs.stream().mapToInt(Auditeur::getId).max();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(id.isPresent())&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.setId(id.getAsInt()&nbsp;+&nbsp;1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auditeurs.add(a);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save(auditeurs);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Auditeur&nbsp;retrieve(Integer&nbsp;id)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;findAll().stream().filter(t&nbsp;->&nbsp;t.getId()&nbsp;==&nbsp;id).findFirst().get();&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;List<Auditeur>&nbsp;findAll()&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;Files.lines(Paths.get(fileName)).map(t&nbsp;->&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;Auditeur.parseAuditeur(t);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;ex)&nbsp;{}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}).collect(Collectors.toList());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;update(Auditeur&nbsp;a)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Auditeur>&nbsp;auditeurs&nbsp;=&nbsp;findAll();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auditeurs.removeIf(ad&nbsp;->&nbsp;ad.getId()&nbsp;==&nbsp;a.getId());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auditeurs.add(a);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save(auditeurs);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;delete(Integer&nbsp;id)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<Auditeur>&nbsp;auditeurs&nbsp;=&nbsp;findAll();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auditeurs.removeIf(t&nbsp;->&nbsp;t.getId()&nbsp;==&nbsp;id);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save(auditeurs);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;List<Auditeur>&nbsp;filter(Criteria<Auditeur>&nbsp;criteria)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;DAO.DAOUtils.filter(<strong><font color='#7f0055'>this</font></strong>,criteria);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;save(List<Auditeur>&nbsp;auditeurs)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufferedWriter&nbsp;writer&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;BufferedWriter(<strong><font color='#7f0055'>new</font></strong>&nbsp;OutputStreamWriter(<strong><font color='#7f0055'>new</font></strong>&nbsp;FileOutputStream(fileName)));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>(Stream<Auditeur>&nbsp;st&nbsp;=&nbsp;auditeurs.stream())&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;st.forEach(a&nbsp;->&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;csv&nbsp;=&nbsp;a.toString();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.write(csv);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.newLine();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;ex)&nbsp;{}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.close();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />    
+        <h3>Conclusion, bibliographie et remarques :</h3>
+        <i style="font-size:12px;">TP dur, mais intéressant pour s'entrainer dans la sérialisation / désérialisation des objets en XML ainsi que comment faire persister ces objets dans des fichiers à l'aide du patron DAO.</i>
+</body>
+</html>

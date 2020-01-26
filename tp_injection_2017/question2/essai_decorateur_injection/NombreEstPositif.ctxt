@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=NombreEstPositif
+comment1.params=contexte\ nombre
+comment1.target=boolean\ estSatisfaite(Contexte,\ Nombre)
+numComments=2

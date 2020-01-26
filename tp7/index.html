@@ -1,0 +1,484 @@
+<html>
+<head>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+    <title>NFP121 - TP7</title>
+    <style type="text/css">
+        body {
+            background: #E5DED6;
+            background-color: #fff;
+            color: #333333;
+            font-size: 14px;
+            font-family: Verdana, Arial;
+        }
+
+        table {
+            font-size: 20px;
+            border-color: #808080;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        h2 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        hr {
+            margin: 15px 0 15px 0;
+        }
+		
+		applet {
+			margin: 10px 0px 25px 250px;
+			border-width: 1px;
+			border-style: solid;
+			border-color: #777777;
+		}
+    </style>
+
+</head>
+<body>
+    <h2 style="text-align: center">NFP 121 - TP7</h2>
+    <h2 style="text-align: center">Introspection</h2>
+    <br />
+    <hr>
+    <br />
+    <table>
+        <tr>
+            <td>Nom
+            </td>
+            <td>SOAGE CAMPELO
+            </td>
+        </tr>
+        <tr>
+            <td>Prénom
+            </td>
+            <td>MARÍA ESTHER
+            </td>
+        </tr>
+        <tr>
+            <td>Matricule
+            </td>
+            <td>FOD_0G5DRMA39F5
+            </td>
+        </tr>
+    </table>
+		
+	<br />
+    <hr />
+    <h3>Question 1</h3>
+    <br />
+    <br />
+    Ci-dessous vous trouverez la classe TableMethodesJavaLangMath complétée. Dans le cas de cette calculette, nous utilisons par introspection les méthodes fournies par la classe "java.lang.Math", mais uniquement les méthodes de cette classe retournant un double avec un ou deux paramètres de type double. Le reste des méthodes de la classe java.lang.Math ne sont pas prises en comptes. 
+    <br />
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.lang.reflect.Method;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Map;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.TreeMap;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.NoSuchElementException;
+<br/>
+<br/><font color='#2040a0'>/**&nbsp;Gestion&nbsp;par&nbsp;introspection&nbsp;des&nbsp;méthodes&nbsp;de&nbsp;la&nbsp;classe&nbsp;java.lang.Math,<br>
+<br/>&nbsp;*&nbsp;&nbsp;Seules&nbsp;sont&nbsp;conservées&nbsp;:les&nbsp;méthodes&nbsp;retournant&nbsp;un&nbsp;double&nbsp;et&nbsp;d'arité&nbsp;1&nbsp;ou&nbsp;2<p>
+<br/>&nbsp;*&nbsp;&nbsp;&nbsp;Note&nbsp;:&nbsp;Emploi&nbsp;du&nbsp;Pattern&nbsp;Singleton&nbsp;pour&nbsp;cette&nbsp;table,&nbsp;accessible&nbsp;uniquement&nbsp;en&nbsp;lecture&nbsp;par&nbsp;des&nbsp;accesseurs<p>
+<br/>&nbsp;*&nbsp;La&nbsp;convention&nbsp;de&nbsp;nommage&nbsp;est&nbsp;la&nbsp;suivante&nbsp;:
+<br/>&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;le&nbsp;"Nom"&nbsp;de&nbsp;la&nbsp;fonction&nbsp;suivi&nbsp;de&nbsp;"(double)"&nbsp;&nbsp;exemple&nbsp;:&nbsp;"sqrt(double)"
+<br/>&nbsp;*&nbsp;&nbsp;ou&nbsp;le&nbsp;"Nom"&nbsp;de&nbsp;la&nbsp;fonction&nbsp;suivi&nbsp;de&nbsp;"(double,&nbsp;double)"&nbsp;&nbsp;exemple&nbsp;:&nbsp;"IEEEremainder(double,&nbsp;double)"
+<br/>&nbsp;*/</font>
+<br/>
+<br/><strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;TableMethodesJavaLangMath{
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;Singleton&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;TableMethodesJavaLangMath&nbsp;instanceUnique&nbsp;=&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;TableMethodesJavaLangMath&nbsp;getInstance(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>synchronized</font></strong>(TableMethodesJavaLangMath.<strong><font color='#7f0055'>class</font></strong>){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(instanceUnique==<strong><font color='#7f0055'>null</font></strong>){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instanceUnique&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TableMethodesJavaLangMath();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;instanceUnique;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;TableMethodesJavaLangMath(){
+<br/>&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;fin&nbsp;du&nbsp;Singleton
+</font><br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;&nbsp;nomDeLaMéthode&nbsp;Nom&nbsp;de&nbsp;la&nbsp;fonction&nbsp;+&nbsp;"(double)"&nbsp;ou&nbsp;"(double,&nbsp;double)"
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;true&nbsp;si&nbsp;la&nbsp;fonction&nbsp;est&nbsp;présente
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;cetteMethodeEstPresente(String&nbsp;nomDeLaMethode){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;tableDesMethodes.containsKey(nomDeLaMethode);
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;&nbsp;nomDeLaMéthode&nbsp;Nom&nbsp;de&nbsp;la&nbsp;fonction&nbsp;+&nbsp;"(double)"&nbsp;ou&nbsp;"(double,&nbsp;double)"
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;true&nbsp;si&nbsp;la&nbsp;fonction&nbsp;est&nbsp;binaire,&nbsp;d'arité&nbsp;2
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@throws</strong>&nbsp;NoSuchElementException&nbsp;si&nbsp;la&nbsp;méthode&nbsp;demandée&nbsp;n'existe&nbsp;pas
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;cetteMethodeAttendDeuxParametres(String&nbsp;nomDeLaMethode)
+<br/>&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;NoSuchElementException{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!cetteMethodeEstPresente(nomDeLaMethode)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(nomDeLaMethode.contains(<font color='#2a00ff'>"(double,&nbsp;double)"</font>)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>else</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;&nbsp;nomDeLaMéthode&nbsp;Nom&nbsp;de&nbsp;la&nbsp;fonction&nbsp;+&nbsp;"(double)"&nbsp;ou&nbsp;"(double,&nbsp;double)"
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;true&nbsp;si&nbsp;la&nbsp;fonction&nbsp;est&nbsp;unaire,&nbsp;d'arité&nbsp;1
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@throws</strong>&nbsp;NoSuchElementException&nbsp;si&nbsp;la&nbsp;méthode&nbsp;demandée&nbsp;n'existe&nbsp;pas&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;cetteMethodeAttendUnSeulParametre(String&nbsp;nomDeLaMethode)
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;NoSuchElementException{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!cetteMethodeEstPresente(nomDeLaMethode)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(nomDeLaMethode.contains(<font color='#2a00ff'>"(double)"</font>)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>else</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;Obtention&nbsp;de&nbsp;la&nbsp;liste&nbsp;ordonnée&nbsp;des&nbsp;méthodes
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;liste&nbsp;triée&nbsp;des&nbsp;fonctions&nbsp;issues&nbsp;de&nbsp;java.lang.Math
+<br/>&nbsp;&nbsp;&nbsp;*/</font>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String[]&nbsp;listeDesMethodes(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;tab&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;String[tableDesMethodes.size()];
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;compteur&nbsp;=&nbsp;0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(String&nbsp;s:&nbsp;tableDesMethodes.keySet()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tab[compteur]&nbsp;=&nbsp;s;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compteur++;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;tab;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;<font color='#2040a0'>/**&nbsp;Invocation&nbsp;d'une&nbsp;méthode&nbsp;de&nbsp;la&nbsp;table
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;&nbsp;nomDeLaMéthode&nbsp;Nom&nbsp;de&nbsp;la&nbsp;fonction&nbsp;+&nbsp;"(double)"
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;arg1&nbsp;l'opérande
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;un&nbsp;résultat
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@throws</strong>&nbsp;NoSuchElementException&nbsp;si&nbsp;la&nbsp;méthode&nbsp;demandée&nbsp;n'existe&nbsp;pas&nbsp;ou&nbsp;une&nbsp;exception&nbsp;levée&nbsp;par&nbsp;la&nbsp;fonction&nbsp;appelée
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>double</font></strong>&nbsp;invoquer(String&nbsp;nomDeLaMethode,<strong><font color='#7f0055'>double</font></strong>&nbsp;arg1)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(<strong><font color='#7f0055'>this</font></strong>.cetteMethodeAttendUnSeulParametre(nomDeLaMethode)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;cl&nbsp;=&nbsp;Class.forName(<font color='#2a00ff'>"java.lang.Math"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object&nbsp;result&nbsp;=&nbsp;tableDesMethodes.get(nomDeLaMethode).invoke(cl,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Object[]{arg1});
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;(Double)result;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>else</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>&nbsp;(NoSuchElementException&nbsp;e){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;<font color='#2040a0'>/**&nbsp;Invocation&nbsp;d'une&nbsp;méthode&nbsp;de&nbsp;la&nbsp;table
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;&nbsp;nomDeLaMéthode&nbsp;Nom&nbsp;de&nbsp;la&nbsp;fonction&nbsp;+&nbsp;"(double,&nbsp;double)"
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;arg1&nbsp;l'opérande
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;un&nbsp;résultat
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@throws</strong>&nbsp;NoSuchElementException&nbsp;si&nbsp;la&nbsp;méthode&nbsp;demandée&nbsp;n'existe&nbsp;pas&nbsp;ou&nbsp;une&nbsp;exception&nbsp;levée&nbsp;par&nbsp;la&nbsp;fonction&nbsp;appelée
+<br/>&nbsp;&nbsp;&nbsp;*/</font>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>double</font></strong>&nbsp;invoquer(String&nbsp;nomDeLaMethode,&nbsp;<strong><font color='#7f0055'>double</font></strong>&nbsp;arg1,&nbsp;<strong><font color='#7f0055'>double</font></strong>&nbsp;arg2)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(<strong><font color='#7f0055'>this</font></strong>.cetteMethodeAttendDeuxParametres(nomDeLaMethode)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;cl&nbsp;=&nbsp;Class.forName(<font color='#2a00ff'>"java.lang.Math"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object&nbsp;result&nbsp;=&nbsp;tableDesMethodes.get(nomDeLaMethode).invoke(cl,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Object[]{arg1,&nbsp;arg2});
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;(Double)result;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>else</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>&nbsp;(NoSuchElementException&nbsp;e){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;Le&nbsp;dictionnaire&nbsp;contient&nbsp;la&nbsp;liste&nbsp;des&nbsp;méthodes&nbsp;disponibles.
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;un&nbsp;choix&nbsp;de&nbsp;dictionnaire&nbsp;pourrait&nbsp;être&nbsp;pour&nbsp;la&nbsp;Clé&nbsp;une&nbsp;String&nbsp;soit&nbsp;le&nbsp;Nom&nbsp;de&nbsp;la&nbsp;fonction&nbsp;+&nbsp;"(double)"&nbsp;ou&nbsp;"(double,&nbsp;double)".<br>
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;et&nbsp;en&nbsp;Valeur&nbsp;=&nbsp;&nbsp;la&nbsp;Method&nbsp;correspondante.
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;ou&nbsp;tout&nbsp;autre&nbsp;choix
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Map<String,Method>&nbsp;tableDesMethodes&nbsp;=&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;bloc&nbsp;statique&nbsp;d'intialisation&nbsp;de&nbsp;la&nbsp;table&nbsp;des&nbsp;méthodes&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>static</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tableDesMethodes&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TreeMap<String,Method>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;cl&nbsp;=&nbsp;Class.forName(<font color='#2a00ff'>"java.lang.Math"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Method&nbsp;m:&nbsp;cl.getMethods()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;isDouble&nbsp;=&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;endParam&nbsp;=&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;compteur&nbsp;=&nbsp;0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>(endParam&nbsp;==&nbsp;<strong><font color='#7f0055'>false</font></strong>&nbsp;&&&nbsp;isDouble&nbsp;==<strong><font color='#7f0055'>true</font></strong>){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Class&nbsp;param:&nbsp;m.getParameterTypes()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(param.getName()!=<font color='#2a00ff'>"double"</font>){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isDouble&nbsp;=&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>else</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compteur++;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(m.getReturnType().getName()!=&nbsp;<font color='#2a00ff'>"double"</font>){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isDouble&nbsp;=&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endParam&nbsp;=&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(isDouble){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(compteur&nbsp;==&nbsp;1){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tableDesMethodes.put(m.getName()+<font color='#2a00ff'>"(double)"</font>,&nbsp;m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(compteur&nbsp;==&nbsp;2){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tableDesMethodes.put(m.getName()+<font color='#2a00ff'>"(double,&nbsp;double)"</font>,&nbsp;m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;e){}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 2.1</h3>
+    <br />
+    <br />
+    Vous trouverez ci-dessous les méthodes lierObservableEtObserver et delierObservableEtObserver de la classe ParIntrospection complétées.
+    <br />
+    <br />
+    lierObservableEtObserver :
+
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><font color='#2040a0'>/**&nbsp;Cette&nbsp;methode&nbsp;permet&nbsp;de&nbsp;relier&nbsp;par&nbsp;introspection,&nbsp;un&nbsp;observable&nbsp;et&nbsp;un&nbsp;observateur<p>
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;Appel&nbsp;par&nbsp;introspection&nbsp;de&nbsp;la&nbsp;methode&nbsp;observable.addObserver(observer)&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;observable&nbsp;une&nbsp;instance&nbsp;de&nbsp;la&nbsp;classe&nbsp;java.util.Observable&nbsp;ou&nbsp;l'une&nbsp;de&nbsp;ses&nbsp;derivees
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;observer&nbsp;une&nbsp;implementation&nbsp;de&nbsp;l'interface&nbsp;java.util.Observer
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@throws</strong>&nbsp;NoSuchElementException&nbsp;en&nbsp;cas&nbsp;d'erreur
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;lierObservableEtObserver(Object&nbsp;observable,&nbsp;Object&nbsp;observer)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;obs&nbsp;=&nbsp;observable.getClass().getName();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;cl&nbsp;=&nbsp;Class.forName(obs);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class[]&nbsp;types&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Class[]&nbsp;{Observer.<strong><font color='#7f0055'>class</font></strong>};
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;m&nbsp;=&nbsp;cl.getMethod(<font color='#2a00ff'>"addObserver"</font>,types);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.invoke(observable,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Object[]&nbsp;{observer});
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br />
+    <br />
+    delierObservableEtObserver :
+
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><font color='#2040a0'>/**&nbsp;Cette&nbsp;methode&nbsp;permet&nbsp;de&nbsp;delier&nbsp;par&nbsp;introspection,&nbsp;un&nbsp;observable&nbsp;et&nbsp;un&nbsp;observateur<p>
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;Appel&nbsp;par&nbsp;introspection&nbsp;de&nbsp;la&nbsp;methode&nbsp;observable.deleteObserver(observer)&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;observable&nbsp;une&nbsp;instance&nbsp;de&nbsp;la&nbsp;classe&nbsp;java.util.Observable&nbsp;ou&nbsp;l'une&nbsp;de&nbsp;ses&nbsp;derivees
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;observer&nbsp;une&nbsp;implementation&nbsp;de&nbsp;l'interface&nbsp;java.util.Observer
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@throws</strong>&nbsp;NoSuchElementException&nbsp;en&nbsp;cas&nbsp;d'erreur
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;delierObservableEtObserver(Object&nbsp;observable,&nbsp;Object&nbsp;observer)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;obs&nbsp;=&nbsp;observable.getClass().getName();&nbsp;<font color='#3f7f5f'>//"java.util.Observable"
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;cl&nbsp;=&nbsp;Class.forName(obs);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class[]&nbsp;types&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Class[]&nbsp;{Observer.<strong><font color='#7f0055'>class</font></strong>};
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Method&nbsp;m&nbsp;=&nbsp;cl.getMethod(<font color='#2a00ff'>"deleteObserver"</font>,types);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.invoke(observable,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Object[]&nbsp;{observer});
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 2.2</h3>
+    <br />
+    <br />
+    Voici les méthodes lierSourceEtListener et delierSourceEtListener complétées :
+    <br />
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><font color='#2040a0'>/**&nbsp;Cette&nbsp;methode&nbsp;permet&nbsp;de&nbsp;relier&nbsp;par&nbsp;introspection,&nbsp;une&nbsp;source&nbsp;et&nbsp;un&nbsp;"listener"<p>
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;Appel&nbsp;par&nbsp;introspection&nbsp;de&nbsp;la&nbsp;methode&nbsp;source.addXXXXListener(listener)&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;source&nbsp;est&nbsp;une&nbsp;instance&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;listener&nbsp;une&nbsp;implementation&nbsp;d'une&nbsp;interface&nbsp;XXXXListener
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@throws</strong>&nbsp;NoSuchElementException&nbsp;en&nbsp;cas&nbsp;d'erreur
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;lierSourceEtListener(Object&nbsp;source,&nbsp;Object&nbsp;listener)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;clListener&nbsp;=&nbsp;listener.getClass();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;clSource&nbsp;=&nbsp;source.getClass();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;invoked&nbsp;=&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Method&nbsp;m:&nbsp;clSource.getMethods()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(m.getParameterCount()==1){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(m.getName().contains(<font color='#2a00ff'>"add"</font>)&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&&&nbsp;m.getParameterTypes()[0].isInstance(listener)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.invoke(source,&nbsp;listener);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoked&nbsp;=&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!invoked){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;e){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br />
+<br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><font color='#2040a0'>/**&nbsp;Cette&nbsp;methode&nbsp;permet&nbsp;de&nbsp;delier&nbsp;par&nbsp;introspection,&nbsp;une&nbsp;source&nbsp;et&nbsp;un&nbsp;"listener"<p>
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;Appel&nbsp;par&nbsp;introspection&nbsp;de&nbsp;la&nbsp;methode&nbsp;source.removeXXXXListener(listener)&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;source&nbsp;est&nbsp;une&nbsp;instance&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;listener&nbsp;une&nbsp;implementation&nbsp;d'une&nbsp;interface&nbsp;XXXXListener
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@throws</strong>&nbsp;NoSuchElementException&nbsp;en&nbsp;cas&nbsp;d'erreur
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;delierSourceEtListener(Object&nbsp;source,&nbsp;Object&nbsp;listener)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;clListener&nbsp;=&nbsp;listener.getClass();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;clSource&nbsp;=&nbsp;source.getClass();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;invoked&nbsp;=&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Method&nbsp;m:&nbsp;clSource.getMethods()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(m.getParameterCount()==1){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(m.getName().contains(<font color='#2a00ff'>"remove"</font>)&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&&&nbsp;m.getParameterTypes()[0].isInstance(listener)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m.invoke(source,&nbsp;listener);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoked&nbsp;=&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!invoked){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;e){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 3</h3>
+    <br />
+     <br />
+    Vous trouverez ci-dessous la méthode getHeritees de la classe "Introspection" complétée. Cette question était particulièrement compliquée. 
+     <br />
+     <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.lang.reflect.Method;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.lang.reflect.Modifier;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.HashSet;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Set;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Arrays;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;Introspection{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;Set<Method>&nbsp;getHeritees(String&nbsp;nomDeLaClasse)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;ClassNotFoundException{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;à&nbsp;compléter
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;c&nbsp;=&nbsp;Class.forName(nomDeLaClasse);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//méthodes&nbsp;définies&nbsp;dans&nbsp;la&nbsp;classe&nbsp;à&nbsp;tester
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set<Method>&nbsp;methodesDefiniesLocalement&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;HashSet<Method>(Arrays.asList(c.getDeclaredMethods()));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//méthodes&nbsp;définies&nbsp;dans&nbsp;les&nbsp;super&nbsp;classes&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set<Method>&nbsp;methodesHeritees&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;HashSet<Method>(Arrays.asList(c.getDeclaredMethods()));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//methodes&nbsp;héritées&nbsp;non&nbsp;redéfinies
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set<Method>&nbsp;methodesHeriteesNonRedefinies&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;HashSet<Method>();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//récupère&nbsp;les&nbsp;méthodes&nbsp;de&nbsp;la&nbsp;super&nbsp;classe
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;parent&nbsp;=&nbsp;c;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set<Method>&nbsp;methodesAAjouter;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;mod;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>(parent.getSuperclass()&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent&nbsp;=&nbsp;parent.getSuperclass();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;methodesAAjouter&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;HashSet<Method>(Arrays.asList(parent.getDeclaredMethods()));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Method&nbsp;m:&nbsp;methodesAAjouter)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!Introspection.ContientMethode(methodesHeritees,&nbsp;m))&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mod&nbsp;=&nbsp;m.getModifiers();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(mod&nbsp;!=&nbsp;0&nbsp;&&&nbsp;(Modifier.isPublic(mod)&nbsp;||&nbsp;Modifier.isProtected(mod))&nbsp;&&&nbsp;!Modifier.isAbstract(mod))&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;methodesHeritees.add(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Method&nbsp;m1:&nbsp;methodesHeritees)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!Introspection.ContientMethode(methodesDefiniesLocalement,&nbsp;m1))&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;methodesHeriteesNonRedefinies.add(m1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;methodesHeriteesNonRedefinies;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;main(String[]&nbsp;args)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;ClassNotFoundException{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Method&nbsp;m&nbsp;:&nbsp;Introspection.getHeritees(<font color='#2a00ff'>"java.util.AbstractCollection"</font>)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(m);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;MethodesEgales(Method&nbsp;m1,&nbsp;Method&nbsp;m2)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class[]&nbsp;param1&nbsp;=&nbsp;m1.getParameterTypes();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class[]&nbsp;param2&nbsp;=&nbsp;m2.getParameterTypes();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!m1.getName().equals(m2.getName()))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(param1.length&nbsp;!=&nbsp;param2.length)&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;param1.length;&nbsp;i++)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!param1[i].getName().equals(param2[i].getName()))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(!m1.getReturnType().equals(m2.getReturnType()))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;ContientMethode(Set<Method>&nbsp;set,&nbsp;Method&nbsp;m)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;present&nbsp;=&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Method&nbsp;m2:&nbsp;set)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(Introspection.MethodesEgales(m,m2))&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />    
+        <h3>Conclusion, biliographie et remarques :</h3>
+        <i style="font-size:12px;">TP très compliqué. L'introspection reste un outil intéressant pour traiter les objets de façon dynamique, mais de mon point de vue est aussi un peu compliqué à mettre en place. Je pense que j'ai besoin de faire beaucoup plus d'exemples pour arriver à maitriser l'introspection.</i>
+</body>
+</html>

@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=PubSubImpl2
+comment0.text=\n\ Write\ a\ description\ of\ class\ PubSubImpl2\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=PubSubImpl2()
+comment2.params=name
+comment2.target=PubSubImpl2(java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment4.params=names\ message
+comment4.target=int\ publish(java.lang.String[],\ Message)
+comment4.text=\ Publication\ d'un\ message\ \u00E0\u00A0\ certains\ souscripteurs.\n\ @param\ names\ les\ noms\ des\ souscripteurs\n\ @param\ message\ le\ message\ \u00E0\u00A0\ transmettre\n\ @return\ le\ nombre\ de\ souscripteurs\ ayant\ re\u00E7u\ le\ message\n
+comment5.params=name\ message
+comment5.target=boolean\ publish(java.lang.String,\ Message)
+comment5.text=\ Publication\ d'un\ message\ \u00E0\u00A0un\ souscripteur.\n\ @param\ name\ le\ nom\ du\ souscripteur\n\ @param\ message\ le\ message\ \u00E0\u00A0\ transmettre\n\ @return\ true\ si\ l'envoi\ est\ r\u00E9ussi,\ false\ autrement\n
+comment6.params=subscriber
+comment6.target=boolean\ subscribe(SubscriberI)
+comment6.text=\ Souscription.\n\ @param\ subscriber\ le\ souscripteur\ \n\ @return\ false\ si\ ce\ souscripteur\ a\ d\u00E9j\u00E0\u00A0souscrit\ avec\ le\ m\u00EAme\ nom\n
+comment7.params=
+comment7.target=java.util.Iterator\ iterator()
+comment7.text=\ Obtention\ d'un\ it\u00E9rateur.\n\ @return\ un\ it\u00E9rateur\ sur\ les\ souscripteurs\ enregistr\u00E9s\n
+numComments=8

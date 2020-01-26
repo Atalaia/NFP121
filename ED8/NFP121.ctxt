@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=NFP121
+comment1.params=
+comment1.target=NFP121()
+comment1.text=\n\ Constructeur\ d'objets\ de\ la\ classe\ NFP121\n
+comment2.params=o
+comment2.target=boolean\ equals(java.lang.Object)
+numComments=3

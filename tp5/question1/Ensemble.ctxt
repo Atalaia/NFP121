@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Ensemble
+comment1.params=
+comment1.target=int\ size()
+comment2.params=
+comment2.target=java.util.Iterator\ iterator()
+comment3.params=t
+comment3.target=boolean\ add(java.lang.Object)
+comment4.params=e
+comment4.target=Ensemble\ union(Ensemble)
+comment4.text=\n\ M\u00E9thode\ Union\n\ @param\ Ensemble\ e\n\ @return\ union\ des\ ensembles\n
+comment5.params=e
+comment5.target=Ensemble\ inter(Ensemble)
+comment5.text=\n\ M\u00E9thode\ Intersection\n\ @param\ Ensemble\ e\n\ @return\ intersection\ des\ ensembles\n
+comment6.params=e
+comment6.target=Ensemble\ diff(Ensemble)
+comment6.text=\n\ M\u00E9thode\ Diff\u00E9rence\n\ @param\ Ensemble\ e\n\ @return\ diff\u00E9rence\ des\ ensembles\n
+comment7.params=e
+comment7.target=Ensemble\ diffSym(Ensemble)
+comment7.text=\n\ M\u00E9thode\ Diff\u00E9rence\ Sym\u00E9trique\n\ @param\ Ensemble\ e\n\ @return\ diff\u00E9rence\ sym\u00E9trique\ des\ ensembles\n
+numComments=8

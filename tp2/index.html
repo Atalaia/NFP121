@@ -1,0 +1,296 @@
+<html>
+<head>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+    <title>NFP121 - TP1</title>
+    <style type="text/css">
+        body {
+            background: #E5DED6;
+            background-color: #fff;
+            color: #333333;
+            font-size: 14px;
+            font-family: Verdana, Arial;
+        }
+
+        table {
+            font-size: 20px;
+            border-color: #808080;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        h2 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        hr {
+            margin: 15px 0 15px 0;
+        }
+		
+		applet {
+			margin: 10px 0px 25px 250px;
+			border-width: 1px;
+			border-style: solid;
+			border-color: #777777;
+		}
+		
+    </style>
+
+</head>
+<body>
+    <h2 style="text-align: center">NFP 121 - TP2</h2>
+    <h2 style="text-align: center">Conversion Fahrenheit - Celsius</h2>
+    <br />
+    <hr>
+    <br />
+    <table>
+        <tr>
+            <td>Nom
+            </td>
+            <td>SOAGE CAMPELO
+            </td>
+        </tr>
+        <tr>
+            <td>Prénom
+            </td>
+            <td>MARIA ESTHER
+            </td>
+        </tr>
+        <tr>
+            <td>Matricule
+            </td>
+            <td>FOD_0G5DRMA39F5
+            </td>
+        </tr>
+    </table>
+    <br />
+    <hr />
+    <h3>Question 1 : canversion Fahrenheit - Celsius</h3>
+    <hr />
+    Après avoir complété les 2 méthodes de la classe, j'obtiens le résultat demandé.
+    <hr />
+    la méthode float fahrenheitEnCelsius(int f) :
+    <hr />
+    <hr />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;la&nbsp;méthode&nbsp;à&nbsp;compléter.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;f
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;la&nbsp;valeur&nbsp;en&nbsp;degré&nbsp;Fahrenheit
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;conversion&nbsp;en&nbsp;degré&nbsp;Celsius
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;fahrenheitEnCelsius(<strong><font color='#7f0055'>int</font></strong>&nbsp;f)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;celsius&nbsp;=&nbsp;(<strong><font color='#7f0055'>float</font></strong>)5/9&nbsp;*&nbsp;(f&nbsp;-32);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;celsius;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+
+Et la méthode main
+<hr />
+<hr />
+
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Application&nbsp;qui&nbsp;convertit&nbsp;les&nbsp;dégrés&nbsp;Fahrenheit&nbsp;entrés&nbsp;en&nbsp;ligne&nbsp;de&nbsp;commande&nbsp;en&nbsp;dégrés&nbsp;Celsius
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;args
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;main(String[]&nbsp;args)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;pour&nbsp;tous&nbsp;les&nbsp;paramètres&nbsp;de&nbsp;la&nbsp;ligne&nbsp;de&nbsp;commande
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;fahrenheit&nbsp;=&nbsp;0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;celsius&nbsp;=&nbsp;0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(<strong><font color='#7f0055'>int</font></strong>&nbsp;i=0;i<=args.length;i++){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fahrenheit&nbsp;=&nbsp;java.lang.Integer.parseInt(args[i]);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;celsius&nbsp;=&nbsp;fahrenheitEnCelsius(fahrenheit);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(fahrenheit&nbsp;+&nbsp;<font color='#2a00ff'>"\u00B0F&nbsp;->&nbsp;"</font>&nbsp;+&nbsp;((<strong><font color='#7f0055'>int</font></strong>)(celsius*10)/10.0)&nbsp;+&nbsp;<font color='#2a00ff'>"\u00B0C"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<hr />
+<hr />
+    <hr />
+    <h3>Question 1.1 : classe de test</h3>
+ <hr />
+ J'ai rajouté les tests suivants. Il s'agit d'autres assertions. Le résultat doit être égal à la valeur en celsius que j'ai mis comme résultat attendu dans le méthode du test. 
+<hr />
+<hr />
+
+ <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Il&nbsp;ne&nbsp;vous&nbsp;reste&nbsp;plus&nbsp;qu'à&nbsp;définir&nbsp;une&nbsp;ou&nbsp;plusieurs&nbsp;méthodes&nbsp;de&nbsp;test.&nbsp;Ces
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;méthodes&nbsp;doivent&nbsp;vérifier&nbsp;les&nbsp;résultats&nbsp;attendus&nbsp;à&nbsp;l'aide&nbsp;d'assertions
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;assertTrue(<boolean>).&nbsp;Par&nbsp;convention,&nbsp;leurs&nbsp;noms&nbsp;devraient&nbsp;débuter&nbsp;par
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;"test".&nbsp;Vous&nbsp;pouvez&nbsp;ébaucher&nbsp;le&nbsp;corps&nbsp;grâce&nbsp;au&nbsp;menu&nbsp;contextuel
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;"Enregistrer&nbsp;une&nbsp;méthode&nbsp;de&nbsp;test".
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_fahrenheitEnCelsius()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;°F&nbsp;->&nbsp;-17.7&nbsp;°C&nbsp;?&nbsp;"</font>,&nbsp;-17.7,&nbsp;question1.FahrenheitCelsius.fahrenheitEnCelsius(0),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;100&nbsp;°F&nbsp;->&nbsp;37.7&nbsp;°C&nbsp;?&nbsp;"</font>,&nbsp;37.7,&nbsp;question1.FahrenheitCelsius.fahrenheitEnCelsius(100),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;2000&nbsp;°F&nbsp;->&nbsp;1093.3&nbsp;°C&nbsp;?"</font>,&nbsp;1093.3,&nbsp;question1.FahrenheitCelsius.fahrenheitEnCelsius(2000),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;&nbsp;54&nbsp;°F&nbsp;->&nbsp;12.2&nbsp;°C&nbsp;?"</font>,&nbsp;12.2,&nbsp;question1.FahrenheitCelsius.fahrenheitEnCelsius(54),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;&nbsp;37&nbsp;°F&nbsp;->&nbsp;2.7&nbsp;°C&nbsp;?"</font>,&nbsp;2.7,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question1.FahrenheitCelsius.fahrenheitEnCelsius(37),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;&nbsp;500&nbsp;°F&nbsp;->&nbsp;260.0°C&nbsp;?"</font>,&nbsp;260.0,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question1.FahrenheitCelsius.fahrenheitEnCelsius(500),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;&nbsp;356&nbsp;°F&nbsp;->&nbsp;180.0&nbsp;°C&nbsp;?"</font>,&nbsp;180.0,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question1.FahrenheitCelsius.fahrenheitEnCelsius(356),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<font color='#2a00ff'>"0°F&nbsp;<&nbsp;100°F"</font>,question1.FahrenheitCelsius.fahrenheitEnCelsius(0)<&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question1.FahrenheitCelsius.fahrenheitEnCelsius(100));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+
+
+    <br />
+    <hr />
+    <h3>Question 2 : Exception "runtime"</h3>
+     <br />
+En reprenant la conversion de la question 1, j'ai ajouté la gestion de l'exception "NumberFormatException". En ajoutant cette exception, à chaque que j'entre quelque chose d'autre qu'un numéro, le program va lever une exception et afficher un message d'erreur.
+ <br />
+ <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;main(String[]&nbsp;args){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;fahrenheit&nbsp;=&nbsp;0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;celsius&nbsp;=&nbsp;0;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(<strong><font color='#7f0055'>int</font></strong>&nbsp;i=0;i<=args.length;i++){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fahrenheit&nbsp;=&nbsp;java.lang.Integer.parseInt(args[i]);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;celsius&nbsp;=&nbsp;fahrenheitEnCelsius(fahrenheit);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(fahrenheit&nbsp;+&nbsp;<font color='#2a00ff'>"\u00B0F&nbsp;->&nbsp;"</font>&nbsp;+&nbsp;((<strong><font color='#7f0055'>int</font></strong>)(celsius*10)/10.0)&nbsp;+&nbsp;<font color='#2a00ff'>"\u00B0C"</font>);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(NumberFormatException&nbsp;nfe){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<font color='#2a00ff'>"error&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;nfe.getMessage());&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;en&nbsp;cas&nbsp;d'erreur&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+ <br />
+ <br />
+ Dans la deuxième partie de la question 2, il faut rajouter un test unitaire pour tester l'exception NumberFormatException. J'ai essayé plusieurs façons, mais je n'ai pas réussi. Je n'ai jamais tester une exception et je ne savais pas trop comment faire.
+  <br />
+ <br />
+ <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;test_fahrenheitEnCelsius()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FahrenheitCelsius&nbsp;f=<strong><font color='#7f0055'>null</font></strong>;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;°F&nbsp;->&nbsp;-17.7&nbsp;°C&nbsp;?&nbsp;"</font>,&nbsp;-17.7,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.FahrenheitCelsius.fahrenheitEnCelsius(0),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;100&nbsp;°F&nbsp;->&nbsp;37.7&nbsp;°C&nbsp;?&nbsp;"</font>,&nbsp;37.7,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.FahrenheitCelsius.fahrenheitEnCelsius(100),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;2000&nbsp;°F&nbsp;->&nbsp;1093.3&nbsp;°C&nbsp;?"</font>,&nbsp;1093.3,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.FahrenheitCelsius.fahrenheitEnCelsius(2000),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;&nbsp;54&nbsp;°F&nbsp;->&nbsp;12.2&nbsp;°C&nbsp;?"</font>,&nbsp;12.2,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.FahrenheitCelsius.fahrenheitEnCelsius(54),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;&nbsp;37&nbsp;°F&nbsp;->&nbsp;2.7&nbsp;°C&nbsp;?"</font>,&nbsp;2.7,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.FahrenheitCelsius.fahrenheitEnCelsius(37),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;&nbsp;500&nbsp;°F&nbsp;->&nbsp;260.0°C&nbsp;?"</font>,&nbsp;260.0,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.FahrenheitCelsius.fahrenheitEnCelsius(500),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"&nbsp;&nbsp;&nbsp;356&nbsp;°F&nbsp;->&nbsp;180.0&nbsp;°C&nbsp;?"</font>,&nbsp;180.0,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.FahrenheitCelsius.fahrenheitEnCelsius(356),&nbsp;0.1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<font color='#2a00ff'>"0°F&nbsp;<&nbsp;100°F"</font>,question2.FahrenheitCelsius.fahrenheitEnCelsius(0)<&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;question2.FahrenheitCelsius.fahrenheitEnCelsius(100));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//J'ai&nbsp;testé&nbsp;plusieurs&nbsp;méthodes,&nbsp;mais&nbsp;j'ai&nbsp;toujours&nbsp;la&nbsp;même&nbsp;erreur,&nbsp;je&nbsp;ne&nbsp;peux&nbsp;pas&nbsp;passer&nbsp;"ZZ"&nbsp;en&nbsp;paramètre
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//pour&nbsp;tester
+</font><br/><font color='#3f7f5f'>/*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue("ZZ&nbsp;NumberFormatException&nbsp;?",question2.FahrenheitCelsius.main("ZZ")&nbsp;instanceof&nbsp;NumberFormatException);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f&nbsp;=&nbsp;FahrenheitCelsius.main("ZZ");
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail("Expecting&nbsp;NumberFormatException");
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(NumberFormatException&nbsp;ex)&nbsp;{}
+<br/>*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;test_FahrenheitCelsiusNumberException()&nbsp;throws&nbsp;Exception{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FahrenheitCelsius&nbsp;f=&nbsp;new&nbsp;FahrenheitCelsius();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.main("ZZ");
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fail("DescriptorValidationException&nbsp;expected");
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(NumberFormatException&nbsp;e)&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(e.getCause()&nbsp;instanceof&nbsp;NumberFormatException);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;*/</font>
+<br/>
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+
+
+    <br />
+    <hr />
+    <h3>Question 3 :</h3>
+	<applet code="question3.AppletteFahrenheit.class" align="baseline" width="400" height="66"><PARAM name="backgroundColor" value="0xc0c0c0"></applet>
+	<h1><P align=center>L'applette complétée</p></h1>
+    <br />
+    <hr />
+    Dans la question 3, j'ai complété la méthode void actionPerformed(ActionEvent ae) comme expliqué ci-dessous. Cette fois-ci nous allons utiliser une IHM pour faire la conversion Fahrenheit en Celsius grâce à JFrame. Les dégrés en Fahrenheit sont entrés directaments dans l'IHM et plus à travers la ligne de commande. 
+    <hr />
+    La méthode actionPerformed a aussi un test pour le zéro absolu (voir code ci-dessous commenté). Les tests qui ont échoué quand j'ai fait le submit c'est parce que je n'ai pas réussi à mettre le résultat en celsius avec un seul décimal (ce format : exemple 20.5). 
+    <hr />
+    J'ai dû rajouter la méthode float fahrenheitEnCelsius( int f) de la question 1 et 2, car même si j'ai fait l'export des 2 packages. La méthode n'était pas réconnu, donc je l'ai ajouté ici à nouveau. 
+    <hr />
+    <hr />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><font color='#2040a0'>/**&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;méthode&nbsp;déclenchée&nbsp;lorsque&nbsp;le&nbsp;bouton&nbsp;de&nbsp;conversion&nbsp;est&nbsp;appuyé.&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;remarquer&nbsp;que&nbsp;le&nbsp;champs&nbsp;de&nbsp;droite&nbsp;(les&nbsp;degrés&nbsp;Celsius)&nbsp;n'est&nbsp;pas&nbsp;éditable.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;ae&nbsp;l'événement&nbsp;transmis
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;actionPerformed(&nbsp;ActionEvent&nbsp;ae&nbsp;){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;fahrenheit&nbsp;=&nbsp;0;&nbsp;<font color='#3f7f5f'>//&nbsp;valeur&nbsp;est&nbsp;une&nbsp;String&nbsp;et&nbsp;doit&nbsp;être&nbsp;convertie&nbsp;en&nbsp;entier,&nbsp;voir&nbsp;java.lang.Integer&nbsp;méthode&nbsp;parseInt&nbsp;(-->&nbsp;try/catch)
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;celsius&nbsp;=&nbsp;0F;&nbsp;<font color='#3f7f5f'>//&nbsp;à&nbsp;compléter,&nbsp;en&nbsp;appelant&nbsp;la&nbsp;méthode&nbsp;ad'hoc&nbsp;de&nbsp;la&nbsp;question2
+</font><br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//récupérer&nbsp;le&nbsp;contenu&nbsp;dans&nbsp;le&nbsp;JTextfield&nbsp;entree
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;f&nbsp;=&nbsp;entree.getText();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//transformer&nbsp;le&nbsp;String&nbsp;en&nbsp;int
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fahrenheit&nbsp;=&nbsp;java.lang.Integer.parseInt(f);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//passer&nbsp;le&nbsp;int&nbsp;en&nbsp;paramètre&nbsp;de&nbsp;la&nbsp;méthode&nbsp;fahrenheitEnCelsius
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;celsius&nbsp;=&nbsp;fahrenheitEnCelsius(fahrenheit);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;un&nbsp;test&nbsp;ici&nbsp;pour&nbsp;le&nbsp;zéro&nbsp;absolu&nbsp;(-273.1)
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(celsius&nbsp;<&nbsp;-273.1F)&nbsp;celsius&nbsp;=&nbsp;-273.1F;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//afficher&nbsp;le&nbsp;résultat&nbsp;en&nbsp;celsius&nbsp;dans&nbsp;le&nbsp;JTextField&nbsp;de&nbsp;sortie
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sortie.setText(&nbsp;Float.toString(&nbsp;celsius));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(NumberFormatException&nbsp;nfe){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sortie.setText(<font color='#2a00ff'>"error&nbsp;!&nbsp;"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;main(String[]&nbsp;args){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;IHMFahrenheit();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//Je&nbsp;reprend&nbsp;la&nbsp;méthode&nbsp;de&nbsp;la&nbsp;question&nbsp;2
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;fahrenheitEnCelsius(&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;f){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>float</font></strong>&nbsp;celsius&nbsp;=&nbsp;(<strong><font color='#7f0055'>float</font></strong>)5/9&nbsp;*&nbsp;(f&nbsp;-32);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;celsius;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+
+
+	
+    <br />
+    <hr />    
+        <h3>Conclusion, biliographie et remarques : Je pense qu'en général c'est plutôt bien passé. Les points de difficulté ont été les tests jUnit, 
+        principalement dans la question 2. Je n'ai pas fait beaucoup de test auparavant, donc je ne savais pas trop bien tester une exception.
+        J'ai eu aussi du mal dans la question 3 pour mettre le résultat en celsius avec un seul chiffre derrière la virgule. Je n'ai pas réussi et du coup je crois que les échecs lors des tests après Submit sont dûs à ça, plutôt qu'à des erreurs dans le code.</h3>
+        <i style="font-size:12px;">... Une seule page html, limitez le nombre de clics, (plus de 200 rapports à corriger chaque semaine)</i>
+</body>
+</html>

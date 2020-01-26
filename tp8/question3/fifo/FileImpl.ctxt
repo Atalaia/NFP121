@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.params=capacite
+comment0.target=FileImpl(int)
+comment1.params=e
+comment1.target=void\ enfiler(E)
+comment10.params=o
+comment10.target=boolean\ equals(Object)
+comment11.target=int\ hashCode()
+comment12.target=boolean\ repOk()
+comment2.target=int\ capacite()
+comment3.target=E\ defiler()
+comment4.target=E\ premier()
+comment5.params=e
+comment5.target=boolean\ contient(E)
+comment6.target=void\ vider()
+comment7.target=int\ taille()
+comment8.target=Iterator<E>\ iterator()
+comment9.target=String\ toString()
+numComments=13

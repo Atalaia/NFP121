@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=EntierPositifTest
+comment1.params=
+comment1.target=void\ testConstructeurEntierPositif()
+comment2.params=
+comment2.target=void\ testIncEntierPositif()
+comment3.params=
+comment3.target=void\ testDecEntierPositif()
+comment4.params=
+comment4.target=void\ testSetValeurEntierPositif()
+numComments=5

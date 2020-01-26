@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=VisiteurInstJDOM
+comment0.text=\n\ Visiteur\ d'instruction,\ chaque\ classe\ concr\u00E8te\ poss\u00E8de\ une\ impl\u00E9mentation\ de\n\ la\ visite\n\ \n
+comment1.params=vi\ vb
+comment1.target=VisiteurInstJDOM(tp6.question1.VisiteurExpression,\ tp6.question2.VisiteurExpressionBooleenne)
+comment1.text=\n\ Cr\u00E9ation\ d'un\ visiteur\ d'instructions\n\ \n\ @param\ vi\n\ \ \ \ \ \ \ \ \ \ \ \ le\ visiteur\ d'expressions\ arithm\u00E9tiques\n\ @param\ vb\n\ \ \ \ \ \ \ \ \ \ \ \ le\ visiteur\ d'expression\ bool\u00E9ennes\n
+comment2.params=
+comment2.target=tp6.question1.Contexte\ contexte()
+comment2.text=\n\ obtention\ du\ contexte,\n\ \n\ @return\ le\ contexte\ ici\ de\ vi(le\ visiteur\ d'expression)\n
+comment3.params=a
+comment3.target=org.jdom.Element\ visite(Affectation)
+comment4.params=seq
+comment4.target=org.jdom.Element\ visite(Sequence)
+comment5.params=sel
+comment5.target=org.jdom.Element\ visite(Selection)
+comment6.params=tq
+comment6.target=org.jdom.Element\ visite(TantQue)
+comment7.params=pour
+comment7.target=org.jdom.Element\ visite(Pour)
+comment8.params=a
+comment8.target=org.jdom.Element\ visite(Afficher)
+comment9.params=a
+comment9.target=org.jdom.Element\ visite(Assertion)
+numComments=10

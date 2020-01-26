@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=ServiceLocator
+comment1.params=
+comment1.target=ServiceLocator()
+comment2.params=serviceName
+comment2.target=java.lang.Object\ lookup(java.lang.String)
+comment3.params=container
+comment3.target=void\ setContainer(container.ApplicationContext)
+comment4.params=
+comment4.target=java.util.List\ services()
+comment5.params=
+comment5.target=java.util.Iterator\ iterator()
+numComments=6

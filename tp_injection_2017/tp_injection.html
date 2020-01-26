@@ -1,0 +1,687 @@
+<html>
+<body>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <div id="container">
+        <div id="header">
+            <div id="header_toprow">
+                Conservatoire national des arts et métiers
+            </div>
+            <div id="header_title">
+                NFP121 : Programmation avancée<br />
+                TP <span style="font-weight: 400"><i>injection</i></span> <br>
+                Injection de dépendances, Inversion de contrôle
+            </div>
+        </div>
+        &nbsp;<div id="content">
+
+            <div class="question">
+                <img src="images/question1.png" width="101" height="80" />
+                <span>Le </span>framework femtoContainer</div>
+
+            <div class="paragraphe">
+				&nbsp;<p>
+				<b><font size="5">Préambule:</font></b><font size="5"> lire, étudier l'article de 
+                Martin Fowler</font></p>
+                <p><font size="3">&nbsp;&nbsp;&nbsp;
+<a href="http://www.martinfowler.com/articles/injection.html">
+http://www.martinfowler.com/articles/injection.html</a></font></p>
+
+
+                <p><font size="3">Ce TP est accompagné d'une séance d'exercices dirigés sur le 
+                même thème</font></p>
+
+
+                <blockquote>
+                <p><font size="3">cf.
+                <a href="http://lmi92.cnam.fr/NFP121/supports/podcast/">
+                http://lmi92.cnam.fr/NFP121/supports/podcast/</a>&nbsp; cf. ed 
+                injection_dependances_IoC</font></p>
+
+
+                </blockquote>
+                <p>&nbsp;</p>
+
+
+            </div>
+            <hr>
+			
+            <p align="left"><font size="4">&nbsp;&nbsp;&nbsp; Dans le paragraphe <b>
+<font color="#990044">Setter Injection with
+<a href="https://fr.wikipedia.org/wiki/Spring_(framework)">Spring</a></font></b> 
+l'auteur, Martin Fowler, présente un exemple de configuration de classes à l'aide du framework 
+Spring. L'exemple de l'article effectue une recherche d'un titre de film à 
+l'aide du nom du réalisateur, la liste des films peut se présenter selon plusieurs 
+formats: du fichier texte au format CSV ou avec d'autres séparateurs ou encore 
+en base de données ou bien sur 
+le web. </font></p>
+			
+            <p align="center">
+                <font size="4">
+<img border="0" src="images/wp6s9svj.gif" width="512" height="270"></font>
+            </p>
+			
+
+<p><font size="4">L'usage d'un framework de configuration, 
+comme Spring, 
+permet de s'affranchir du format de la liste des films, ce choix étant déterminé 
+au moment de l'exécution depuis un fichier de configuration. Une séparation claire 
+est ainsi effectuée entre la configuration des classes et leur utilisation.</font></p>
+
+
+<p><font size="4">Le fichier de configuration Spring est en XML (spring.xml) :</font></p>
+
+
+<blockquote>
+  <pre>&lt;beans&gt;
+    &lt;bean id=&quot;<b><font color="#006699" size="3">MovieLister</font></b>&quot; class=&quot;spring.MovieLister&quot;&gt;
+        &lt;property name=&quot;finder&quot;&gt;
+            &lt;ref local=&quot;MovieFinder&quot;/&gt;    <i><b><font color="#0000FF">         &lt;-- ce sera un &quot;bean&quot; défini dans le même contexte</font></b></i>
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;<b><font color="#006699" size="3">MovieFinder</font></b>&quot; class=&quot;spring.ColonMovieFinder&quot;&gt;  <i><b><font color="#0000FF">&lt;-- le format du fichier est indiqué ici</font></b></i>
+        &lt;property name=&quot;filename&quot;&gt;
+            &lt;value&gt;movies1.txt&lt;/value&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;</pre>
+</blockquote>
+
+
+<p><font size="4">La lecture de ce fichier indique, que nous avons deux beans :
+</font></p>
+
+
+<blockquote>
+  <ul>
+    <li><font size="4"><b><font color="#006699">MovieLister</font></b> et <b>
+    <font color="#006699">MovieFinder</font></b></font></li>
+    <li><font size="4">dont les propriétés sont respectivement finder et 
+    filename</font></li>
+    <li><font size="4">les mutateurs(setter) associés sont exécutés par Spring : 
+    setFinder et setFilename, avec les paramètres indiqués.</font></li>
+  </ul>
+</blockquote>
+
+
+<p><font size="4">En java, ci-dessous l'usage de Spring, extrait de l'article :</font></p>
+
+
+<blockquote>
+  <pre>public void testWithSpring() throws Exception {
+    ApplicationContext ctx = new FileSystemXmlApplicationContext(&quot;spring.xml&quot;);
+    MovieLister lister = (MovieLister) ctx.getBean(&quot;<b><font color="#006699">MovieLister</font></b>&quot;);
+    Movie[] movies = lister.moviesDirectedBy(&quot;Sergio Leone&quot;);
+    assertEquals(&quot;Once Upon a Time in the West&quot;, movies[0].getTitle());
+}</pre>
+</blockquote>
+
+
+<p><font size="4">&nbsp;&nbsp;&nbsp; Nous souhaitons utiliser le même type, 
+simplifié, de framework développé pour cette unité, basé, comme Spring, sur l'injection de dépendances par les 
+mutateurs(setter), les mêmes noms de classe ou d'interface <i>ApplicationContext</i> 
+et noms de méthode <i>getBean</i>, <i>getType</i> ont été repris depuis Spring.</font></p>
+
+
+<p>&nbsp;</p>
+
+
+<p><font size="4">Dans la suite de cet énoncé, nous  nommerons ce framework : <font color="#990000">femtoContainer</font>, 
+tant ses fonctionnalités sont minimales.</font></p>
+
+
+<p><font size="4">Le projet Bluej associé au tp</font></p>
+
+
+            <blockquote>
+
+
+<p><img border="0" src="images/tp_inj1.jpg" width="545" height="282"></p>
+
+
+<p>le paquetage container contient femtoContainer, le paquetage config_editor un 
+éditeur minimaliste de fichiers de configuration</p>
+
+
+<p>&nbsp;</p>
+
+
+            </blockquote>
+
+
+<p><font size="4">&nbsp;&nbsp; Ci-dessous deux exemples avec <font color="#990000">femtoContainer</font>, celui de l'article où l'on cherche toujours le film de Sergio Leone et un autre 
+exemple d'une table avec une capacité limitée, table dont le comportement est issu du fichier de configuration, 
+cette table peut comporter des doublons ou non. 
+<br>
+&nbsp;&nbsp; Vous trouverez dans le projet BlueJ dans le paquetage question1 un exemple de patron commande dont le 
+choix des receveurs et des commandes  concrètes est déterminé 
+dans la configuration.</font></p>
+
+
+<p>
+
+<br>
+
+ <!-- FIN DE CODE JAVA - JavaVersHtml --><font size="4">Exemple (1) à la recherche d'un 
+réalisateur,</font></p>
+
+
+<p>
+
+<font size="4">Un extrait de la classe de tests unitaires</font></p>
+
+
+<div style="background:#FFFFFF; color:#000000; border:solid 1px black; margin:10px; padding:10px;"> 
+<pre><FONT color="#AA0000"><b>package</b></FONT> question1;
+
+<FONT color="#AA0000"><b>import</b></FONT> java.util.*;
+
+<FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>class</b></FONT> ApplicationContextTest <FONT color="#AA0000"><b>extends</b></FONT> junit.framework.TestCase{
+
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> testWithOurContainer() <FONT color="#990044"><b>throws</b></FONT> Exception{
+    ApplicationContext ctx = Factory.createApplicationContext();
+    MovieLister lister = (MovieLister) ctx.getBean(<FONT color="#00AA00">"MovieLister"</FONT>);
+    List&lt;Movie&gt; movies = lister.moviesDirectedBy(<FONT color="#00AA00">"Sergio Leone"</FONT>);
+    assertEquals(<FONT color="#00AA00">"Once Upon a Time in the West"</FONT>,movies.get(0).getTitle());
+  }
+
+}
+
+</pre></div>
+ <!-- FIN DE CODE JAVA - JavaVersHtml --></p>
+
+
+ <!-- FIN DE CODE JAVA - JavaVersHtml -->
+            <p></p>
+            <p></p>
+            <p></p>
+            <p><b>L'exemple de l'article, suivi du fichier de configuration</b></p>
+            <div style="background:#FFFFFF; color:#000000; border:solid 1px black; margin:10px; padding:10px;"> 
+<pre><FONT color="#AA0000"><b>import</b></FONT> java.util.*;
+
+<FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>class</b></FONT> ColonMovieFinder <FONT color="#AA0000"><b>implements</b></FONT> MovieFinder {
+  <FONT color="#990044"><b>private</b></FONT> String filename;
+  
+  <FONT color="#990044"><b>public</b></FONT> ColonMovieFinder() {
+  }
+  
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> setFilename(String filename) {
+    this.filename = filename;
+  }
+  
+  <FONT color="#990044"><b>public</b></FONT> List&lt;Movie&gt; findAll(){
+    List&lt;Movie&gt; list = <FONT color="#990044"><b>new</b></FONT> ArrayList&lt;Movie&gt;();
+    <FONT color="#777777"><i>// la liste simulée extraite d'un fichier texte</i></FONT>
+    list.add(<FONT color="#990044"><b>new</b></FONT> Movie(<FONT color="#00AA00">"Dans les for&ecirc;ts de Sib&eacute;rie"</FONT>,<FONT color="#00AA00">"NEBBOU Safy"</FONT>));
+    list.add(<FONT color="#990044"><b>new</b></FONT> Movie(<FONT color="#00AA00">"Demain"</FONT>,<FONT color="#00AA00">"LAURENT M&eacute;lanie / DION Cyril"</FONT>));
+    list.add(<FONT color="#990044"><b>new</b></FONT> Movie(<FONT color="#00AA00">"Once Upon a Time in the West"</FONT>,<FONT color="#00AA00">"Sergio Leone"</FONT>));
+    <FONT color="#990044"><b>return</b></FONT> list;
+  }
+  
+  <FONT color="#990044"><b>public</b></FONT> String toString(){
+    <FONT color="#990044"><b>return</b></FONT> <FONT color="#00AA00">"ColonMovieFinder"</FONT>;
+  }
+}</pre> 
+<pre>__________________________________________________________________</pre> 
+<pre><font size="4"><FONT color="#AA0000"><b><font size="2">import</font></b></FONT><font size="2"> java.util.*;
+<FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>class</b></FONT> MovieLister{
+  <FONT color="#990044"><b>private</b></FONT> MovieFinder finder;   
+
+  
+  <FONT color="#990044"><b>public</b></FONT> MovieLister() {
+  }
+  
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> setFinder(MovieFinder finder) {
+    this.finder = finder;
+  }
+  
+  <FONT color="#990044"><b>public</b></FONT> List&lt;Movie&gt; moviesDirectedBy(String arg) {
+    List&lt;Movie&gt; allMovies = finder.findAll();
+    <FONT color="#990044"><b>for</b></FONT> (Iterator&lt;Movie&gt; it = allMovies.iterator(); it.hasNext();) {
+        Movie movie = it.next();
+        <FONT color="#990044"><b>if</b></FONT> (!movie.getDirector().equals(arg)) it.remove();
+    }
+    <FONT color="#990044"><b>return</b></FONT> allMovies;
+  }
+}</font></font></pre> 
+<pre>__________________________________________________________________</pre> 
+<pre><FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>interface</b></FONT> MovieFinder {
+    List&lt;Movie&gt; findAll();
+}</pre> 
+<pre>__________________________________________________________________</pre> 
+<pre><FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>class</b></FONT> Movie{
+    <FONT color="#990044"><b>private</b></FONT> String title;
+    <FONT color="#990044"><b>private</b></FONT> String director;
+
+  <FONT color="#990044"><b>public</b></FONT> Movie(String title, String director){
+    this.title = title;
+    this.director = director;
+  }
+  
+  <FONT color="#990044"><b>public</b></FONT> String getTitle(){
+    <FONT color="#990044"><b>return</b></FONT> title;
+  }
+  
+  <FONT color="#990044"><b>public</b></FONT> String getDirector(){
+    <FONT color="#990044"><b>return</b></FONT> director;
+  }
+}</pre> 
+<pre>&nbsp;</pre> 
+</div>
+ <!-- FIN DE CODE JAVA - JavaVersHtml -->
+            <p></p>
+            <p>
+
+
+<font size="4">
+
+&nbsp;<!-- DEBUT DE CODE JAVA - JavaVersHtml -->
+<!-- DEBUT DE CODE JAVA - JavaVersHtml -->
+&nbsp;</font><font size="5"><!-- FIN DE CODE JAVA - JavaVersHtml --><!-- DEBUT DE CODE JAVA - JavaVersHtml -->
+<img border="0" src="images/tp_inj22.jpg" width="553" height="574"></font><p>
+
+
+<font size="4">
+Exemple (2) une table au comportement issu du fichier de configuration</font><font size="5"> </font>
+(cf. README.TXT), ce fichier a été choisi pour sa présence en icône depuis&nbsp; 
+bluej<font size="5"><div style="background:#FFFFFF; color:#000000; border:solid 1px black; margin:10px; padding:10px;"> 
+<pre><font size="3">
+</font><font size="2"><FONT color="#AA0000"><b>import</b></FONT> java.util.Collection;
+<FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>class</b></FONT> Table&lt;T&gt;{
+  <FONT color="#990044"><b>private</b></FONT> Collection&lt;T&gt; liste;
+  <FONT color="#990044"><b>private</b></FONT> <FONT color="#FF0000"><b>int</b></FONT> capacite;
+  
+  <FONT color="#990044"><b>public</b></FONT> Table(){}
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> setListe(Collection&lt;T&gt; liste){
+    this.liste = liste;
+  }
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> setCapacite(<FONT color="#FF0000"><b>int</b></FONT> capacite){
+    this.capacite = capacite;
+  }
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> ajouter(T t){
+    <FONT color="#990044"><b>if</b></FONT>(liste.size()==capacite) <FONT color="#990044"><b>throw</b></FONT> <FONT color="#990044"><b>new</b></FONT> RuntimeException(<FONT color="#00AA00">"capacity reached"</FONT>);
+    liste.add(t);
+  }
+  <FONT color="#990044"><b>public</b></FONT> String toString(){
+    <FONT color="#990044"><b>return</b></FONT> liste.toString();
+  }
+}</font></pre> 
+<pre><FONT color="#AA0000"><b><font size="2">package</font></b></FONT><font size="2"> question1;
+
+<FONT color="#AA0000"><b>import</b></FONT> java.util.*;
+
+<FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>class</b></FONT> TestsTable <FONT color="#AA0000"><b>extends</b></FONT> junit.framework.TestCase{
+
+
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> testTableArrayList() <FONT color="#990044"><b>throws</b></FONT> Exception{
+    <FONT color="#990044"><b>try</b></FONT>{
+      ApplicationContext ctx = Factory.createApplicationContext(&quot;./question1/exemples/README.TXT&quot;);
+      Table&lt;Integer&gt; table = (Table&lt;Integer&gt;) ctx.getBean(<FONT color="#00AA00">"table"</FONT>);
+      table.ajouter(4);table.ajouter(2);table.ajouter(3);table.ajouter(1);
+      assertEquals(<FONT color="#00AA00">"[4, 2, 3, 1]"</FONT>,table.toString());
+      <FONT color="#990044"><b>try</b></FONT>{
+        table.ajouter(5);
+        fail(<FONT color="#00AA00">"Une exception doit &ecirc;tre lev&eacute;e, la capacit&eacute; de la table est atteinte..."</FONT>);
+      }<FONT color="#990044"><b>catch</b></FONT>(Exception e){
+      }
+      assertEquals(Table.class,ctx.getType(<FONT color="#00AA00">"table"</FONT>));
+      Table&lt;Integer&gt; table2 = (Table&lt;Integer&gt;) ctx.getBean(<FONT color="#00AA00">"table"</FONT>);
+      assertSame(table, table2);
+    }<FONT color="#990044"><b>catch</b></FONT>(Exception e){
+      fail(<FONT color="#00AA00">"Exception inattendue :"</FONT> + e.getMessage());
+    }
+  }
+
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> testTableArrayList2() <FONT color="#990044"><b>throws</b></FONT> Exception{
+    <FONT color="#990044"><b>try</b></FONT>{
+      ApplicationContext ctx = Factory.createApplicationContext(&quot;./question1/exemples/README.TXT&quot;);
+      Table&lt;Integer&gt; table = (Table&lt;Integer&gt;) ctx.getBean(<FONT color="#00AA00">"table2"</FONT>);
+      assertEquals(Table.class,ctx.getType(<FONT color="#00AA00">"table2"</FONT>));
+      table.ajouter(4);table.ajouter(2);table.ajouter(2);table.ajouter(1);
+      assertEquals(<FONT color="#00AA00">"[4, 2, 2, 1]"</FONT>,table.toString());
+      <FONT color="#990044"><b>try</b></FONT>{
+        table.ajouter(5);
+        fail(<FONT color="#00AA00">"Une exception doit &ecirc;tre lev&eacute;e, la capacit&eacute; de la table est atteinte..."</FONT>);
+      }<FONT color="#990044"><b>catch</b></FONT>(Exception e){
+      }
+    }<FONT color="#990044"><b>catch</b></FONT>(Exception e){
+      fail(<FONT color="#00AA00">"Exception inattendue :"</FONT> + e.getMessage());
+    }
+  }
+
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> testTableSet() <FONT color="#990044"><b>throws</b></FONT> Exception{
+    <FONT color="#990044"><b>try</b></FONT>{
+      ApplicationContext ctx = Factory.createApplicationContext(&quot;./question1/exemples/README.TXT&quot;);
+      Table&lt;Integer&gt; table = (Table&lt;Integer&gt;) ctx.getBean(<FONT color="#00AA00">"tableSet"</FONT>);
+      table.ajouter(4);table.ajouter(2);table.ajouter(2);table.ajouter(1);
+      assertEquals(<FONT color="#00AA00">"[1, 2, 4]"</FONT>,table.toString());
+      <FONT color="#990044"><b>try</b></FONT>{
+        table.ajouter(3);
+        assertEquals(<FONT color="#00AA00">"[1, 2, 3, 4]"</FONT>,table.toString());
+        table.ajouter(6);
+        fail(<FONT color="#00AA00">"Une exception doit &ecirc;tre lev&eacute;e, la capacit&eacute; de la table est atteinte..."</FONT>);
+      }<FONT color="#990044"><b>catch</b></FONT>(Exception e){
+      }
+      assertEquals(Table.class,ctx.getType(<FONT color="#00AA00">"table"</FONT>));
+    }<FONT color="#990044"><b>catch</b></FONT>(Exception e){
+      fail(<FONT color="#00AA00">"Exception inattendue :"</FONT> + e.getMessage());
+    }
+  }	
+
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> testContainerContent()<FONT color="#990044"><b>throws</b></FONT> Exception{
+    <FONT color="#990044"><b>try</b></FONT>{
+      ApplicationContext ctx = Factory.createApplicationContext(&quot;./question1/exemples/README.TXT&quot;);
+      List&lt;String&gt; liste = <FONT color="#990044"><b>new</b></FONT> ArrayList&lt;String&gt;();
+      <FONT color="#990044"><b>for</b></FONT>(String bean : ctx){ 
+        liste.add(bean);
+      }
+      assertTrue(liste.contains(<FONT color="#00AA00">"MovieLister"</FONT>));
+      assertTrue(liste.contains(<FONT color="#00AA00">"MovieFinder"</FONT>));
+      assertTrue(liste.contains(<FONT color="#00AA00">"table"</FONT>));
+    }<FONT color="#990044"><b>catch</b></FONT>(Exception e){
+      fail(<FONT color="#00AA00">"Exception inattendue :"</FONT> + e.getMessage());
+    }
+  }
+
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> testTabelSet2()<FONT color="#990044"><b>throws</b></FONT> Exception{
+    <FONT color="#990044"><b>try</b></FONT>{
+      ApplicationContext ctx = Factory.createApplicationContext(&quot;./question1/exemples/README.TXT&quot;);
+      Table&lt;Integer&gt; table = (Table&lt;Integer&gt;) ctx.getBean(<FONT color="#00AA00">"tableSet"</FONT>);
+      table.ajouter(4);table.ajouter(2);table.ajouter(2);table.ajouter(1);
+      assertEquals(<FONT color="#00AA00">"[1, 2, 4]"</FONT>,table.toString());
+
+      ApplicationContext ctx2 = Factory.createApplicationContext();
+      Table&lt;Integer&gt; table2 = (Table&lt;Integer&gt;) ctx2.getBean(<FONT color="#00AA00">"tableSet"</FONT>);
+      table2.ajouter(4);table2.ajouter(2);table2.ajouter(2);table2.ajouter(1);
+      assertEquals(<FONT color="#00AA00">"[1, 2, 4]"</FONT>,table2.toString());
+
+      table.ajouter(3);
+      assertEquals(<FONT color="#00AA00">"[1, 2, 3, 4]"</FONT>,table.toString());
+      assertEquals(<FONT color="#00AA00">"[1, 2, 4]"</FONT>,table2.toString());
+    }<FONT color="#990044"><b>catch</b></FONT>(Exception e){
+      fail(<FONT color="#00AA00">"Exception inattendue :"</FONT> + e.getMessage());
+    }
+  }
+}
+</font>
+</pre></div>
+ <!-- FIN DE CODE JAVA - JavaVersHtml --></font><font size="4">
+<p>Ci-dessous, le fichier de configuration, ici à l'aide d'un fichier de <i>properties.</i></p>
+<blockquote>
+  <blockquote>
+<p><font color="#0000FF"><i># le fichier de configuration en xml, cf. 
+l'article de Martin Fowler</i></font><br>
+#&lt;beans&gt;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp; &lt;bean id=&quot;MovieLister&quot; class=&quot;MovieLister&quot;&gt;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;property name=&quot;finder&quot;&gt;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;ref 
+local=&quot;MovieFinder&quot;/&gt;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/property&gt;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp; &lt;/bean&gt;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp; &lt;bean id=&quot;MovieFinder&quot; class=&quot;ColonMovieFinder&quot;&gt;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;property name=&quot;filename&quot;&gt;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;value&gt;movies1.txt&lt;/value&gt;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/property&gt;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp; &lt;/bean&gt;<br>
+#&lt;/beans&gt;<br>
+&nbsp;</p>
+<p><font color="#0000FF"><i># Adapté au properties de java le fichier de configuration<br>
+# fichier martin_fowler.README.TXT</i></font><br>
+<font color="#0000FF"><i># MovieLister identifiant du bean</i></font><br>
+bean.id.1=<font color="#AA0000">MovieLister</font><br>
+<font color="#0000FF"># à quelle classe java ce bean est-il associé ?</font><br>
+<font color="#AA0000">MovieLister</font>.class=martin_fowler.MovieLister<br>
+<i><font color="#0000FF"># Quelle propriété est à affecter, ici une seule</font></i><br>
+<font color="#AA0000">MovieLister</font>.property.1=finder<br>
+<font color="#0000FF"><i># Le mutateur n'a qu'un paramètre</i></font><br>
+<font color="#AA0000">MovieLister</font>.property.1.param.1=MovieFinder<br>
+<br>
+bean.id.2=<font color="#AA0000">MovieFinder</font><br>
+<font color="#AA0000">MovieFinder</font>.class=martin_fowler.ColonMovieFinder<br>
+<font color="#AA0000">MovieFinder</font>.property.1=filename<br>
+<font color="#AA0000">MovieFinder</font>.property.1.param.1=movies1.txt</p>
+<p>&nbsp;</p>
+<p># fichier question1.exemples.README.TXT<br>
+bean.id.1=table<br>
+table.class=question1.exemples.Table<br>
+table.property.1=liste<br>
+table.property.1.param.1=listeArray<br>
+table.property.2=capacite<br>
+table.property.2.param.1=4<br>
+<br>
+bean.id.2=listeArray<br>
+listeArray.class=java.util.ArrayList<br>
+<br>
+bean.id.3=table2<br>
+table2.class=question1.exemples.Table<br>
+table2.property.1=liste<br>
+table2.property.1.param.1=listeLinked<br>
+table2.property.2=capacite<br>
+table2.property.2.param.1=4<br>
+<br>
+bean.id.4=listeLinked<br>
+listeLinked.class=java.util.LinkedList<br>
+<br>
+bean.id.5=tableSet<br>
+tableSet.class=question1.exemples.Table<br>
+tableSet.property.1=liste<br>
+tableSet.property.1.param.1=set<br>
+tableSet.property.2=capacite<br>
+tableSet.property.2.param.1=4<br>
+<br>
+bean.id.6=set<br>
+set.class=java.util.TreeSet</p>
+<p><br>
+&nbsp;</p>
+  </blockquote>
+</blockquote>
+            </font>
+
+
+<font size="5">
+
+<p>Question Proposez vos propres exemples en utilisant femtoContainer et la 
+classe de tests unitaires associée, vos exemples intégrés à la prochaine 
+version.</p>
+
+
+<p>&nbsp;<font color="#990044">&lt;Optionnel notez_que=... </font>femtoContainer 
+est bien entendu perfectible, tout ajout, toutes modifications sont les 
+bienvenus et seront intégrés, à l'outil pour l'an prochain. Les traces en mode 
+verbeux, l'exécution possible par introspection de n'importe quelle méthode, la 
+gestion des erreurs issue d'un fichier de configuration erroné pourrait être 
+ajoutées ou améliorées. Un autre format du fichier de configuration XML, JSON 
+... peutêtre proposé. L'interface graphique engendrant le fichier de 
+configuration pourrait elle aussi être enrichie ou réécrite. ....<font color="#990044">&lt;/Optionnel&gt;</font></p>
+
+
+<p>&nbsp;</p>
+
+
+<font size="4">
+
+            <p>L'interface ApplicationContext, contient les services proposés 
+            par ce framework :</font><font size="4"><div style="background:#FFFFFF; color:#000000; border:solid 1px black; margin:10px; padding:10px;"> 
+<pre><FONT color="#990044"><b><font size="2">public</font></b></FONT><font size="2"> <FONT color="#AA0000"><b>interface</b></FONT> ApplicationContext <FONT color="#AA0000"><b>extends</b></FONT> Iterable&lt;String&gt;{
+  
+  <FONT color="#0000FF"><i>/** Obtention d'une instance d'un bean g&eacute;r&eacute; par le conteneur.
+   *  Il n'existe qu'une seule instance avec cet id, c'est un singleton.
+   * @param id l'identifiant unique du bean
+   * @return l'instance associ&eacute;e ou null si cet identifiant est inconnu
+   */</i></FONT>
+  <FONT color="#990044"><b>public</b></FONT> Object getBean(String id);
+  
+  <FONT color="#0000FF"><i>/** Obtention du type du bean &agrave; partir de son identifiant.
+   * param id l'identifiant unique du bean
+   * @return le type du bean ou null
+   */</i></FONT>
+  <FONT color="#990044"><b>public</b></FONT> Class&lt;?&gt; getType(String id);
+  
+  <FONT color="#0000FF"><i>/** Obtention d'un it&eacute;rateur sur les beans d&eacute;j&agrave; cr&eacute;&eacute;s.
+   * L'op&eacute;ration de retrait, m&eacute;thode remove, est sans effet.
+   * @return un it&eacute;rateur des identifiants du conteneur
+   */</i></FONT>
+  <FONT color="#990044"><b>public</b></FONT> java.util.Iterator&lt;String&gt; iterator();
+}</font>
+</pre></div>
+
+ <!-- FIN DE CODE JAVA - JavaVersHtml -->
+            </font>
+
+
+            </font>
+
+
+<font size="4">
+
+<p>&nbsp;</p>
+
+<p>N'oubliez pas d'utiliser JNEWS afin de déposer vos exemples, menu Outils, 
+item submit..., Scheme tp_injection_question1_deposer</p>
+
+<p><img border="0" src="images/tp_deposer.jpg" width="534" height="194"></p>
+
+<p>&nbsp;</p>
+ <!-- FIN DE CODE JAVA - JavaVersHtml --></font>
+
+            <hr />
+			<br/>
+			
+            <div class="question">
+                <img src="images/question2.png" width="101" height="80" /> Utilisation du femtoContainer 
+                et des patrons, contribution</div>
+
+            <div class="paragraphe">
+				<p>&nbsp;</p>
+                <p>Les patrons de par leur structure se prêtent assez 
+                    bien à cette séparation configuration/utilisation.  </p>
+                <p>&nbsp;&nbsp;&nbsp; Le patron 
+                Décorateur représente une alternative à l'héritage et permet 
+                d'ajouter de nouvelles fonctionnalités à une application.  </p>
+                <p>&nbsp;&nbsp;&nbsp; Proposez 
+                au moins un exemple d'utilisation du patron décorateur avec l'usage du 
+                conteneur de beans &quot;femtoContainer&quot;, le paquetage 
+                essai_decorateur_injection est un exemple.</p>
+                <p>&nbsp;&nbsp;&nbsp; Montrez que seule 
+                la modification du fichier de configuration permet de changer le 
+                comportement d'une application utilisant ce patron</p>
+                <p><b>Question2-1) Proposez un autre exemple d'utilisation conjointe 
+                d'un patron et de femtoContainer </b></p>
+                <blockquote>
+                  <ul>
+                    <li>L'utilisation d'un patron
+                    <a href="http://jfod.cnam.fr/NFP121/supports/extras_designpatternscard.pdf">
+                    http://jfod.cnam.fr/NFP121/supports/extras_designpatternscard.pdf</a> 
+                    sera privilégiée</li>
+                    <li>Vous pouvez aussi vous inspirer d'un exemple du web, en 
+                    citant la source.</li>
+                  </ul>
+                </blockquote>
+                <p><b><font color="#AA0000">Utilisez JNEWS, item tp_inject_q2_contribuer</font>, </b>
+                afin d'apporter votre contribution aux exemples de cet énoncé, 
+                vos exemples avec les tests unitaires associés feront partie de 
+                l'énoncé l'an prochain.</p>
+                <p>&nbsp;</p>
+                <p><b>Question2-2) Vos deux exemples sont maintenant accessibles via une 
+                instance du patron ServiceLocator, </b></p>
+                <p><b>&nbsp; Modifiez la configuration (./service_locator/README.TXT) 
+                et enrichissez la classe de tests unitaires en conséquence (./service_locator/ServiceLocatorTests.java)...</b></p>
+
+
+<font size="4">
+
+<p>N'oubliez pas d'utiliser JNEWS afin de déposer vos contribution, menu Outils, 
+item submit..., Scheme tp_injection_question1_contribuer</p>
+
+<p><img border="0" src="images/tp_item_contribuer.jpg" width="534" height="194"></p>
+                </font>
+
+                <p>&nbsp;</p>
+                <p><b>Un exemple parmi bien d'autres possibles : L'usage du patron Observateur lors d'un 
+                changement d'état de la lampe</b></p>
+                <p><b>La classe Light et son observateur suivis d'un test de bon 
+                fonctionnement</b></p>
+                <p><!-- DEBUT DE CODE JAVA - JavaVersHtml -->
+<div style="background:#FFFFFF; color:#000000; border:solid 1px black; margin:10px; padding:10px;"> 
+<pre><FONT color="#AA0000"><b>package</b></FONT> question1;
+
+<FONT color="#AA0000"><b>import</b></FONT> java.util.Observable;
+<FONT color="#AA0000"><b>import</b></FONT> java.util.Observer;
+
+<FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>class</b></FONT> Light <FONT color="#AA0000"><b>extends</b></FONT> Observable <FONT color="#AA0000"><b>implements</b></FONT> Receiver{
+  <FONT color="#990044"><b>private</b></FONT> String state=<FONT color="#00AA00">"Off"</FONT>;</pre> 
+<pre>  
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> setObserver(Observer obs){
+    this.addObserver(obs);
+  }
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> on(){
+    <FONT color="#990044"><b>if</b></FONT>(<FONT color="#00AA00">"Off"</FONT>.equals(getState())){
+      state = <FONT color="#00AA00">"On"</FONT>;setChanged();notifyObservers();
+    }
+  }
+  <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> off(){
+    <FONT color="#990044"><b>if</b></FONT>(<FONT color="#00AA00">"On"</FONT>.equals(getState())){
+      state = <FONT color="#00AA00">"Off"</FONT>;setChanged();notifyObservers();
+    }
+  }
+  <FONT color="#990044"><b>public</b></FONT> String getState(){<FONT color="#990044"><b>return</b></FONT> state;}
+}</pre> 
+<pre>_________________________________________________________</pre> 
+<pre><FONT color="#AA0000"><b>package</b></FONT> question1;
+<FONT color="#AA0000"><b>import</b></FONT> java.util.*;
+
+<FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>class</b></FONT> LightObserver <FONT color="#AA0000"><b>implements</b></FONT> Observer{
+    <FONT color="#990044"><b>public</b></FONT> <FONT color="#FF0000"><b>int</b></FONT> compte;
+
+    <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> update(Observable o, Object obj){
+      compte++;
+    }
+}</pre> 
+<pre></pre></div>
+ <!-- FIN DE CODE JAVA - JavaVersHtml --><b>&nbsp;</b>Un test : l'observateur 
+                est bien notifié<div class="paragraphe">
+                </div>
+                <!-- DEBUT DE CODE JAVA - JavaVersHtml -->
+<div style="background:#FFFFFF; color:#000000; border:solid 1px black; margin:10px; padding:10px;"> 
+<pre>   <FONT color="#990044"><b>public</b></FONT> <FONT color="#AA0000"><b>void</b></FONT> testLightObserver()<FONT color="#990044"><b>throws</b></FONT> Exception{
+    <FONT color="#990044"><b>try</b></FONT>{
+      ApplicationContext ctx = Factory.createApplicationContext();
+      Invoker invoker = (Invoker) ctx.getBean(<FONT color="#00AA00">"invoker"</FONT>);
+      Receiver receiver = (Receiver) ctx.getBean(<FONT color="#00AA00">"lampe"</FONT>);
+      LightObserver observer = (LightObserver)ctx.getBean(<FONT color="#00AA00">"observateur"</FONT>);</pre> 
+<pre>      assertEquals(<FONT color="#00AA00">"Off"</FONT>, receiver.getState());
+      invoker.on();
+      assertEquals(1,observer.compte);
+      invoker.off();invoker.on();
+      assertEquals(3,observer.compte);
+    }<FONT color="#990044"><b>catch</b></FONT>(Exception e){
+      fail(<FONT color="#00AA00">"Exception inattendue :"</FONT> + e.getMessage());
+    }
+  }
+</pre></div>
+ <!-- FIN DE CODE JAVA - JavaVersHtml -->
+		<!-- DEBUT DE CODE JAVA - JavaVersHtml -->
+<pre></pre>
+                </div>
+ <!-- FIN DE CODE JAVA - JavaVersHtml -->	
+                <span LANG="FR"><font SIZE="3">
+            <p># le fichier de configuration</p>
+            <p>bean.id.12=lampe<br>
+            lampe.class=question1.Light<br>
+            lampe.property.1=observer<br>
+            lampe.property.1.param.1=observateur</p>
+            <p>bean.id.13=observateur<br>
+            observateur.class=question1.LightObserver</p>
+            </font></span>
+			
+                <p>
+			
+			<br/>
+			
+        </div>
+        <div id="footer">
+            <a class="lien" href="http://jfod.cnam.fr/" target="_blank">JFOD</a> | <a class="lien" href="http://deptmedia.cnam.fr/phpBB2/viewforum.php?f=40" target="_blank">FORUM</a> | <a class="lien" href="http://www.cnam.fr/" target="_blank">CNAM</a>
+        </div>
+    </div>
+</body>
+</html>

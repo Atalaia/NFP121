@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=EnsembleTest
+comment1.params=
+comment1.target=void\ setUp()
+comment1.text=\n\ Met\ en\ place\ les\ engagements.\n\ \n\ M\u00E9thode\ appel\u00E9e\ avant\ chaque\ appel\ de\ m\u00E9thode\ de\ test.\n
+comment2.params=
+comment2.target=void\ tearDown()
+comment2.text=\n\ Supprime\ les\ engagements\n\ \n\ M\u00E9thode\ appel\u00E9e\ apr\u00E9s\ chaque\ appel\ de\ m\u00E9thode\ de\ test.\n
+comment3.params=
+comment3.target=void\ testAdd()
+comment3.text=\n\ test\ de\ la\ m\u00E9thode\ add(T\ t)\ dans\ la\ classe\ Ensemble\n
+comment4.params=
+comment4.target=void\ testUnion()
+comment4.text=\n\ Il\ ne\ vous\ reste\ plus\ qu'\u00E0\ d\u00E9finir\ une\ ou\ plusieurs\ m\u00E9thodes\ de\ test.\ Ces\n\ m\u00E9thodes\ doivent\ v\u00E9rifier\ les\ r\u00E9sultats\ attendus\ \u00E0\ l'aide\ d'assertions\n\ assertTrue(<boolean>).\ Par\ convention,\ leurs\ noms\ devraient\ d\u00E9buter\ par\n\ "test".\ Vous\ pouvez\ baucher\ le\ corps\ gr\u00E2ce\ au\ menu\ contextuel\n\ "Enregistrer\ une\ m\u00E9thode\ de\ test".\n
+comment5.params=
+comment5.target=void\ testIntersection()
+comment5.text=\n\ test\ m\u00E9thode\ intersection\n
+comment6.params=
+comment6.target=void\ testDifference()
+comment6.text=\n\ test\ m\u00E9thode\ diff\u00E9rence\n
+comment7.params=
+comment7.target=void\ testDifferenceSym\u00E9trique()
+comment7.text=\n\ test\ m\u00E9thode\ diff\u00E9rence\ sym\u00E9trique\n
+numComments=8

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=TestFactoriel
+comment1.params=n
+comment1.target=int\ fact(int)
+comment2.params=
+comment2.target=void\ testFactoriel()
+comment3.params=
+comment3.target=void\ test_AST_Mult1()
+comment4.params=
+comment4.target=void\ test_AST_Mult2()
+comment5.params=
+comment5.target=void\ test_AST_SOM_F()
+comment6.params=
+comment6.target=void\ test_AST_SOM_W()
+numComments=7

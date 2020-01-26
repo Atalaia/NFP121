@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=CommandeNombrePlus
+comment1.params=operande
+comment1.target=void\ setOperande(int)
+comment2.params=nombre
+comment2.target=void\ execute(Nombre)
+comment3.params=nombre
+comment3.target=void\ undo(Nombre)
+numComments=4

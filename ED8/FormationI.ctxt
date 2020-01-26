@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=FormationI
+comment1.params=
+comment1.target=java.lang.String\ getCode()
+comment2.params=
+comment2.target=java.lang.String\ getIntitule()
+comment3.params=
+comment3.target=int\ getNbCredits()
+comment4.params=ue
+comment4.target=boolean\ ajouterUniteEnseignement(UniteEnseignement)
+comment5.params=
+comment5.target=java.lang.String\ interpreter()
+numComments=6

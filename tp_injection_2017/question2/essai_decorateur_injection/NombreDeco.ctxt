@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=NombreDeco
+comment1.params=decore
+comment1.target=NombreDeco(OperationNombre)
+comment2.params=
+comment2.target=NombreDeco()
+comment3.params=contexte\ nombre\ resultat
+comment3.target=void\ executer(Contexte,\ Nombre,\ Resultat)
+numComments=4

@@ -1,0 +1,2 @@
+classe_adaptateur=Adaptateur
+classe_a_adapter=Question3Test$PriseFactice

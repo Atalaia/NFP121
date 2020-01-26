@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=PubSubImpl
+comment1.params=
+comment1.target=PubSubImpl()
+comment10.params=
+comment10.target=int\ hashCode()
+comment2.params=name
+comment2.target=PubSubImpl(java.lang.String)
+comment3.params=name
+comment3.target=void\ setName(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ getName()
+comment5.params=name\ message
+comment5.target=boolean\ publish(java.lang.String,\ Message)
+comment6.params=names\ message
+comment6.target=int\ publish(java.lang.String[],\ Message)
+comment7.params=subscriber
+comment7.target=boolean\ subscribe(SubscriberI)
+comment8.params=
+comment8.target=java.util.Iterator\ iterator()
+comment9.params=obj
+comment9.target=boolean\ equals(java.lang.Object)
+numComments=11

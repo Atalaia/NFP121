@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=InvokerException
+comment1.params=resultat
+comment1.target=void\ setResultat(Resultat)
+comment2.params=runtimeException
+comment2.target=void\ setRuntimeException(java.lang.RuntimeException)
+comment3.params=nombre\ r
+comment3.target=void\ execute(Nombre,\ Resultat)
+numComments=4

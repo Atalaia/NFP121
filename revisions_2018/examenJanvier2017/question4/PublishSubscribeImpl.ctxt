@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=PublishSubscribeImpl()
+comment1.params=topic\ message
+comment1.target=int\ publish(java.lang.String,\ question1.Message)
+comment2.params=topic\ subscriber
+comment2.target=boolean\ subscribe(java.lang.String,\ question1.SubscriberI)
+comment3.params=
+comment3.target=java.util.Iterator\ iterator()
+comment4.params=topic
+comment4.target=java.util.List\ getSubscribers(java.lang.String)
+numComments=5

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=MessageListenerI
+comment1.params=message
+comment1.target=void\ onMessage(Message)
+comment1.text=\ M\u00E9thode\ d\u00E9clench\u00E9e\ \u00E0\ chaque\ r\u00E9ception\ d'un\ message.\r\n\ @param\ source\ l'\u00E9metteur\ du\ message\r\n\ @param\ message\ le\ message\ re\u00E7u.\r\n\ @throws\ Exception\ si\ le\ destinataire\ est\ injoignable\r\n
+numComments=2

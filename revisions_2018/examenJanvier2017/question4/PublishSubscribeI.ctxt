@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=PublishSubscribeI
+comment1.params=topic\ message
+comment1.target=int\ publish(java.lang.String,\ examenJanvier2017.question1.Message)
+comment1.text=\ Publication\ pour\ sur\ th\uFFFDme\ (topic)\ d'un\ message.\r\n\ @param\ topic\ le\ th\uFFFDme\r\n\ @param\ message\ le\ message\ \uFFFD\ transmettre\r\n\ @return\ le\ nombre\ de\ souscripteurs\ ayant\ \uFFFDt\uFFFD\ notifi\uFFFDs\r\n
+comment2.params=topic\ subscriber
+comment2.target=boolean\ subscribe(java.lang.String,\ examenJanvier2017.question1.SubscriberI)
+comment2.text=\ Souscription\ \uFFFD\ un\ th\uFFFDme\ (topic)\ de\ publication.\r\n\ Si\ ce\ th\uFFFDme\ est\ inconnu,\ il\ est\ cr\uFFFD\uFFFD.\r\n\ @param\ topic\ le\ th\uFFFDme\r\n\ @param\ subscriber\ le\ souscripteur\r\n\ @return\ false\ le\ sosucripteur\ est\ d\uFFFDj\uFFFD\ inscrit\ \uFFFD\ ce\ th\uFFFDme\r\n
+comment3.params=
+comment3.target=java.util.Iterator\ iterator()
+comment3.text=\ Obtention\ d'un\ it\uFFFDrateur.\r\n\ @return\ un\ it\uFFFDrateur\ sur\ les\ th\uFFFDmes\ enregistr\uFFFDs\r\n
+comment4.params=topic
+comment4.target=java.util.List\ getSubscribers(java.lang.String)
+comment4.text=Obtention\ de\ la\ liste\ des\ souscripteurs\ \uFFFD\ un\ th\uFFFDme.\r\n\ @param\ topic\ le\ th\uFFFDme\r\n\ @return\ la\ liste\ des\ souscripteurs\r\n
+numComments=5

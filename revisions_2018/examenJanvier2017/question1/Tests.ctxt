@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Tests
+comment1.params=
+comment1.target=void\ testSimple()
+comment2.params=
+comment2.target=void\ testAvecException()
+comment3.params=
+comment3.target=void\ testDeuxBoites()
+comment4.params=
+comment4.target=void\ testDeuxBoitesUnSouscripteur()
+numComments=5

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=PubSubPersistent
+comment1.params=name
+comment1.target=PubSubPersistent(java.lang.String)
+comment2.params=subscriber
+comment2.target=boolean\ subscribe(examenJanvier2017.question1.SubscriberI)
+comment3.params=
+comment3.target=void\ saveSubscribersList()
+comment4.params=
+comment4.target=void\ restoreSubscribersList()
+numComments=5

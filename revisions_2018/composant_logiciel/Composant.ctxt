@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Composant
+comment1.params=queue
+comment1.target=void\ setIn(java.util.concurrent.SynchronousQueue)
+comment10.params=
+comment10.target=void\ stop()
+comment11.params=
+comment11.target=void\ run()
+comment2.params=queue
+comment2.target=void\ setOut(java.util.concurrent.SynchronousQueue)
+comment3.params=
+comment3.target=java.util.concurrent.SynchronousQueue\ getIn()
+comment4.params=
+comment4.target=java.util.concurrent.SynchronousQueue\ getOut()
+comment5.params=cmd
+comment5.target=void\ setCommand(Command)
+comment6.params=cmd
+comment6.target=void\ setException(Command)
+comment7.params=cmd
+comment7.target=void\ setInterrupted(Command)
+comment8.params=
+comment8.target=void\ start()
+comment9.params=
+comment9.target=boolean\ isAlive()
+numComments=12

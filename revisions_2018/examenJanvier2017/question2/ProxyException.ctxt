@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ProxyException
+comment1.params=
+comment1.target=ProxyException()
+comment2.params=message
+comment2.target=ProxyException(java.lang.String)
+numComments=3

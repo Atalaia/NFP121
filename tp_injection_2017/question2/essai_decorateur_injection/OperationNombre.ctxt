@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=OperationNombre
+comment1.params=operation
+comment1.target=void\ setOperation(OperationNombre)
+comment2.params=
+comment2.target=OperationNombre\ getOperation()
+numComments=3

@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Invoker
+comment1.params=handlers
+comment1.target=void\ setHandlers(Handler[])
+comment2.params=t
+comment2.target=void\ envoyer(java.lang.Object)
+numComments=3

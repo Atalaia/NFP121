@@ -1,0 +1,897 @@
+<!doctype html>
+<html>
+<head>
+    <title>NFP121 - TP Injection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night-eighties.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="text-center">NFP 121 - TP Injection</h1>
+    <h2 class="text-center">Injection de dépendance</h2>
+    <div class="container-fluid">
+        <div>
+            <table class="table table-bordered">
+                <colgroup>
+                    <col style="width: 120px;" />
+                </colgroup>
+                <tr>
+                    <td>
+                        Nom
+                    </td>
+                    <td>
+                        <b>PERRONNET</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Prénom
+                    </td>
+                    <td>
+                        <b>Fabien</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Matricule
+                    </td>
+                    <td>
+                        <b>FOD_0g5drl8dwv1</b>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="border mb-2">
+            <h4 class="bg-dark text-white p-2">
+                Question 1 :
+            </h4>
+            <div class="p-2">
+                <p>
+                    Dans cette question il nous est demandé de contribuer en fournissant des exemples d'utilisation des patrons avec <b>femtoContainer</b>.
+                </p>
+                <p>
+                    J'ai choisis de n'en présenter qu'un seul, le patron proxy. L'idée est de fournir un filtre http théorique, pouvant contrôler l'accès à des domaines via une liste.<br />
+                    Le filtre est représenté par l'interface <b>HttpFilter</b>, elle founit l'abstraction pour les futures implémentations des filtres.
+                    La méthode <b>canRequest</b> permet de définir si une url est filtrée ou non.
+                </p>
+                <div class="card mb-3">
+                    <div class="card-header" role="tab">
+                        <h6 class="mb-0">
+                            <a data-toggle="collapse" href="#class_httpfilter">
+                                Cliquez pour afficher le code de l'interface <b>HttpFilter</b>
+                            </a>
+                        </h6>
+                    </div>
+                    <div id="class_httpfilter" class="collapse hide" role="tabpanel">
+                        <div class="card-body">
+<pre><code class="java">public interface HttpFilter {
+    boolean canRequest(String url);
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    Le possède deux implémentations, <b>RealHttpFilter</b> et <b>ProxyHttpFilter</b>.
+                </p>
+                <h4>RealHttpFilter</h4>
+                <p>
+                    Cette implémentation du filtre ne fait rien de particulier, elle vérifie simplement que l'URL est au bon format.
+                </p>
+                <div class="card mb-3">
+                    <div class="card-header" role="tab">
+                        <h6 class="mb-0">
+                            <a data-toggle="collapse" href="#class_realhttpfilter">
+                                Cliquez pour afficher le code de le classe <b>RealHttpFilter</b>
+                            </a>
+                        </h6>
+                    </div>
+                    <div id="class_realhttpfilter" class="collapse hide" role="tabpanel">
+                        <div class="card-body">
+<pre><code class="java">public class RealHttpFilter implements HttpFilter {
+    public boolean canRequest(String url) {
+        if (url == null || url.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        
+        try {
+            new URL(url).toURI();
+            return true;
+        }
+        catch (URISyntaxException exception) {
+            return false;
+        }
+        catch (MalformedURLException exception) {
+            return false;
+        }
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <h4>ProxyHttpFilter</h4>
+                <p>
+                    C'est cette implémentation qui nous intéresse dans cette exemple.
+                    Elle effectue le contrôle sur le domaine intérrogé est renvoie false si il fait partie de la liste des exclus.
+                    Les domaines filtrés sont récupérés depuis la classe <b>FilteredDomainsLoader</b>, chargée depuis le conteneur de dépendance.
+                    La classe <b>ProxyHttpFilter</b> prend également une dépendance sur <b>RealHttpFilter</b>, cela afin de valider le format de l'URL.
+                </p>
+                <div class="card mb-3">
+                    <div class="card-header" role="tab">
+                        <h6 class="mb-0">
+                            <a data-toggle="collapse" href="#class_proxyhttpfilter">
+                                Cliquez pour afficher le code de le classe <b>ProxyHttpFilter</b>
+                            </a>
+                        </h6>
+                    </div>
+                    <div id="class_proxyhttpfilter" class="collapse hide" role="tabpanel">
+                        <div class="card-body">
+<pre><code class="java">public class ProxyHttpFilter implements HttpFilter {
+    private RealHttpFilter filter;
+    private FilteredDomainsLoader loader;
+    
+    public void setFilter(RealHttpFilter filter) {
+        this.filter = filter;
+    }
+    
+    public void setLoader(FilteredDomainsLoader loader) {
+        this.loader = loader;
+    }
+    
+    public boolean canRequest(String url) {
+        if (url == null || url.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        
+        return filter.canRequest(url) && !loader.getDomains().stream().anyMatch(domain -> {
+            try {
+                URL urlObject = new URL(url);
+                return domain.equals(urlObject.getHost());
+            } catch (Exception ex) {
+                return false;
+            }
+        });
+    }
+}
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <h4>FilteredDomainsLoader</h4>
+                <p>
+                    Cette classe est responsable du chargement de la liste des domaines filtrés. Cette liste est stockée dans un fichier, et le lien vers ce fichier est récupéré depuis le conteneur de dépendance.
+                </p>
+                <div class="card mb-3">
+                    <div class="card-header" role="tab">
+                        <h6 class="mb-0">
+                            <a data-toggle="collapse" href="#class_filtereddomainsloader">
+                                Cliquez pour afficher le code de le classe <b>FilteredDomainsLoader</b>
+                            </a>
+                        </h6>
+                    </div>
+                    <div id="class_filtereddomainsloader" class="collapse hide" role="tabpanel">
+                        <div class="card-body">
+<pre><code class="java">public class FilteredDomainsLoader {
+    private String fileName;
+    private List<String> domains;
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+        loadFilteredDomains();
+    }
+
+    public List<String> getDomains() {
+        return domains;
+    }
+
+    private void loadFilteredDomains() {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)))) {
+            domains = br.lines().collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+            domains = new ArrayList<>();
+        }
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4>Configuration du conteneur</h4>
+            <p>
+                Tous les objets sont configurés via le fichier <b>README.txt</b> dans le package BlueJ.
+            </p>
+            <div class="card mb-3">
+                <div class="card-header" role="tab">
+                    <h6 class="mb-0">
+                        <a data-toggle="collapse" href="#fichier_readme1">
+                            Cliquez pour afficher le fichier <b>README.txt</b>
+                        </a>
+                    </h6>
+                </div>
+                <div id="fichier_readme1" class="collapse hide" role="tabpanel">
+                    <div class="card-body">
+<pre><code class="java">bean.id.1=proxyHttpFilter
+proxyHttpFilter.class=question1.patron_proxy.ProxyHttpFilter
+proxyHttpFilter.property.1=filter
+proxyHttpFilter.property.1.param.1=realFilter
+proxyHttpFilter.property.2=loader
+proxyHttpFilter.property.2.param.1=filteredDomainsLoader
+
+bean.id.2=realFilter
+realFilter.class=question1.patron_proxy.RealHttpFilter
+
+bean.id.3=filteredDomainsLoader
+filteredDomainsLoader.class=question1.patron_proxy.FilteredDomainsLoader
+filteredDomainsLoader.property.1=fileName
+filteredDomainsLoader.property.1.param.1=question1/patron_proxy/filtered_domains.txt</code></pre>
+                    </div>
+                </div>
+            </div>
+            <h4>Tests</h4>
+            <p>
+                La classe de tests <b>TestHttpFilter</b> valide le fonctionnement des objets.
+            </p>
+            <div class="card mb-3">
+                <div class="card-header" role="tab">
+                    <h6 class="mb-0">
+                        <a data-toggle="collapse" href="#class_testhttpfilter">
+                            Cliquez pour afficher le code de le classe <b>TestHttpFilter</b>
+                        </a>
+                    </h6>
+                </div>
+                <div id="class_testhttpfilter" class="collapse hide" role="tabpanel">
+                    <div class="card-body">
+<pre><code class="java">public class TestHttpFilter {
+    @Test
+    public void test_ProxyHttpFilter() {
+        ApplicationContext ctx = Factory.createApplicationContext("./question1/patron_proxy/README.TXT");
+        HttpFilter filter = ctx.getBean("proxyHttpFilter");
+        assertTrue(filter instanceof ProxyHttpFilter);
+        assertTrue(filter.canRequest("http://www.authorized.com/foo/bar"));
+        assertFalse(filter.canRequest("http://www.forbidden.com/foo/bar"));
+        assertFalse(filter.canRequest("http://www.notauthorized.net/foo/bar"));
+        assertFalse(filter.canRequest("http://virus.cz/foo/bar"));
+    }
+    
+    @Test
+    public void test_RealHttpFilter() {
+        ApplicationContext ctx = Factory.createApplicationContext("./question1/patron_proxy/README.TXT");
+        HttpFilter filter = ctx.getBean("realFilter");
+        assertTrue(filter instanceof RealHttpFilter);
+        assertTrue(filter.canRequest("http://www.authorized.com/foo/bar"));
+        assertTrue(filter.canRequest("http://www.forbidden.com/foo/bar"));
+        assertTrue(filter.canRequest("http://www.notauthorized.net/foo/bar"));
+        assertTrue(filter.canRequest("http://virus.cz/foo/bar"));
+    }
+}
+</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border mb-2">
+            <h4 class="bg-dark text-white p-2">
+                Question 2.1 :
+            </h4>
+            <div class="p-2">
+                <p>
+                    Dans cette question il nous est demandé de proposer une implémentation du patron décorateur avec <b>femtoContainer</b>. Pour ma contribution j'ai choisis d'implémenter une petite boulangerie.
+                </p>
+                <p>
+                    La classe <b>BakeryComponent</b> représente le composant de base. Elle expose deux méthodes :
+                    <ul>
+                        <li><b>getName</b> : Retourne le nom du composant</li>
+                        <li><b>getPrice</b> : Retourne le prix du composant</li>
+                    </ul>
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_bakerycomponent">
+                                    Cliquez pour afficher le code de la classe <b>BakeryComponent</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_bakerycomponent" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public abstract class BakeryComponent {
+    public abstract String getName();
+    public abstract double getPrice();
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    La classe <b>CakeBase</b> représente la base d'un gateau. Son nom est "Cake" et son prix est configuré de le conteneur de dépendances.
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_cakebase">
+                                    Cliquez pour afficher le code de la classe <b>CakeBase</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_cakebase" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public class CakeBase extends BakeryComponent {
+    private double price;
+    
+    public String getName() {
+        return "Cake";
+    }
+    
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
+    public double getPrice() {
+        return price;
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    La classe <b>CakeSupply</b> représente le décorateur. J'utilise conjointement le patron Template method pour définir le composant décoré depuis le conteneur de dépendances.
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_cakesupply">
+                                    Cliquez pour afficher le code de la classe <b>CakeSupply</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_cakesupply" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public abstract class CakeSupply extends BakeryComponent {
+    protected BakeryComponent component;
+    protected String name;
+    protected double price;
+    
+    public CakeSupply(String name, double price) {
+        if (name == null) {
+            throw new IllegalArgumentException();
+        }
+        this.name = name;
+        this.price = price;
+    }
+    
+    public void setComponent(BakeryComponent component) {
+        this.component = component;
+    }
+    
+    public String getName() {
+        return component.getName() + ", " + name;
+    }
+    
+    public double getPrice() {
+        return component.getPrice() + price;
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    Tous les décorateurs implémentent la classe de base <b>CakeSupply</b> et définissent leur nom et prix via l'appel du constructeur de la super classe.
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_icing">
+                                    Cliquez pour afficher le code de la classe <b>Icing</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_icing" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public class Icing extends CakeSupply {
+    public Icing() {
+        super("Icing", 0.5);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_chocolate">
+                                    Cliquez pour afficher le code de la classe <b>Chocolate</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_chocolate" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public class Chocolate extends CakeSupply {
+    public Chocolate() {
+        super("Chocolate", 2);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_candy">
+                                    Cliquez pour afficher le code de la classe <b>Candy</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_candy" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public class Candy extends CakeSupply {
+    public Candy() {
+        super("Candy", 0.5);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_strawberry">
+                                    Cliquez pour afficher le code de la classe <b>Strawberry</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_strawberry" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public class Strawberry extends CakeSupply {
+    public Strawberry() {
+        super("Strawberry", 1.5);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    La configuration du conteneur de dépendance est faite dans le <b>README.txt</b> du package.
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#file_readme_decorator">
+                                    Cliquez pour afficher le fichier <b>README.txt</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="file_readme_decorator" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="text">bean.id.1=cakeBase
+cakeBase.class=question2.example_decorator.CakeBase
+cakeBase.property.1=price
+cakeBase.property.1.param.1=5
+
+bean.id.2=icedCake
+icedCake.class=question2.example_decorator.Icing
+icedCake.property.1=component
+icedCake.property.1.param.1=cakeBase
+
+bean.id.3=chocolateCake
+chocolateCake.class=question2.example_decorator.Chocolate
+chocolateCake.property.1=component
+chocolateCake.property.1.param.1=icedCake
+
+bean.id.4=candyCake
+candyCake.class=question2.example_decorator.Candy
+candyCake.property.1=component
+candyCake.property.1.param.1=chocolateCake
+
+bean.id.5=finalCake
+finalCake.class=question2.example_decorator.Strawberry
+finalCake.property.1=component
+finalCake.property.1.param.1=candyCake</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    Depuis la classe <b>Main</b>, il est possible d'exécuter la méthode <b>main(String[])</b>. Elle construit le conteneur de dépendances et récupère le bean <b>finalCake</b> qui représente le gâteau et toutes ses décorations.
+                    Une impréssion dans la sortie système permet de visualiser le résultat.
+                </p>
+                <p>
+                    Il est possible de changer le gâteau final en modifiant le fichier <b>README.txt</b>. Par exemple, en modifier le fichier comme suit, le gâteau ne sera plus décoré de fraises.
+                </p>
+                <div class="card mb-3">
+                    <div class="card-header" role="tab">
+                        <h6 class="mb-0">
+                            <a data-toggle="collapse" href="#fichier_readme_decorator2">
+                                Cliquez pour afficher le fichier <b>README.txt</b> modifié
+                            </a>
+                        </h6>
+                    </div>
+                    <div id="fichier_readme_decorator2" class="collapse hide" role="tabpanel">
+                        <div class="card-body">
+<pre><code class="text">bean.id.1=cakeBase
+cakeBase.class=question2.example_decorator.CakeBase
+cakeBase.property.1=price
+cakeBase.property.1.param.1=5
+
+bean.id.2=icedCake
+icedCake.class=question2.example_decorator.Icing
+icedCake.property.1=component
+icedCake.property.1.param.1=cakeBase
+
+bean.id.3=chocolateCake
+chocolateCake.class=question2.example_decorator.Chocolate
+chocolateCake.property.1=component
+chocolateCake.property.1.param.1=icedCake
+
+bean.id.4=finalCake
+finalCake.class=question2.example_decorator.Candy
+finalCake.property.1=component
+finalCake.property.1.param.1=chocolateCake
+
+# bean.id.5=finalCake
+# finalCake.class=question2.example_decorator.Strawberry
+# finalCake.property.1=component
+# finalCake.property.1.param.1=candyCake</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="bg-dark text-white p-2">
+                Question 2.2 :
+            </h4>
+            <div class="p-2">
+                <p>
+                    Dans cette question il nous est demandé de proposer une autre implémentation d'un patron de notre choix utilisant <b>femtoContainer</b>. Pour ma contribution j'ai choisis le patron adapter.
+                    Je me suis inspiré d'un exemple accéssible via : <a href="https://www.tutorialspoint.com/design_pattern/adapter_pattern.htm" target="_blank">https://www.tutorialspoint.com/design_pattern/adapter_pattern.htm</a>
+                </p>
+                <p>
+                    L'interface <b>MediaPlayer</b> et l'interface <b>MediaPackage</b> sont deux interfaces propasant la lecture d'un media. La classe <b>MP3</b> implémente <b>MediaPlayer</b> tandis que les classes <b>MP4</b> et <b>VLC</b> implémentent <b>MediaPackage</b>.
+                    Dans notre exemple nous aimerions lire ces trois types de media via l'interface <b>MediaPlayer</b>, pour cela il faut un adaptateur. La classe <b>FormatAdapter</b> sert de pont entre <b>MediaPlayer</b> et <b>MediaPackage</b>.
+                    Le media adpaté est définit depuis le conteneur de dépendances.
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_mediaplayer">
+                                    Cliquez pour afficher le code d'interface <b>MediaPlayer</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_mediaplayer" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public interface MediaPlayer {
+    void play(String fileName);
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_mediapackage">
+                                    Cliquez pour afficher le code d'interface <b>MediaPackage</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_mediapackage" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public interface MediaPackage {
+    void playFile(String fileName);
+}
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_mp3">
+                                    Cliquez pour afficher le code de la classe <b>MP3</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_mp3" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public class MP3 implements MediaPlayer {
+    @Override
+    public void play(String fileName) {
+        System.out.println("Playing MP3 file " + fileName);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_mp4">
+                                    Cliquez pour afficher le code de la classe <b>MP4</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_mp4" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public class MP4 implements MediaPackage {
+    @Override
+    public void playFile(String fileName) {
+        System.out.println("Playing MP4 file " + fileName);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_vlc">
+                                    Cliquez pour afficher le code de la classe <b>VLC</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_vlc" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public class VLC implements MediaPackage {
+    @Override
+    public void playFile(String fileName) {
+        System.out.println("Playing VLC file " + fileName);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_formatadapter">
+                                    Cliquez pour afficher le code de la classe <b>FormatAdapter</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_formatadapter" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public class FormatAdapter implements MediaPlayer {
+    private MediaPackage media;
+    
+    public void setMedia(MediaPackage media) {
+        this.media = media;
+    }
+    
+    @Override
+    public void play(String fileName) {
+        System.out.println("Using adapter -->");
+        media.playFile(fileName);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    Le conteneur de dépendance est configuré via le fichier <b>README.txt</b> dans le package.
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#file_readme_adapter">
+                                    Cliquez pour afficher le fichier <b>README.txt</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="file_readme_adapter" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="text">bean.id.1=mp3
+mp3.class=question2.example_adapter.MP3
+
+bean.id.2=mp4
+mp4.class=question2.example_adapter.MP4
+
+bean.id.3=vlc
+vlc.class=question2.example_adapter.VLC
+
+bean.id.4=mp4AsMediaPlayer
+mp4AsMediaPlayer.class=question2.example_adapter.FormatAdapter
+mp4AsMediaPlayer.property.1=media
+mp4AsMediaPlayer.property.1.param.1=mp4
+
+bean.id.5=vlcAsMediaPlayer
+vlcAsMediaPlayer.class=question2.example_adapter.FormatAdapter
+vlcAsMediaPlayer.property.1=media
+vlcAsMediaPlayer.property.1.param.1=vlc</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    En exécutant la méthode <b>main(String[])</b> de la classe <b>Main</b>, on peut constater dans la console le résultat.
+                </p>
+            </div>
+            <h4 class="bg-dark text-white p-2">
+                Question 2.3 :
+            </h4>
+            <div class="p-2">
+                <p>
+                    Dans cette question il nous est demandé de rendre les deux exemples presentés auparavant accessible via le patron Service locator.
+                </p>
+                <p>
+                    J'ai configuré le fichier <b>README.txt</b> et implémenté les tests mais je n'ai pas reussi à le faire fonctionner.
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#file_readme_servicelocatore">
+                                    Cliquez pour afficher le fichier <b>README.txt</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="file_readme_servicelocatore" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="text">
+#verbose=true
+
+
+# martin_fowler
+bean.id.1=martin_fowler
+martin_fowler.class=container.FileSystemPropsApplicationContext
+martin_fowler.property.1=fileName
+martin_fowler.property.1.param.1=./martin_fowler/README.TXT
+martin_fowler.property.2=name
+martin_fowler.property.2.param.1=MARTIN_FOWLER
+
+# exemples
+bean.id.2=exemples
+exemples.class=container.FileSystemPropsApplicationContext
+exemples.property.1=fileName
+exemples.property.1.param.1=./exemples/README.TXT
+exemples.property.2=name
+exemples.property.2.param.1=EXEMPLES
+
+# patron_commande
+bean.id.3=patron_commande
+patron_commande.class=container.FileSystemPropsApplicationContext
+patron_commande.property.1=fileName
+patron_commande.property.1.param.1=./command/README.TXT
+patron_commande.property.2=name
+patron_commande.property.2.param.1=PATRON_COMMANDE
+
+# patron_observer
+bean.id.4=patron_observer
+patron_observer.class=container.FileSystemPropsApplicationContext
+patron_observer.property.1=fileName
+patron_observer.property.1.param.1=./observer/README.TXT
+patron_observer.property.2=name
+patron_observer.property.2.param.1=PATRON_OBSERVER
+
+# patron_facade
+bean.id.5=patron_facade
+patron_facade.class=container.FileSystemPropsApplicationContext
+patron_facade.property.1=fileName
+patron_facade.property.1.param.1=./facade/README.TXT
+patron_facade.property.2=name
+patron_facade.property.2.param.1=PATRON_FACADE
+
+# patron_proxy
+bean.id.6=patron_proxy
+patron_proxy.class=container.FileSystemPropsApplicationContext
+patron_proxy.property.1=fileName
+patron_proxy.property.1.param.1=./proxy/README.TXT
+patron_proxy.property.2=name
+patron_proxy.property.2.param.1=PATRON_PROXY
+
+# patron_state
+bean.id.7=patron_state
+patron_state.class=container.FileSystemPropsApplicationContext
+patron_state.property.1=fileName
+patron_state.property.1.param.1=./state/README.TXT
+patron_state.property.2=name
+patron_state.property.2.param.1=PATRON_STATE
+
+# patron_decorator
+bean.id.8=patron_decorator
+patron_decorator.class=container.FileSystemPropsApplicationContext
+patron_decorator.property.1=fileName
+patron_decorator.property.1.param.1=./question2/example_decorator/README.txt
+patron_decorator.property.2=name
+patron_decorator.property.2.param.1=PATRON_DECORATOR
+
+# patron_decorator
+bean.id.9=patron_adapter
+patron_adapter.class=container.FileSystemPropsApplicationContext
+patron_adapter.property.1=fileName
+patron_adapter.property.1.param.1=./question2/example_adapter/README.txt
+patron_adapter.property.2=name
+patron_adapter.property.2.param.1=PATRON_ADAPTER
+
+# doit être le dernier des beans à être initialisé
+# en interne setContainer utilise le nom de chaque conteneur
+# nom intialisé par femtoContainer
+bean.id.10=serviceLocator
+serviceLocator.class=service_locator.ServiceLocator
+serviceLocator.property.1=container
+serviceLocator.property.1.param.1=martin_fowler
+serviceLocator.property.2=container
+serviceLocator.property.2.param.1=exemples
+serviceLocator.property.3=container
+serviceLocator.property.3.param.1=patron_commande
+serviceLocator.property.4=container
+serviceLocator.property.4.param.1=patron_observer
+serviceLocator.property.5=container
+serviceLocator.property.5.param.1=patron_facade
+serviceLocator.property.6=container
+serviceLocator.property.6.param.1=patron_proxy
+serviceLocator.property.7=container
+serviceLocator.property.7.param.1=patron_state
+
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-header" role="tab">
+                            <h6 class="mb-0">
+                                <a data-toggle="collapse" href="#class_test_servicelocator">
+                                    Cliquez pour afficher le code de la classe <b>ServiceLocatorTests</b>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="class_test_servicelocator" class="collapse hide" role="tabpanel">
+                            <div class="card-body">
+<pre><code class="java">public class ServiceLocatorTests extends junit.framework.TestCase{
+
+    public void testServiceLocator() throws Exception{
+        ApplicationContext ctx = Factory.createApplicationContext("./service_locator/README.TXT");
+
+        ServiceLocatorI serviceLocator = ctx.getBean("serviceLocator");
+
+        System.out.println("Liste des services accessibles: ");
+        for(String service : ctx){
+            System.out.println("\t" + service);
+        }
+        System.out.println("------------------------------------------------");
+        for(String service : serviceLocator){
+            System.out.println("\t" + service);
+        }
+
+        exemples.Table table = serviceLocator.lookup("table");
+        table.ajouter(33);table.ajouter(33);
+        assertEquals(1,table.taille());
+    }
+
+    public void test_serviceLocator_decorator() throws Exception {
+        ApplicationContext ctx = Factory.createApplicationContext("./service_locator/README.TXT");
+        ServiceLocatorI serviceLocator = ctx.getBean("serviceLocator");
+        BakeryComponent cake = serviceLocator.lookup("finalCake");
+        assertEquals(cake.getName(), "Cake, Icing, Chocolate, Candy, Strawberry");
+        assertEquals(cake.getPrice(), 9.5);
+    }
+
+    public void test_serviceLocator_adapter() throws Exception {
+        ApplicationContext ctx = Factory.createApplicationContext("./service_locator/README.TXT");
+        ServiceLocatorI serviceLocator = ctx.getBean("serviceLocator");
+        MediaPlayer mp4Player = serviceLocator.lookup("mp4AsMediaPlayer");
+        MediaPlayer vlcPlayer = serviceLocator.lookup("vlcAsMediaPlayer");
+        
+        assertTrue(mp4Player instanceof MediaPlayer);
+        assertTrue(vlcPlayer instanceof MediaPlayer);
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+        <div class="border mb-2">
+            <h4 class="bg-dark text-white p-2">
+                Conclusion, biliographie et remarques :
+            </h4>
+            <div class="p-2">
+                <p>
+                    Dans ce TP j'ai consolidé mes connaissances acquises dans l'unité et j'ai contribué en fournissant mes exemples d'utilisation de l'injection de dépendance.
+                </p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            hljs.initHighlightingOnLoad();
+        })();
+    </script>
+</body>
+</html>

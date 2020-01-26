@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=SimpleSubscriber
+comment1.params=
+comment1.target=SimpleSubscriber()
+comment2.params=name
+comment2.target=SimpleSubscriber(java.lang.String)
+comment3.params=message
+comment3.target=void\ onMessage(Message)
+numComments=4

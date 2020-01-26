@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Entier
+comment0.text=\n\ Write\ a\ description\ of\ class\ Entier\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=x
+comment1.target=Entier(int)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Entier\n
+comment2.params=
+comment2.target=int\ getX()
+comment3.params=
+comment3.target=int\ getValeur()
+comment4.params=
+comment4.target=void\ dec()
+comment5.params=
+comment5.target=void\ inc()
+comment6.params=e
+comment6.target=boolean\ equals(Entier)
+comment7.params=obj
+comment7.target=boolean\ equals(java.lang.Object)
+comment8.params=
+comment8.target=int\ hashCode()
+numComments=9

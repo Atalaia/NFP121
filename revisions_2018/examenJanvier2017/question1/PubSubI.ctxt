@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=PubSubI
+comment1.params=
+comment1.target=java.lang.String\ getName()
+comment1.text=\ Obetntion\ du\ nom\ de\ ce\ "pubsub".\n\ @return\ son\ nom\n
+comment2.params=names\ message
+comment2.target=int\ publish(java.lang.String[],\ Message)
+comment2.text=\ Publication\ d'un\ message\ \u00E0\ des\ souscripteurs\ \u00E0\ l'aide\ de\ leur\ nom.\n\ @param\ names\ les\ noms\ des\ destinataires\n\ @param\ message\ le\ message\ \u00E0\ transmettre\n\ @return\ le\ nombre\ de\ souscripteurs\ ayant\ re\u00E7u\ le\ message\n
+comment3.params=name\ message
+comment3.target=boolean\ publish(java.lang.String,\ Message)
+comment3.text=\ Publication\ d'un\ message\ \u00E0\ un\ souscripteur.\n\ @param\ name\ le\ nom\ du\ destinataire\n\ @param\ message\ le\ message\ \u00E0\ transmettre\n\ @return\ true\ si\ l'envoi\ est\ r\u00E9ussi,\ false\ autrement\n
+comment4.params=subscriber
+comment4.target=boolean\ subscribe(SubscriberI)
+comment4.text=\ Souscription\ \u00E0\ cette\ boite\ mail.\n\ @param\ subscriber\ le\ souscripteur\ \n\ @return\ false\ si\ ce\ sosucripteur\ est\ d\u00E9j\u00E0inscrit\ avec\ le\ m\u00EAme\ nom\n
+comment5.params=
+comment5.target=java.util.Iterator\ iterator()
+comment5.text=\ Obtention\ d'un\ it\u00E9rateur.\n\ @return\ un\ it\u00E9rateur\ sur\ les\ souscripteurs\ enregistr\u00E9s\n
+numComments=6

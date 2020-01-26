@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=capacite\ queue
+comment0.target=AdapterQueue(int,\ java.util.Queue<E>)
+comment1.params=e
+comment1.target=void\ enfiler(E)
+comment10.params=q
+comment10.target=<E>\ List<E>\ toList(Queue<E>)
+comment11.params=o
+comment11.target=boolean\ equals(Object)
+comment12.target=int\ hashCode()
+comment2.target=E\ defiler()
+comment3.target=E\ premier()
+comment4.target=void\ vider()
+comment5.params=e
+comment5.target=boolean\ contient(E)
+comment6.target=int\ taille()
+comment7.target=int\ capacite()
+comment8.target=Iterator<E>\ iterator()
+comment9.target=String\ toString()
+numComments=13

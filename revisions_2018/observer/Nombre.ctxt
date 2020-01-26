@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Nombre
+comment1.params=valeur
+comment1.target=void\ setValeur(int)
+comment2.params=
+comment2.target=int\ getValeur()
+comment3.params=obs
+comment3.target=void\ setObserver(java.util.Observer)
+comment4.params=o
+comment4.target=boolean\ equals(java.lang.Object)
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6

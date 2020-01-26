@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Operation
+comment1.params=
+comment1.target=Operation()
+comment2.params=contexte\ entite\ resultat
+comment2.target=void\ evaluer(java.lang.Object,\ java.lang.Object,\ java.lang.Object)
+comment3.params=contexte\ entite\ resultat
+comment3.target=void\ executer(java.lang.Object,\ java.lang.Object,\ java.lang.Object)
+numComments=4

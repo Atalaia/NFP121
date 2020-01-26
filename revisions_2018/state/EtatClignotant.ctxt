@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=EtatClignotant
+comment1.params=
+comment1.target=EtatClignotant()
+comment2.params=lampe
+comment2.target=void\ setLampe(Lampe)
+comment3.params=lampe
+comment3.target=EtatClignotant(Lampe)
+comment4.params=
+comment4.target=void\ allumer()
+comment5.params=
+comment5.target=void\ eteindre()
+comment6.params=
+comment6.target=void\ clignoter()
+comment7.params=
+comment7.target=java.lang.String\ toString()
+numComments=8

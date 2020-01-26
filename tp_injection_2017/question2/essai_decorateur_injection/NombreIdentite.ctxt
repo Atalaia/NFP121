@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=NombreIdentite
+comment1.params=contexte\ nombre\ resultat
+comment1.target=void\ executer(Contexte,\ Nombre,\ Resultat)
+numComments=2

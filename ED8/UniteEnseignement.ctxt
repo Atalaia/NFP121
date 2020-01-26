@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=UniteEnseignement
+comment1.params=
+comment1.target=java.lang.String\ getCode()
+comment2.params=
+comment2.target=java.lang.String\ getIntitule()
+comment3.params=
+comment3.target=int\ getNbCredits()
+comment4.params=ue
+comment4.target=boolean\ ajouterUniteEnseignement(UniteEnseignement)
+comment5.params=code
+comment5.target=void\ setCode(java.lang.String)
+comment6.params=intitule
+comment6.target=void\ setIntitule(java.lang.String)
+comment7.params=nbCredits
+comment7.target=void\ setNbCredits(int)
+numComments=8

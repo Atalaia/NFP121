@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=PriorityQueuePrePost
+comment1.params=i
+comment1.target=boolean\ pre_add(int)
+comment2.params=i
+comment2.target=boolean\ post_add(int)
+comment3.params=i
+comment3.target=void\ add(int)
+comment4.params=q
+comment4.target=PriorityQueuePrePost(QueueI)
+comment5.params=
+comment5.target=boolean\ pre_remove()
+comment6.params=
+comment6.target=boolean\ post_remove()
+comment7.params=i
+comment7.target=void\ remove(int)
+comment8.params=
+comment8.target=boolean\ isSortedByPriority()
+comment9.params=iterable
+comment9.target=boolean\ isSorted(java.lang.Iterable)
+numComments=10

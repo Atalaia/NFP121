@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=BufferTest
+comment1.params=
+comment1.target=void\ testFileEmpty()
+comment2.params=
+comment2.target=void\ testFilePut()
+comment3.params=
+comment3.target=void\ test_empty()
+comment4.params=
+comment4.target=void\ test_capacity()
+comment5.params=
+comment5.target=void\ test_put()
+comment6.params=
+comment6.target=void\ test_get()
+comment7.params=
+comment7.target=void\ test_full()
+numComments=8

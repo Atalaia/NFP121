@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=VisiteurString
+comment1.params=feuille
+comment1.target=java.lang.String\ visiteFeuille(Feuille)
+comment2.params=conteneur
+comment2.target=java.lang.String\ visiteConteneur(Conteneur)
+numComments=3

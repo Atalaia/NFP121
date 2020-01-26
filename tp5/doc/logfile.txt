@@ -1,0 +1,334 @@
+Project documentation
+<---- javadoc command: ---->
+/Users/mariasoage/Documents/CNAM/NFP121/BlueJ 4.1.1/BlueJ.app/Contents/JDK/Home/bin/javadoc
+-sourcepath
+/Users/mariasoage/Documents/CNAM/NFP121/tp5
+-source
+1.8
+-classpath
+/Users/mariasoage/Documents/CNAM/NFP121/BlueJ 4.1.1/BlueJ.app/Contents/Resources/Java/bluejcore.jar:/Users/mariasoage/Documents/CNAM/NFP121/BlueJ 4.1.1/BlueJ.app/Contents/Resources/Java/junit-4.11.jar:/Users/mariasoage/Documents/CNAM/NFP121/BlueJ 4.1.1/BlueJ.app/Contents/Resources/Java/hamcrest-core-1.3.jar:/Users/mariasoage/Documents/CNAM/NFP121/BlueJ 4.1.1/BlueJ.app/Contents/Resources/Java/lang-stride.jar:/Users/mariasoage/Documents/CNAM/NFP121/BlueJ 4.1.1/BlueJ.app/Contents/Resources/Java/userlib/pi4j-core.jar:/Users/mariasoage/Documents/CNAM/NFP121/BlueJ 4.1.1/BlueJ.app/Contents/Resources/Java/userlib/pi4j-device.jar:/Users/mariasoage/Documents/CNAM/NFP121/BlueJ 4.1.1/BlueJ.app/Contents/Resources/Java/userlib/pi4j-gpio-extension.jar:/Users/mariasoage/Documents/CNAM/NFP121/BlueJ 4.1.1/BlueJ.app/Contents/Resources/Java/userlib/pi4j-service.jar:/Users/mariasoage/Documents/CNAM/NFP121/tp5
+-d
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/doc
+-encoding
+UTF-8
+-charset
+UTF-8
+-doctitle
+tp5
+-windowtitle
+tp5
+-author
+-version
+-nodeprecated
+-package
+-Xdoclint:none
+-link
+http://download.oracle.com/javase/8/docs/api/
+question3
+question2
+question1
+<---- end of javadoc command ---->
+Loading source files for package question3...
+Loading source files for package question2...
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:35: error: unmappable character for encoding UTF-8
+     * M�thode appel�e apr�s chaque appel de m�thode de test.
+        ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:35: error: unmappable character for encoding UTF-8
+     * M�thode appel�e apr�s chaque appel de m�thode de test.
+                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:35: error: unmappable character for encoding UTF-8
+     * M�thode appel�e apr�s chaque appel de m�thode de test.
+                          ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:35: error: unmappable character for encoding UTF-8
+     * M�thode appel�e apr�s chaque appel de m�thode de test.
+                                              ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:45: error: unmappable character for encoding UTF-8
+            assertEquals("IHM modifi�e !!!", components.length, 1);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:51: error: unmappable character for encoding UTF-8
+            assertTrue("IHM modifi�e, voir JPanel cmd !!!", subComponents[0] instanceof JPanel);// cmd
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:52: error: unmappable character for encoding UTF-8
+            assertTrue("IHM modifi�e, voir TextArea cmd !!!", subComponents[1] instanceof TextArea);// texte
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:55: error: unmappable character for encoding UTF-8
+            assertTrue("IHM modifi�e, voir JLabel afficheur !!!", subSubComponents[0] instanceof JLabel);// afficheur
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:56: error: unmappable character for encoding UTF-8
+            assertTrue("IHM modifi�e, voir JTextField saisie !!!", subSubComponents[1] instanceof JTextField);// saisie
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:57: error: unmappable character for encoding UTF-8
+            assertTrue("IHM modifi�e, voir JPanel boutons !!!", subSubComponents[2] instanceof JPanel);// boutons
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:60: error: unmappable character for encoding UTF-8
+            assertTrue("IHM modifi�e, voir JButton boutonRechercher !!!", boutons[0] instanceof JButton);// boutonRechercher
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:61: error: unmappable character for encoding UTF-8
+            assertTrue("IHM modifi�e, voir JButton boutonRetirer !!!", boutons[1] instanceof JButton);// boutonRetirer
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:62: error: unmappable character for encoding UTF-8
+            assertTrue("IHM modifi�e, voir JLabel !!!", boutons[2] instanceof JLabel);// 
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:63: error: unmappable character for encoding UTF-8
+            assertTrue("IHM modifi�e, voir Checkbox croissant !!!", boutons[3] instanceof Checkbox);// croissant
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:64: error: unmappable character for encoding UTF-8
+            assertTrue("IHM modifi�e, voir Checkbox decroissant !!!", boutons[4] instanceof Checkbox);// decroissant
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:74: error: unmappable character for encoding UTF-8
+            assertTrue("\"Java\" doit �tre pr�sent !!!",res.getText().endsWith("true"));
+                                      ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:74: error: unmappable character for encoding UTF-8
+            assertTrue("\"Java\" doit �tre pr�sent !!!",res.getText().endsWith("true"));
+                                             ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:83: error: unmappable character for encoding UTF-8
+            assertTrue("\"Java2\" doit �tre absent !!!", res.getText().endsWith("false"));
+                                       ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:131: error: unmappable character for encoding UTF-8
+                assertEquals(" Nombre d'occurrence de you est-il erron� ???",36,leNombre);
+                                                                      ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:178: error: unmappable character for encoding UTF-8
+            assertTrue("\"you\" doit �tre pr�sent, pour ce test",res.getText().endsWith("true"));
+                                     ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:178: error: unmappable character for encoding UTF-8
+            assertTrue("\"you\" doit �tre pr�sent, pour ce test",res.getText().endsWith("true"));
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:187: error: unmappable character for encoding UTF-8
+            assertTrue("retrait est-il inop�rant ??? ",res.getText().endsWith("false"));
+                                           ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:238: error: unmappable character for encoding UTF-8
+            assertTrue(" ce qui commence par \"lin\" doit �tre pr�sent, pour ce test",res.getText().endsWith("true"));
+                                                          ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:238: error: unmappable character for encoding UTF-8
+            assertTrue(" ce qui commence par \"lin\" doit �tre pr�sent, pour ce test",res.getText().endsWith("true"));
+                                                                 ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:247: error: unmappable character for encoding UTF-8
+            assertTrue("retrait est-il inop�rant ??? ",res.getText().endsWith("false"));
+                                           ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:263: error: unmappable character for encoding UTF-8
+                assertTrue(" Nombre d'occurrence de linked est-il erron� ??? (0 apr�s un retrait)",result==0);
+                                                                       ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:263: error: unmappable character for encoding UTF-8
+                assertTrue(" Nombre d'occurrence de linked est-il erron� ??? (0 apr�s un retrait)",result==0);
+                                                                                   ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:265: error: unmappable character for encoding UTF-8
+                fail("L'affichage du nombre d'occurrence doit �tre de 0 apr�s un retrait effectif");
+                                                              ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question2/IHMListeTest.java:265: error: unmappable character for encoding UTF-8
+                fail("L'affichage du nombre d'occurrence doit �tre de 0 apr�s un retrait effectif");
+                                                                           ^
+Loading source files for package question1...
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:41: error: unmappable character for encoding UTF-8
+        assertEquals(" IHM a-t-elle �t� modifi�e ?", components.length, 4);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:41: error: unmappable character for encoding UTF-8
+        assertEquals(" IHM a-t-elle �t� modifi�e ?", components.length, 4);
+                                      ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:41: error: unmappable character for encoding UTF-8
+        assertEquals(" IHM a-t-elle �t� modifi�e ?", components.length, 4);
+                                              ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:44: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[0] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:44: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[0] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:44: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[0] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:45: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[1] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:45: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[1] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:45: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[1] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:46: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[2] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:46: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[2] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:46: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[2] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:47: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[3] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:47: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[3] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:47: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[3] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:50: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[1] instanceof JButton);// union
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:50: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[1] instanceof JButton);// union
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:50: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[1] instanceof JButton);// union
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:51: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[2] instanceof JButton);// inter
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:51: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[2] instanceof JButton);// inter
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:51: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[2] instanceof JButton);// inter
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:52: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[3] instanceof JButton);// diff
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:52: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[3] instanceof JButton);// diff
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:52: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[3] instanceof JButton);// diff
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:53: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[4] instanceof JButton);// diffSym
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:53: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[4] instanceof JButton);// diffSym
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:53: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[4] instanceof JButton);// diffSym
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:68: error: unmappable character for encoding UTF-8
+        assertEquals(" IHM a-t-elle �t� modifi�e ?", components.length, 4);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:68: error: unmappable character for encoding UTF-8
+        assertEquals(" IHM a-t-elle �t� modifi�e ?", components.length, 4);
+                                      ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:68: error: unmappable character for encoding UTF-8
+        assertEquals(" IHM a-t-elle �t� modifi�e ?", components.length, 4);
+                                              ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:71: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[0] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:71: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[0] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:71: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[0] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:72: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[1] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:72: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[1] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:72: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[1] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:73: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[2] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:73: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[2] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:73: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[2] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:74: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[3] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:74: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[3] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:74: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[3] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:77: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[1] instanceof JButton);// union
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:77: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[1] instanceof JButton);// union
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:77: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[1] instanceof JButton);// union
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:78: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[2] instanceof JButton);// inter
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:78: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[2] instanceof JButton);// inter
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:78: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[2] instanceof JButton);// inter
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:79: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[3] instanceof JButton);// diff
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:79: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[3] instanceof JButton);// diff
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:79: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[3] instanceof JButton);// diff
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:80: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[4] instanceof JButton);// diffSym
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:80: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[4] instanceof JButton);// diffSym
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:80: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[4] instanceof JButton);// diffSym
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:92: error: unmappable character for encoding UTF-8
+        assertEquals(" IHM a-t-elle �t� modifi�e ?", components.length, 4);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:92: error: unmappable character for encoding UTF-8
+        assertEquals(" IHM a-t-elle �t� modifi�e ?", components.length, 4);
+                                      ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:92: error: unmappable character for encoding UTF-8
+        assertEquals(" IHM a-t-elle �t� modifi�e ?", components.length, 4);
+                                              ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:95: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[0] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:95: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[0] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:95: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[0] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:96: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[1] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:96: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[1] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:96: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[1] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:97: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[2] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:97: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[2] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:97: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[2] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:98: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[3] instanceof JPanel);
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:98: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[3] instanceof JPanel);
+                                    ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:98: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", components[3] instanceof JPanel);
+                                            ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:101: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[1] instanceof JButton);// union
+                                  ^
+/Users/mariasoage/Documents/CNAM/NFP121/tp5/question1/IHMTestEnsembleTests.java:101: error: unmappable character for encoding UTF-8
+        assertTrue(" IHM a-t-elle �t� modifi�e ?", subComponents[1] instanceof JButton);// union
+                                    ^
+100 errors

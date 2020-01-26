@@ -1,0 +1,29 @@
+#BlueJ class context
+comment0.target=VisiteurBoolEvaluation
+comment1.params=ve
+comment1.target=VisiteurBoolEvaluation(question1.VisiteurExpression)
+comment2.params=v
+comment2.target=java.lang.Boolean\ visite(Vrai)
+comment2.text=Expression\ bool\u00E9enne\ vrai.\n@return\ true\n
+comment3.params=f
+comment3.target=java.lang.Boolean\ visite(Faux)
+comment3.text=Expression\ bool\u00E9enne\ faux.\n@return\ false\n
+comment4.params=n
+comment4.target=java.lang.Boolean\ visite(Non)
+comment4.text=Expression\ bool\u00E9enne\ non.\n@return\ \!n.bop()\n
+comment5.params=ou
+comment5.target=java.lang.Boolean\ visite(Ou)
+comment5.text=Expression\ bool\u00E9enne\ ou.\n@return\ ou.bop1()\ ||\ ou.bop2()\n
+comment6.params=et
+comment6.target=java.lang.Boolean\ visite(Et)
+comment6.text=Expression\ bool\u00E9enne\ et.\n@return\ et.bop1()\ &&\ et.bop2()\n
+comment7.params=sup
+comment7.target=java.lang.Boolean\ visite(Sup)
+comment7.text=Expression\ bool\u00E9enne\ Sup\u00E9rieur.\n@return\ sup.op1()\ >\ sup.op2()\n
+comment8.params=eg
+comment8.target=java.lang.Boolean\ visite(Egal)
+comment8.text=Expression\ bool\u00E9enne\ Egal\ \u00E0.\n@return\ eg.op1()\ \=\=\ eg.op2()\n
+comment9.params=inf
+comment9.target=java.lang.Boolean\ visite(Inf)
+comment9.text=Expression\ bool\u00E9enne\ Inf\u00E9rieur\ \u00E0.\n@return\ inf.op1()\ <\ inf.op2()\n
+numComments=10

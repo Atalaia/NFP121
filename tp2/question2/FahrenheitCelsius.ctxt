@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=FahrenheitCelsius
+comment0.text=\n\ D\u00E9crivez\ votre\ classe\ FahrenheitCelsius\ ici.\n\ \n\ @author\ (votre\ nom)\ \n\ @version\ (un\ num\u00E9ro\ de\ version\ ou\ une\ date)\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\ le\ point\ d'entr\u00E9e\ de\ cette\ application,\ \n\ dont\ le\ commentaire\ est\ \u00E0\ compl\u00E9ter\n\n\ \ @param\ args\ ...\n
+comment2.params=f
+comment2.target=float\ fahrenheitEnCelsius(int)
+comment2.text=\ \n\ la\ m\u00E9thode\ \u00E0\ compl\u00E9ter.\ \n\ \ \ @param\ f\ la\ valeur\ en\ degr\u00E9\ Fahrenheit\n\ \ \ @return\ \ la\ conversion\ en\ degr\u00E9\ Celsius\n
+numComments=3

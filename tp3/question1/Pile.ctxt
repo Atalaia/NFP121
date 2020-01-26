@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Pile
+comment0.text=\n\ A\ remplacer\ par\ votre\ classe\ Pile\ .\n\ \n\ @author\ (votre\ nom)\n\ @version\ (un\ num\uFFFDro\ de\ version\ ou\ une\ date)\n
+comment1.params=taille
+comment1.target=Pile(int)
+comment1.text=\n\ Constructeur\ par\ initialisation\ de\ la\ taille\ de\ la\ pile.\n\ \n\ @param\ taille\ \:\ nombre\ d'\u00E9l\u00E9ments\ dans\ la\ pile.\n
+comment2.params=
+comment2.target=Pile()
+comment2.text=\n\ Constructeur\ par\ d\u00E9faut\ de\ la\ pile.\n
+comment3.params=o
+comment3.target=void\ empiler(java.lang.Object)
+comment3.text=\n\ Ajoute\ un\ objet\ \u00E0\ la\ pile.\n\ \n\ @param\ Object\ i\ \:\ object\ \u00E0\ ajouter.\n
+comment4.params=
+comment4.target=java.lang.Object\ depiler()
+comment4.text=\n\ Supprime\ l'objet\ de\ la\ pile.\n\ \n
+comment5.params=
+comment5.target=boolean\ estVide()
+comment5.text=\n\ Contr\u00F4le\ si\ la\ pile\ est\ vide.\n\ Si\ vide\ renvoie\ true.\n
+comment6.params=
+comment6.target=boolean\ estPleine()
+comment6.text=\n\ Contr\u00F4le\ si\ la\ pile\ est\ pleine.\n\ Si\ pleine\ renvoie\ true.\n
+comment7.params=
+comment7.target=java.lang.String\ toString()
+comment7.text=\n\ M\u00E9thode\ d'affichage\ de\ la\ pile.\n
+numComments=8

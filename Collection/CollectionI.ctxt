@@ -1,0 +1,33 @@
+#BlueJ class context
+comment0.target=CollectionI
+comment1.params=e
+comment1.target=boolean\ ajouter(java.lang.Object)
+comment1.text=\ Ajout\ d'un\ \u00E9l\u00E9ment\ \u00E0\ la\ collection.\n\ @param\ e\ l'\u00E9l\u00E9ment\ (\!\=null)\n\ @return\ true\ si\ la\ collection\ a\ \u00E9t\u00E9\ modifi\u00E9e\n
+comment10.params=
+comment10.target=int\ hashCode()
+comment10.text=\ Obtention\ d'une\ valeur\ de\ hashCode.\n\ Soit\ ici\ la\ somme\ des\ valeur\ de\ hashCode\ de\ chaque\ \u00E9l\u00E9ment.\n\ @return\ une\ valeur\n
+comment2.params=c
+comment2.target=boolean\ ajouter(CollectionI)
+comment2.text=\ Ajout\ de\ tous\ les\ \u00E9l\u00E9ments\ d'une\ collection\ \u00E0\ la\ collection.\n\ @param\ c\ la\ collection\ (\!\=null)\n\ @return\ true\ si\ la\ collection\ a\ \u00E9t\u00E9\ modifi\u00E9e\n
+comment3.params=e
+comment3.target=boolean\ supprimer(java.lang.Object)
+comment3.text=\ Suppression\ d'un\ \u00E9l\u00E9ment\ de\ la\ collection.\n\ @param\ e\ l'\u00E9l\u00E9ment\ (\!\=null)\n\ @return\ true\ si\ la\ collection\ a\ \u00E9t\u00E9\ modifi\u00E9e\n
+comment4.params=c
+comment4.target=boolean\ supprimer(CollectionI)
+comment4.text=\ Suppression\ de\ tous\ les\ \u00E9l\u00E9ments\ de\ c\ de\ la\ collection\ en\ cours.\n\ @param\ c\ une\ collection\ (\!\=null)\n\ @return\ true\ si\ la\ collection\ a\ \u00E9t\u00E9\ modifi\u00E9e\n
+comment5.params=
+comment5.target=java.util.Iterator\ iterator()
+comment5.text=\ Obtention\ d'un\ it\u00E9rateur\ sur\ la\ collection.\n\ @return\ un\ it\u00E9rateur\n
+comment6.params=e
+comment6.target=boolean\ contient(java.lang.Object)
+comment6.text=\ Test\ de\ la\ pr\u00E9sence\ d'un\ \u00E9l\u00E9ment.\n\ @param\ e\ l'\u00E9l\u00E9ment\ (\!\=null)\n\ @return\ true\ si\ cet\ \u00E9l\u00E9ment\ est\ pr\u00E9sent\n
+comment7.params=c
+comment7.target=boolean\ contient(CollectionI)
+comment7.text=\ Test\ de\ l'inclusion\ d'une\ collection.\n\ @param\ c\ une\ collection\ (\!\=null)\n\ @return\ true\ si\ c\ est\ incluse\ dans\ la\ collection\n
+comment8.params=
+comment8.target=int\ taille()
+comment8.text=\ Obtention\ du\ nombre\ d'\u00E9l\u00E9ments\ de\ l'inclusion\ d'une\ collection.\n\ @return\ le\ nombre\ d'\u00E9l\u00E9ment\ de\ la\ collection\n
+comment9.params=o
+comment9.target=boolean\ equals(java.lang.Object)
+comment9.text=\ Egalit\u00E9\ de\ deux\ collections,\ m\u00EAme\ taille,\ m\u00EAmes\ \u00E9l\u00E9ments.\n\ @return\ true\ si\ les\ deux\ collections\ sont\ \u00E9gales\n
+numComments=11

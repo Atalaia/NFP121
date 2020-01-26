@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Subscriber2
+comment0.text=\n\ Abstract\ class\ Subscriber2\ -\ write\ a\ description\ of\ the\ class\ here\n\ \n\ @author\:\ \n\ Date\:\ \n
+comment1.params=
+comment1.target=Subscriber2()
+comment2.params=name
+comment2.target=Subscriber2(java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment3.text=\ Obtention\ du\ nom\ du\ souscripteur.\n\ @return\ le\ nom\ du\ souscripteur\n
+comment4.params=name
+comment4.target=void\ setName(java.lang.String)
+comment5.params=
+comment5.target=java.util.List\ getPubSubList()
+comment5.text=\ Obtention\ de\ la\ liste\ des\ abonnements\ de\ ce\ souscripteur.\n\ @return\ la\ liste\ des\ souscriptions\ effectu\u00E9es\n
+comment6.params=pubsub
+comment6.target=boolean\ addPubSub(PubSubI)
+comment6.text=\ Ajout\ d'un\ abonnement\ pour\ ce\ souscripteur.\n\ @return\ false\ si\ l'abonnement\ \u00E9tait\ d\u00E9j\u00E0\ en\ place\n
+numComments=7

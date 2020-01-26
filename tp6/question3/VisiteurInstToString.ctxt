@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=VisiteurInstToString
+comment0.text=\n\ Visisteur\ d'instruction,\ chaque\ classe\ concr\u00E8te\ poss\u00E8de\ une\ impl\u00E9mentation\ de\n\ la\ visite\n\ \n
+comment1.params=vi\ vb
+comment1.target=VisiteurInstToString(question1.VisiteurExpression,\ question2.VisiteurExpressionBooleenne)
+comment1.text=\n\ Cr\u00E9ation\ d'un\ visiteur\ d'instructions\n\ \n\ @param\ vi\n\ \ \ \ \ \ \ \ \ \ \ \ le\ visiteur\ d'expressions\ arithm\u00E9tiques\n\ @param\ vb\n\ \ \ \ \ \ \ \ \ \ \ \ le\ visiteur\ d'expression\ bool\u00E9ennes\n
+comment2.params=
+comment2.target=question1.Contexte\ contexte()
+comment2.text=\n\ obtention\ du\ contexte,\ ici\ celui\ du\ visiteur\ d'expression\ arithm\u00E9tiques\n\ \n\ @return\ le\ contexte\ ici\ de\ vi(le\ visiteur\ d'expression)\n
+comment3.params=a
+comment3.target=java.lang.String\ visite(Affectation)
+comment3.text=\n\ Visite\ d'une\ instance\ de\ la\ classe\ Affectation.\n\ \n\ \n\ @param\ a\n\ \ \ \ \ \ \ \ \ \ \ \ une\ affectation\n\ @return\ a\ \:\=\ exp\n
+comment4.params=seq
+comment4.target=java.lang.String\ visite(Sequence)
+comment4.text=\n\ Visiste\ d'une\ s\u00E9quence\ seq(I1,I2)\ <br>\n\ \n\ @param\ seq\n\ \ \ \ \ \ \ \ \ \ \ \ une\ s\u00E9quence\n\ @return\ i1;i2\n
+comment5.params=sel
+comment5.target=java.lang.String\ visite(Selection)
+comment6.params=tq
+comment6.target=java.lang.String\ visite(TantQue)
+comment7.params=pour
+comment7.target=java.lang.String\ visite(Pour)
+comment8.params=a
+comment8.target=java.lang.String\ visite(Afficher)
+comment9.params=a
+comment9.target=java.lang.String\ visite(Assertion)
+numComments=10

@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=valeur
+comment0.target=Entier(int)
+comment1.params=valeur
+comment1.target=void\ setValeur(int)
+comment10.params=
+comment10.target=int\ moins1()
+comment2.params=inc
+comment2.target=void\ inc(int)
+comment3.params=v
+comment3.target=void\ plus(int)
+comment4.params=
+comment4.target=Entier\ copie()
+comment5.params=
+comment5.target=int\ getValeur()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment7.params=base
+comment7.target=java.lang.String\ toString(int)
+comment8.params=e
+comment8.target=java.lang.String\ toString(Entier)
+comment9.params=
+comment9.target=int\ plus1()
+numComments=11

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=DebitMaximal
+comment0.text=\ \ \n\ Un\ visiteur\ qui\ retourne\ le\ d\u00E9bit\ maximal\ d'un\ Contributeur\ ou\ d'un\ GroupeDeContributeurs\ \ \n
+comment1.params=c
+comment1.target=java.lang.Integer\ visite(question1.Contributeur)
+comment1.text=\ \ \ \ \ \ \n\ @return\ le\ d\u00E9bit\ maximal\ d'un\ seul\ contributeur\ \ \ \ \ \ \n
+comment2.params=g
+comment2.target=java.lang.Integer\ visite(question1.GroupeDeContributeurs)
+comment2.text=\ \ \ \ \ \ \n\ @return\ le\ solde\ minimale\ de\ tous\ les\ Contributeurs\ \ \ \ \ \ \n
+numComments=3

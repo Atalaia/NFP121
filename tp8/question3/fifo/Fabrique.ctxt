@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=capacite
+comment0.target=<E>\ FileI<E>\ creerFile(int)
+comment1.params=capacite
+comment1.target=<E\ extends\ Comparable<?\ super\ E>>\ FileI<E>\ creerFileAvecPriorite(int)
+comment2.params=capacite\ comparator
+comment2.target=<E\ extends\ Comparable<?\ super\ E>>\ FileI<E>\ creerFileAvecPriorite(int,\ Comparator<E>)
+numComments=3

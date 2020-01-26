@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=AbstractDecorateur
+comment1.params=decore
+comment1.target=AbstractDecorateur(OperationNombre)
+comment2.params=
+comment2.target=AbstractDecorateur()
+comment3.params=decore
+comment3.target=void\ setDecore(OperationNombre)
+comment4.params=contexte\ nombre\ resultat
+comment4.target=void\ executer(Contexte,\ Nombre,\ Resultat)
+numComments=5

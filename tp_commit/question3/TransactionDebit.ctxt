@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=TransactionDebit
+comment1.params=cotisant
+comment1.target=TransactionDebit(question1.Cotisant)
+comment2.params=
+comment2.target=void\ beginTransaction()
+comment2.text=\ \ \ \ \ \ \n\ avant\ une\ transaction\ l'\u00E9tat\ initiale\ est\ sauvegard\u00E9\ \ \ \ \ \ \n
+comment3.params=
+comment3.target=void\ endTransaction()
+comment3.text=\n\ fin\ d'une\ transaction\n
+comment4.params=
+comment4.target=void\ rollbackTransaction()
+comment4.text=\ \ \ \ \ \ \n\ si\ une\ erreur\ est\ lev\u00E9e,\ retour\ \u00E0\ l'\u00E9tat\ pr\u00E9c\u00E9dent\ \ \ \ \ \ \n
+numComments=5

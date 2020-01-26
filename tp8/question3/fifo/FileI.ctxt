@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=e
+comment0.target=void\ enfiler(E)
+comment1.target=E\ defiler()
+comment2.target=E\ premier()
+comment3.target=void\ vider()
+comment4.params=e
+comment4.target=boolean\ contient(E)
+comment5.target=int\ taille()
+comment6.target=int\ capacite()
+numComments=7

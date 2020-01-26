@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=ProxyThreadPubSub
+comment1.params=name
+comment1.target=ProxyThreadPubSub(java.lang.String)
+comment2.params=names\ message
+comment2.target=int\ publish(java.lang.String[],\ examenJanvier2017.question1.Message)
+comment3.params=name\ message
+comment3.target=boolean\ publish(java.lang.String,\ examenJanvier2017.question1.Message)
+comment4.params=
+comment4.target=java.lang.String\ getName()
+comment5.params=subscriber
+comment5.target=boolean\ subscribe(examenJanvier2017.question1.SubscriberI)
+comment6.params=
+comment6.target=java.util.Iterator\ iterator()
+numComments=7

@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=ApplicationContext
+comment0.text=\n\ <b>femtoContainer</b>\ Un\ conteneur\ de\ beans\ adapt\uFFFD\ au\ cours\ NFP121.\n\ <b>Injection\ de\ d\uFFFDpendances\ uniquement\ par\ mutateur.</b><br>\n\ Le\ format\ du\ fichier\ de\ configuration\ est\ d\uFFFDfini<br>\n\ dans\ la\ classe\ Factory\ cf.\ la\ classe\ container.Factory\n\n\ <br><u>Un\ exemple\ d'utilisation\:</u><br>\n\ <pre>\n\ ApplicationContext\ ctx\ \=\ Factory.createApplicationContext("./martin_fowler/README.TXT");\n\ MovieLister\ lister\ \=\ ctx.getBean("movieLister");\n\ </pre>\n\ @author\ jm\ Douin\n\ @version\ 14\ Janvier\ 2018\n\ @see\ https\://fr.wikipedia.org/wiki/JavaBeans\n\ @see\ container.Factory\n
+comment1.params=
+comment1.target=java.lang.String\ getName()
+comment1.text=\ Obtention\ du\ nom\ de\ ce\ conteneur.\n\ @return\ le\ nom\n
+comment2.params=id
+comment2.target=java.lang.Object\ getBean(java.lang.String)
+comment2.text=\ Obtention\ d'une\ instance\ d'un\ bean\ du\ conteneur.\n\ \ Il\ n'existe\ qu'une\ seule\ instance\ avec\ cet\ id,\ c'est\ un\ singleton.\n\ @param\ id\ l'identifiant\ unique\ du\ bean\n\ @return\ l'instance\ associ\uFFFDe\n\ @throws\ RuntimeException\ "pas\ de\ bean\ avec\ cet\ identifiant\:\ "\ +\ id\n
+comment3.params=id
+comment3.target=java.lang.Class\ getType(java.lang.String)
+comment3.text=\ Obtention\ du\ type\ du\ bean\ \uFFFD\ partir\ de\ son\ identifiant.\n\ param\ id\ l'identifiant\ unique\ du\ bean\n\ @return\ le\ type,instance\ de\ la\ classe\ Class\ du\ bean\n\ @throws\ RuntimeException\ "pas\ de\ bean\ avec\ cet\ identifiant\:\ "\ +\ id\n
+comment4.params=
+comment4.target=java.util.Iterator\ iterator()
+comment4.text=\ Obtention\ d'un\ it\uFFFDrateur\ sur\ les\ beans\ pt\uFFFDsents\ dans\ ce\ conteneur.\n\ L'op\uFFFDration\ de\ retrait\ \:\ remove,\ est\ sans\ effet.\n\ @return\ un\ it\uFFFDrateur\ des\ identifiants\ du\ conteneur\n
+comment5.params=appContext
+comment5.target=void\ addApplicationContext(ApplicationContext)
+comment5.text=\ Ajout,\ cumul\ d'une\ autre\ instance\ d'ApplicationContext\n\ Tous\ les\ beans\ de\ l'instance\ appContext\ sont\ ajout\uFFFDs\ au\ conteneur\n\ @param\ appContext\ le\ conteneur\ \uFFFD\ ajouter\n\ @throws\ RuntimeException\ "d\uFFFDj\uFFFD\ un\ bean\ avec\ cet\ identifiant\:\ "\ +\ id\n
+numComments=6

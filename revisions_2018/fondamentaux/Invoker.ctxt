@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Invoker
+comment1.params=command
+comment1.target=Invoker(Command)
+comment2.params=
+comment2.target=void\ on()
+comment3.params=
+comment3.target=void\ off()
+numComments=4

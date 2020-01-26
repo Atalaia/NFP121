@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=PubDurableSubImpl
+comment1.params=
+comment1.target=PubDurableSubImpl()
+comment2.params=name
+comment2.target=void\ setName(java.lang.String)
+comment3.params=name
+comment3.target=PubDurableSubImpl(java.lang.String)
+comment4.params=names\ message
+comment4.target=int\ publish(java.lang.String[],\ Message)
+comment5.params=subscriber
+comment5.target=boolean\ subscribe(SubscriberI)
+numComments=6

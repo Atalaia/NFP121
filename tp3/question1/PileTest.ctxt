@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=PileTest
+comment1.params=
+comment1.target=PileTest()
+comment1.text=\n\ Constructeur\ de\ la\ classe-test\ PileTest\n
+comment2.params=
+comment2.target=void\ setUp()
+comment2.text=\n\ Met\ en\ place\ les\ engagements.\n\ \n\ M\uFFFDthode\ appel\uFFFDe\ avant\ chaque\ appel\ de\ m\uFFFDthode\ de\ test.\n
+comment3.params=
+comment3.target=void\ tearDown()
+comment3.text=\n\ Supprime\ les\ engagements\n\ \n\ M\uFFFDthode\ appel\uFFFDe\ apr\uFFFDs\ chaque\ appel\ de\ m\uFFFDthode\ de\ test.\n
+numComments=4

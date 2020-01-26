@@ -1,0 +1,748 @@
+<html>
+<head>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+    <title>NFP121 - TP7</title>
+    <style type="text/css">
+        body {
+            background: #E5DED6;
+            background-color: #fff;
+            color: #333333;
+            font-size: 14px;
+            font-family: Verdana, Arial;
+        }
+
+        table {
+            font-size: 20px;
+            border-color: #808080;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        h2 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: #C1002A;
+            font-family: Verdana, Arial;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        hr {
+            margin: 15px 0 15px 0;
+        }
+    </style>
+
+</head>
+<body>
+    <h2 style="text-align: center">NFP 121 - TP 7</h2>
+    <h2 style="text-align: center">Les transactions</h2>
+    <br />
+    <hr>
+    <br />
+    <table>
+        <tr>
+            <td>Nom
+            </td>
+            <td>SOAGE CAMPELO
+            </td>
+        </tr>
+        <tr>
+            <td>Prénom
+            </td>
+            <td>MARÍA ESTHER
+            </td>
+        </tr>
+        <tr>
+            <td>Matricule
+            </td>
+            <td>FOD_0G5DRMA39F5
+            </td>
+        </tr>
+    </table>
+    <br />
+    <hr />
+    <h3>Question 1.1 :</h3>
+    <br />
+    Vous trouverez ci-dessous une implémentation complète de la classe Contributeur :
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;Contributeur&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;Cotisant{
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;solde;
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;Constructeur&nbsp;de&nbsp;Contributeur&nbsp;(leaf&nbsp;du&nbsp;Composite)
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;nom&nbsp;contributeu
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;somme&nbsp;de&nbsp;départ&nbsp;du&nbsp;contributeur&nbsp;(non&nbsp;négative)
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Contributeur(String&nbsp;nom,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;somme){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>(nom);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(somme&nbsp;>=&nbsp;0){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.solde&nbsp;=&nbsp;somme;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RuntimeException(<font color='#2a00ff'>"nombre&nbsp;négatif&nbsp;!!"</font>);}
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;solde(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.solde;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;nombreDeCotisants(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;1;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;méthode&nbsp;pour&nbsp;débiter&nbsp;la&nbsp;somme&nbsp;indiquée&nbsp;en&nbsp;paramètre&nbsp;seulement&nbsp;si&nbsp;celle-ci&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;est&nbsp;positive&nbsp;et&nbsp;inférieur&nbsp;au&nbsp;solde&nbsp;du&nbsp;contributeur.&nbsp;Sinon&nbsp;on&nbsp;lève
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;une&nbsp;exception&nbsp;dans&nbsp;les&nbsp;deux&nbsp;cas
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@throws</strong>&nbsp;SoldeDebiteurException
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;somme&nbsp;à&nbsp;débiter
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;debit(<strong><font color='#7f0055'>int</font></strong>&nbsp;somme)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;SoldeDebiteurException{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(somme&nbsp;>&nbsp;solde){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;SoldeDebiteurException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(somme&nbsp;<&nbsp;0){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RuntimeException(<font color='#2a00ff'>"nombre&nbsp;négatif&nbsp;!!"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.solde&nbsp;-=&nbsp;somme;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;throws&nbsp;RuntimeException&nbsp;new&nbsp;RuntimeException("nombre&nbsp;négatif&nbsp;!!!");
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;somme&nbsp;à&nbsp;créditer
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;credit(<strong><font color='#7f0055'>int</font></strong>&nbsp;somme){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(somme&nbsp;<&nbsp;0)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RuntimeException(<font color='#2a00ff'>"nombre&nbsp;négatif&nbsp;!!"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.solde&nbsp;+=&nbsp;somme;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;throws&nbsp;RuntimeException&nbsp;new&nbsp;RuntimeException("nombre&nbsp;négatif&nbsp;!!!");
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;affecterSolde(<strong><font color='#7f0055'>int</font></strong>&nbsp;somme){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(somme&nbsp;<0)&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RuntimeException(<font color='#2a00ff'>"nombre&nbsp;négatif&nbsp;!!!"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debit(solde());&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;credit(somme);<font color='#3f7f5f'>//&nbsp;mode&nbsp;élégant&nbsp;...&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(SoldeDebiteurException&nbsp;sde){&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;exception&nbsp;peu&nbsp;probable
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.solde&nbsp;=&nbsp;somme;&nbsp;<font color='#3f7f5f'>//&nbsp;mode&nbsp;efficace&nbsp;...
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<T>&nbsp;T&nbsp;accepter(Visiteur<T>&nbsp;visiteur){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;visiteur.visite(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;toString(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<font color='#2a00ff'>"<Contributeur&nbsp;:&nbsp;"</font>&nbsp;+&nbsp;nom&nbsp;+&nbsp;<font color='#2a00ff'>","</font>&nbsp;+&nbsp;solde&nbsp;+&nbsp;<font color='#2a00ff'>">"</font>;
+<br/>&nbsp;&nbsp;}
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <hr />
+    <h3>Question 1.2 :</h3>
+    <br />
+    Et voici une implémentation complète de la classe GroupeDeContributeurs :
+    <br />
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question1;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Iterator;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.NoSuchElementException;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.List;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.ArrayList;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Stack;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;GroupeDeContributeurs&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;Cotisant&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;Iterable<Cotisant>{
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;List<Cotisant>&nbsp;liste;
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;Constructeur
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;nom&nbsp;du&nbsp;groupe
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;GroupeDeContributeurs(String&nbsp;nomDuGroupe){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>(nomDuGroupe);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.liste&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ArrayList<Cotisant>();
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;méthode&nbsp;pour&nbsp;ajouter&nbsp;un&nbsp;cotisant&nbsp;au&nbsp;groupe&nbsp;de&nbsp;contributeurs
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;le&nbsp;groupe&nbsp;devient&nbsp;le&nbsp;parent&nbsp;de&nbsp;ce&nbsp;cotisant
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;cotisant&nbsp;contributeur
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;ajouter(Cotisant&nbsp;cotisant){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.liste.add(cotisant);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cotisant.setParent(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;méthode&nbsp;récursive&nbsp;dans&nbsp;le&nbsp;cas&nbsp;d'un&nbsp;groupe&nbsp;de&nbsp;contributeurs&nbsp;interne&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;&nbsp;Le&nbsp;nombre&nbsp;de&nbsp;cotisants&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;nombreDeCotisants(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;nombre&nbsp;=&nbsp;0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;Iterator<Cotisant>&nbsp;it&nbsp;=&nbsp;liste.iterator();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>(it.hasNext()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cotisant&nbsp;c&nbsp;=&nbsp;it.next();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(c&nbsp;<strong><font color='#7f0055'>instanceof</font></strong>&nbsp;Contributeur){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nombre&nbsp;+=1&nbsp;;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nombre+=c.nombreDeCotisants();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;nombre;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;chaîne&nbsp;de&nbsp;caractères&nbsp;qui&nbsp;représente&nbsp;ce&nbsp;groupe
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;String&nbsp;toString(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;str&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;String();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Cotisant&nbsp;c&nbsp;:&nbsp;<strong><font color='#7f0055'>this</font></strong>.liste){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str&nbsp;+=&nbsp;c.toString()&nbsp;+&nbsp;<font color='#2a00ff'>"&nbsp;\n&nbsp;"</font>&nbsp;;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;str;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;la&nbsp;liste&nbsp;des&nbsp;cotisants&nbsp;du&nbsp;groupe
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;List<Cotisant>&nbsp;getChildren(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.liste;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;débiter&nbsp;la&nbsp;somme&nbsp;de&nbsp;tous&nbsp;les&nbsp;comptes&nbsp;du&nbsp;groupe
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;int&nbsp;somme
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;debit(<strong><font color='#7f0055'>int</font></strong>&nbsp;somme)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;SoldeDebiteurException{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(somme&nbsp;<&nbsp;0){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RuntimeException(<font color='#2a00ff'>"&nbsp;nombre&nbsp;négatif&nbsp;!!!"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Cotisant&nbsp;c&nbsp;:&nbsp;<strong><font color='#7f0055'>this</font></strong>.liste){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.debit(somme);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(SoldeDebiteurException&nbsp;e){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;SoldeDebiteurException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;int&nbsp;somme&nbsp;à&nbsp;créditer&nbsp;à&nbsp;tous&nbsp;les&nbsp;cotisants&nbsp;du&nbsp;groupe
+<br/>&nbsp;&nbsp;&nbsp;*/</font>&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;credit(<strong><font color='#7f0055'>int</font></strong>&nbsp;somme){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(somme&nbsp;<&nbsp;0){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RuntimeException(<font color='#2a00ff'>"&nbsp;nombre&nbsp;négatif&nbsp;!!!"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Cotisant&nbsp;c&nbsp;:&nbsp;<strong><font color='#7f0055'>this</font></strong>.liste){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.credit(somme);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;le&nbsp;solde&nbsp;total&nbsp;du&nbsp;groupe
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;solde(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;solde&nbsp;=&nbsp;0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Cotisant&nbsp;c:&nbsp;<strong><font color='#7f0055'>this</font></strong>.liste){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solde&nbsp;+=&nbsp;c.solde();&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;solde;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;méthodes&nbsp;fournies
+</font><br/>&nbsp;&nbsp;
+<br/>&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Iterator<Cotisant>&nbsp;iterator(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;GroupeIterator(liste.iterator());
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;GroupeIterator&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;Iterator<Cotisant>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Stack<Iterator<Cotisant>>&nbsp;stk;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;GroupeIterator(Iterator<Cotisant>&nbsp;iterator){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.stk&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Stack<Iterator<Cotisant>>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.stk.push(iterator);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;hasNext(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(stk.empty()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>else</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator<Cotisant>&nbsp;iterator&nbsp;=&nbsp;stk.peek();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(&nbsp;!iterator.hasNext()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.pop();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;hasNext();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>else</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Cotisant&nbsp;next(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(hasNext()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iterator<Cotisant>&nbsp;iterator&nbsp;=&nbsp;stk.peek();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cotisant&nbsp;cpt&nbsp;=&nbsp;iterator.next();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(cpt&nbsp;<strong><font color='#7f0055'>instanceof</font></strong>&nbsp;GroupeDeContributeurs){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GroupeDeContributeurs&nbsp;gr&nbsp;=&nbsp;(GroupeDeContributeurs)cpt;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stk.push(gr.liste.iterator());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;cpt;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>else</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;NoSuchElementException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;remove(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;UnsupportedOperationException();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<T>&nbsp;T&nbsp;accepter(Visiteur<T>&nbsp;visiteur){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;visiteur.visite(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <hr />
+    <h3>Question 2.1 :</h3>
+    <br />
+    Voici une implémentation complète de la classe CompositeValide. Le solde de chaque contributeur doit être supérieur ou égal à 0 et il n’existe pas de groupe n’ayant pas de contributeurs.
+    <br />
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.Contributeur;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.GroupeDeContributeurs;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.Visiteur;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.Cotisant;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;CompositeValide&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;Visiteur<Boolean>{
+<br/>&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;Le&nbsp;solde&nbsp;de&nbsp;chaque&nbsp;contributeur&nbsp;doit&nbsp;être&nbsp;supérieur&nbsp;ou&nbsp;égal&nbsp;à&nbsp;0&nbsp;
+</font><br/>&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;et&nbsp;il&nbsp;n’existe&nbsp;pas&nbsp;de&nbsp;groupe&nbsp;n’ayant&nbsp;pas&nbsp;de&nbsp;contributeurs.
+</font><br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;vrai&nbsp;si&nbsp;le&nbsp;solde&nbsp;est&nbsp;>=0
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(Contributeur&nbsp;c){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;c.solde()&nbsp;>=&nbsp;0;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;vrai&nbsp;s'il&nbsp;existe&nbsp;au&nbsp;moins&nbsp;un&nbsp;élément&nbsp;Contributeur
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(GroupeDeContributeurs&nbsp;g){&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(g.nombreDeCotisants()<=0){&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;&nbsp;
+<br/>&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Cotisant&nbsp;c&nbsp;:&nbsp;g.getChildren()){&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!c.accepter(<strong><font color='#7f0055'>this</font></strong>)){&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>&nbsp;;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br />
+<br />
+Et voici la classe SansDoublon qui vérifie que les noms des groupes et des contributeurs sont différents.
+<br />
+<br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Set;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.TreeSet;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Iterator;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;SansDoublon&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;Visiteur<Boolean>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;Set<Cotisant>&nbsp;ct&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TreeSet<Cotisant>();&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(Contributeur&nbsp;c){&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.ct.equals((Cotisant)c);
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Boolean&nbsp;visite(GroupeDeContributeurs&nbsp;g){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;Iterator<Cotisant>&nbsp;it&nbsp;=&nbsp;g.iterator();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>(it.hasNext()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cotisant&nbsp;cts&nbsp;=&nbsp;it.next();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(!cts.accepter(<strong><font color='#7f0055'>this</font></strong>)){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.ct.equals((Cotisant)g)&nbsp;;
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <hr />
+    <h3>Question 2.2 :</h3>
+    <br />
+    <br />
+    Voici une implémentation complète de la classe DebitMaximal.
+    <br />
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question2;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.Contributeur;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.GroupeDeContributeurs;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.Visiteur;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.Cotisant;
+<br/><font color='#2040a0'>/**&nbsp;&nbsp;
+<br/>&nbsp;*&nbsp;Un&nbsp;visiteur&nbsp;qui&nbsp;retourne&nbsp;le&nbsp;débit&nbsp;maximal&nbsp;d'un&nbsp;Contributeur&nbsp;ou&nbsp;d'un&nbsp;GroupeDeContributeurs&nbsp;&nbsp;
+<br/>&nbsp;*/</font>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;DebitMaximal&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;Visiteur<Integer>{
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;le&nbsp;débit&nbsp;maximal&nbsp;d'un&nbsp;seul&nbsp;contributeur&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Integer&nbsp;visite(Contributeur&nbsp;c){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;c.solde();
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;le&nbsp;solde&nbsp;minimale&nbsp;de&nbsp;tous&nbsp;les&nbsp;Contributeurs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*/</font>&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Integer&nbsp;visite(GroupeDeContributeurs&nbsp;g){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;res&nbsp;=&nbsp;0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Cotisant&nbsp;c&nbsp;:&nbsp;g.getChildren()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;temp&nbsp;=&nbsp;c.accepter(<strong><font color='#7f0055'>this</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(res&nbsp;==&nbsp;0&nbsp;||&nbsp;temp&nbsp;<&nbsp;res&nbsp;){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res&nbsp;=temp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;res&nbsp;;
+<br/>&nbsp;&nbsp;}
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+ <br />
+  <br />
+  Et la méthode de testACompleter dans la classe de tests unitaires :
+   <br />
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;testACompleter(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;GroupeDeContributeurs&nbsp;g&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;GroupeDeContributeurs(<font color='#2a00ff'>"g"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.ajouter(<strong><font color='#7f0055'>new</font></strong>&nbsp;Contributeur(<font color='#2a00ff'>"g_a"</font>,100));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.ajouter(<strong><font color='#7f0055'>new</font></strong>&nbsp;Contributeur(<font color='#2a00ff'>"g_a"</font>,200));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;assertFalse(<font color='#2a00ff'>"Ce&nbsp;groupe&nbsp;a&nbsp;deux&nbsp;contributeurs&nbsp;de&nbsp;même&nbsp;nom&nbsp;!"</font>,&nbsp;g.accepter(<strong><font color='#7f0055'>new</font></strong>&nbsp;SansDoublon()));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;GroupeDeContributeurs&nbsp;g1&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;GroupeDeContributeurs(<font color='#2a00ff'>"g1"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;g1.ajouter(<strong><font color='#7f0055'>new</font></strong>&nbsp;Contributeur(<font color='#2a00ff'>"g_c"</font>,&nbsp;500));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g1.ajouter(<strong><font color='#7f0055'>new</font></strong>&nbsp;Contributeur(<font color='#2a00ff'>"g_d"</font>,&nbsp;-400));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>catch</font></strong>&nbsp;(Exception&nbsp;e){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<font color='#2a00ff'>"Normal.&nbsp;Solde&nbsp;<&nbsp;0."</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;g.ajouter(g1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;assertTrue(<font color='#2a00ff'>"Ce&nbsp;groupe&nbsp;ne&nbsp;contient&nbsp;pas&nbsp;un&nbsp;sous&nbsp;groupe&nbsp;ayant&nbsp;un&nbsp;Contributeur&nbsp;avec&nbsp;un&nbsp;solde&nbsp;négatif"</font>,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.accepter(<strong><font color='#7f0055'>new</font></strong>&nbsp;CompositeValide()));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;assertEquals(<font color='#2a00ff'>"Ce&nbsp;groupe&nbsp;a&nbsp;un&nbsp;debit&nbsp;maximal&nbsp;de&nbsp;100&nbsp;(mais&nbsp;ne&nbsp;respecte&nbsp;pas&nbsp;la&nbsp;logique&nbsp;métier."</font>,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Integer(100),&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.accepter(<strong><font color='#7f0055'>new</font></strong>&nbsp;DebitMaximal()));&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 3 :</h3>
+    <br />
+    <br />
+    Classe Memento :
+    <br />
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;Memento&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;Note&nbsp;:&nbsp;Un&nbsp;usage&nbsp;du&nbsp;patron&nbsp;Memento,&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d’un&nbsp;premier&nbsp;visiteur&nbsp;pour&nbsp;la&nbsp;sauvegarde&nbsp;et&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d’un&nbsp;second&nbsp;pour&nbsp;la&nbsp;restitution&nbsp;du&nbsp;composite,&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;représentent&nbsp;une&nbsp;solution&nbsp;possible.&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;HashMap<Cotisant,Integer>&nbsp;state;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Memento(Cotisant&nbsp;c)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//sauvegarde
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.state&nbsp;=&nbsp;c.accepter(<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurSauvegarde());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setState(Cotisant&nbsp;c)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;restitution
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.accepter(<strong><font color='#7f0055'>new</font></strong>&nbsp;VisiteurRestitution(<strong><font color='#7f0055'>this</font></strong>.state));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br />
+    <br />
+    Classe Gardien :
+    <br />
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.Stack;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;Gardien{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Stack<Memento>&nbsp;mementoStk;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Gardien(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.mementoStk&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Stack<Memento>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Memento&nbsp;getMemento()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>this</font></strong>.mementoStk.pop();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setMemento(Memento&nbsp;memento){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.mementoStk.push(memento);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br />
+    <br />
+    Classe TransactionDebit :
+    <br />
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>&nbsp;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;TransactionDebit&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;AbstractTransaction{
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;Gardien&nbsp;gardien;
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;TransactionDebit(Cotisant&nbsp;cotisant){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>super</font></strong>(cotisant);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.gardien&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Gardien();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;avant&nbsp;une&nbsp;transaction&nbsp;l'état&nbsp;initiale&nbsp;est&nbsp;sauvegardé&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*/</font>&nbsp;
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;beginTransaction(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gardien.setMemento(<strong><font color='#7f0055'>new</font></strong>&nbsp;Memento(cotisant));
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;fin&nbsp;d'une&nbsp;transaction
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;endTransaction(){
+<br/>&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*&nbsp;si&nbsp;une&nbsp;erreur&nbsp;est&nbsp;levée,&nbsp;retour&nbsp;à&nbsp;l'état&nbsp;précédent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;rollbackTransaction(){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;gardien.getMemento().setState(cotisant);
+<br/>&nbsp;&nbsp;}
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br />
+    <br />
+    Classe VisiteurRestitution :
+    <br />
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.HashMap;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurRestitution&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;question1.Visiteur<Cotisant>&nbsp;{&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;HashMap<Cotisant,&nbsp;Integer>&nbsp;state;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;VisiteurRestitution(HashMap<Cotisant,&nbsp;Integer>&nbsp;state){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.state=state;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Cotisant&nbsp;visite(Contributeur&nbsp;c){&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;somme&nbsp;=&nbsp;<strong><font color='#7f0055'>this</font></strong>.state.get(c);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.affecterSolde(somme);&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;c&nbsp;;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Cotisant&nbsp;visite(GroupeDeContributeurs&nbsp;g){&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Cotisant&nbsp;c&nbsp;:&nbsp;g.getChildren()){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.accepter(<strong><font color='#7f0055'>this</font></strong>);&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;g;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>}&nbsp;<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+<br />
+    <br />
+    Classe VisiteurSauvegarde :
+    <br />
+    <br />
+    <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.util.HashMap;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;VisiteurSauvegarde&nbsp;<strong><font color='#7f0055'>implements</font></strong>&nbsp;question1.Visiteur<HashMap<Cotisant,&nbsp;Integer>>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;HashMap<Cotisant,&nbsp;Integer>&nbsp;visite(Contributeur&nbsp;c){&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//Contributeur&nbsp;clone&nbsp;=&nbsp;new&nbsp;Contributeur(c.nom(),c.solde());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HashMap<Cotisant,&nbsp;Integer>&nbsp;toSave&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;HashMap<Cotisant,&nbsp;Integer>();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;solde&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Integer(c.solde());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toSave.put(c,&nbsp;solde);&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;toSave;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;HashMap<Cotisant,&nbsp;Integer>&nbsp;visite(GroupeDeContributeurs&nbsp;g)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HashMap<Cotisant,&nbsp;Integer>&nbsp;toSave&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;HashMap<Cotisant,&nbsp;Integer>();&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>(Cotisant&nbsp;c:&nbsp;g.getChildren()){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HashMap<Cotisant,&nbsp;Integer>&nbsp;nouveaux&nbsp;=&nbsp;c.accepter(<strong><font color='#7f0055'>this</font></strong>);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toSave.putAll(nouveaux);&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;toSave;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    <h3>Question 4 :</h3>
+    <br />
+    <br />
+    Voici l’implémentation complète de la classe IHM. Il faut aussi ajouter une méthode crédit dans la classe AbstractTransaction pour pouvoir implémenter crediter.addActionListener.
+    <br />
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question4;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.Contributeur;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.GroupeDeContributeurs;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question2.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question3.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;question2.Main.*;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.awt.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.awt.event.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;javax.swing.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;org.jdom.output.*;
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;java.io.ByteArrayOutputStream;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;IHM&nbsp;<strong><font color='#7f0055'>extends</font></strong>&nbsp;JFrame&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;JTextArea&nbsp;resultat&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JTextArea(<font color='#2a00ff'>""</font>,&nbsp;7,60);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;JButton&nbsp;debiter&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JButton(<font color='#2a00ff'>"débiter"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;JButton&nbsp;crediter&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JButton(<font color='#2a00ff'>"créditer"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;JTextField&nbsp;somme&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JTextField(4);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;GroupeDeContributeurs&nbsp;g;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;IHM()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.setTitle(<font color='#2a00ff'>"Cotisant"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Container&nbsp;container&nbsp;=&nbsp;<strong><font color='#7f0055'>this</font></strong>.getContentPane();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;somme.setText(<font color='#2a00ff'>"40"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;container.setLayout(<strong><font color='#7f0055'>new</font></strong>&nbsp;BorderLayout());
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;container.add(resultat,&nbsp;BorderLayout.NORTH);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JPanel&nbsp;p&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;JPanel(<strong><font color='#7f0055'>new</font></strong>&nbsp;FlowLayout());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.add(somme);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.add(debiter);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p.add(crediter);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;container.add(p,&nbsp;BorderLayout.SOUTH);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;GroupeDeContributeurs(<font color='#2a00ff'>"g"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.ajouter(<strong><font color='#7f0055'>new</font></strong>&nbsp;Contributeur(<font color='#2a00ff'>"g_a"</font>,100));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.ajouter(<strong><font color='#7f0055'>new</font></strong>&nbsp;Contributeur(<font color='#2a00ff'>"g_b"</font>,50));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.ajouter(<strong><font color='#7f0055'>new</font></strong>&nbsp;Contributeur(<font color='#2a00ff'>"g_c"</font>,150));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GroupeDeContributeurs&nbsp;g1&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;GroupeDeContributeurs(<font color='#2a00ff'>"g1"</font>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g1.ajouter(<strong><font color='#7f0055'>new</font></strong>&nbsp;Contributeur(<font color='#2a00ff'>"g1_a1"</font>,70));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g1.ajouter(<strong><font color='#7f0055'>new</font></strong>&nbsp;Contributeur(<font color='#2a00ff'>"g1_b1"</font>,200));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g.ajouter(g1);
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultat.setText(Main.arbreXML(g));&nbsp;<font color='#3f7f5f'>//actualiser();
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;e){}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debiter.addActionListener(<strong><font color='#7f0055'>new</font></strong>&nbsp;ActionListener(){&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;actionPerformed(ActionEvent&nbsp;ae){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AbstractTransaction&nbsp;transaction&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TransactionDebit(g);&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transaction.debit(Integer.parseInt(somme.getText()));&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;e){}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultat.setText(Main.arbreXML(g));&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//actualiser();&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;e){}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;crediter.addActionListener(<strong><font color='#7f0055'>new</font></strong>&nbsp;ActionListener(){&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;actionPerformed(ActionEvent&nbsp;ae){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AbstractTransaction&nbsp;transaction&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;TransactionDebit(g);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transaction.credit(Integer.parseInt(somme.getText()));&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resultat.setText(Main.arbreXML(g));&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//actualiser();&nbsp;
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(Exception&nbsp;e){}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.pack();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.setVisible(<strong><font color='#7f0055'>true</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;main()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;IHM();&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>
+<br/>}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+ <br />
+    <br />
+    Et la méthode credit ajoutée à la classe AbstractTransaction :
+     <br />
+    <br />
+<div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'><strong><font color='#7f0055'>package</font></strong>&nbsp;question3;
+<br/>
+<br/><strong><font color='#7f0055'>import</font></strong>&nbsp;question1.*;
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;AbstractTransaction{&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>protected</font></strong>&nbsp;Cotisant&nbsp;cotisant;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>protected</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;somme;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;beginTransaction();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;Template&nbsp;Method
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;endTransaction();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>abstract</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;rollbackTransaction();
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;AbstractTransaction(Cotisant&nbsp;cotisant){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.cotisant&nbsp;=&nbsp;cotisant;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;debit(<strong><font color='#7f0055'>int</font></strong>&nbsp;somme)&nbsp;<strong><font color='#7f0055'>throws</font></strong>&nbsp;SoldeDebiteurException{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>try</font></strong>{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beginTransaction();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.somme&nbsp;=&nbsp;somme;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cotisant.debit(somme);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endTransaction();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<strong><font color='#7f0055'>catch</font></strong>(SoldeDebiteurException&nbsp;e){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rollbackTransaction();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>throw</font></strong>&nbsp;e;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>final</font></strong>&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;credit(<strong><font color='#7f0055'>int</font></strong>&nbsp;somme){
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beginTransaction();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.somme&nbsp;=&nbsp;somme;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cotisant.credit(somme);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endTransaction();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>}
+<br/><div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+    <br />
+    <hr />
+    
+        <h3>Conclusion, biliographie et remarques :</h3>
+        <i style="font-size:12px;">Au niveau du pattern visiteur, je trouve cet exemple plus facile à comprendre que celui du TP précédent (TP6). Dans la question 3, l'ajout des différents patterns est un peu difficile à comprendre. Le mélange des patterns visiteur, memento, template et composite est un peu compliqué. C'est un peu comme un puzzle et je pense que je devrais regarder plus d'exemples pour bien comprendre comment plusieurs patterns travaillent ensemble. </i>
+    
+</body>
+</html>
